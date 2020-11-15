@@ -34,5 +34,10 @@ namespace CreditClicker
             panel1.Show();
             panel1.BringToFront();
         }
+
+        private void quitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -118,6 +118,7 @@
             this.quitButton.TabIndex = 9;
             this.quitButton.Text = "QUIT ";
             this.quitButton.UseVisualStyleBackColor = false;
+            this.quitButton.Click += new System.EventHandler(this.quitButton_Click);
             // 
             // lblpentagon
             // 
@@ -268,6 +269,7 @@
             // 
             // panel2
             // 
+            this.panel2.BackgroundImage = global::CreditClicker.Properties.Resources.finalbg;
             this.panel2.Controls.Add(this.lblpentagonGame);
             this.panel2.Controls.Add(this.settingsButtonGame);
             this.panel2.Controls.Add(this.menuButtonGame);
@@ -278,7 +280,6 @@
             this.panel2.Controls.Add(this.titleGame);
             this.panel2.Controls.Add(this.lblScore);
             this.panel2.Location = new System.Drawing.Point(-1, -1);
-            this.panel2.BackgroundImage = global::CreditClicker.Properties.Resources.finalbg;
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(493, 508);
             this.panel2.TabIndex = 9;

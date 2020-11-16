@@ -63,6 +63,16 @@ namespace CreditClicker.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap clickme {
+            get {
+                object obj = ResourceManager.GetObject("clickme", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CreditClickerDummy {
             get {
                 object obj = ResourceManager.GetObject("CreditClickerDummy", resourceCulture);
@@ -76,6 +86,16 @@ namespace CreditClicker.Properties {
         internal static System.Drawing.Bitmap finalbg {
             get {
                 object obj = ResourceManager.GetObject("finalbg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap finalbg1 {
+            get {
+                object obj = ResourceManager.GetObject("finalbg1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

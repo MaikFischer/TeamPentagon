@@ -8,3 +8,12 @@ C:\Users\Jan\Source\Repos\TeamPentagon\CreditClicker\obj\Debug\CreditClicker.csp
 C:\Users\Jan\Source\Repos\TeamPentagon\CreditClicker\obj\Debug\CreditClicker.exe
 C:\Users\Jan\Source\Repos\TeamPentagon\CreditClicker\obj\Debug\CreditClicker.pdb
 C:\Users\Jan\source\repos\TeamPentagon\CreditClicker\obj\Debug\CreditClicker.MainMenu.resources
+C:\Users\Jan\source\repos\TeamPentagon\bin\Debug\CreditClicker.exe.config
+C:\Users\Jan\source\repos\TeamPentagon\bin\Debug\CreditClicker.exe
+C:\Users\Jan\source\repos\TeamPentagon\bin\Debug\CreditClicker.pdb
+C:\Users\Jan\source\repos\TeamPentagon\obj\Debug\CreditClicker.csprojAssemblyReference.cache
+C:\Users\Jan\source\repos\TeamPentagon\obj\Debug\CreditClicker.Properties.Resources.resources
+C:\Users\Jan\source\repos\TeamPentagon\obj\Debug\CreditClicker.csproj.GenerateResource.cache
+C:\Users\Jan\source\repos\TeamPentagon\obj\Debug\CreditClicker.exe
+C:\Users\Jan\source\repos\TeamPentagon\obj\Debug\CreditClicker.pdb
+C:\Users\Jan\source\repos\TeamPentagon\obj\Debug\CreditClicker.Game.resources

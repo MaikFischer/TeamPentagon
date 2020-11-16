@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CreditClicker
 {
-    class Utils
+    public class Utils
     {
-        private string version = "v1.1";
+        private string version = "v1.2";
         private string title = "CreditClicker";
 
         public string getVersion()

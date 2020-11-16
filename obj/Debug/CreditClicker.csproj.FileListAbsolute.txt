@@ -17,3 +17,4 @@ C:\Users\Jan\source\repos\TeamPentagon\obj\Debug\CreditClicker.csproj.GenerateRe
 C:\Users\Jan\source\repos\TeamPentagon\obj\Debug\CreditClicker.exe
 C:\Users\Jan\source\repos\TeamPentagon\obj\Debug\CreditClicker.pdb
 C:\Users\Jan\source\repos\TeamPentagon\obj\Debug\CreditClicker.Game.resources
+C:\Users\Jan\source\repos\TeamPentagon\obj\Debug\CreditClicker.Shop.resources

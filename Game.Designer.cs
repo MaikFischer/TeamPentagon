@@ -6,6 +6,7 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+        private Utils utils = new Utils();
 
         /// <summary>
         /// Clean up any resources being used.
@@ -144,7 +145,7 @@
             this.version.Name = "version";
             this.version.Size = new System.Drawing.Size(25, 14);
             this.version.TabIndex = 5;
-            this.version.Text = "v1.1";
+            this.version.Text = utils.getVersion();
             // 
             // Title
             // 
@@ -247,7 +248,7 @@
             this.versionGame.Name = "versionGame";
             this.versionGame.Size = new System.Drawing.Size(25, 14);
             this.versionGame.TabIndex = 4;
-            this.versionGame.Text = "v1.1";
+            this.versionGame.Text = utils.getVersion();
             // 
             // score
             // 
@@ -260,7 +261,7 @@
             this.score.Name = "score";
             this.score.Size = new System.Drawing.Size(22, 24);
             this.score.TabIndex = 3;
-            this.score.Text = "0";
+            this.score.Text = pScore.ToString();
             // 
             // ClickArea
             // 
@@ -374,7 +375,7 @@
             this.versionSettings.Name = "versionSettings";
             this.versionSettings.Size = new System.Drawing.Size(25, 14);
             this.versionSettings.TabIndex = 13;
-            this.versionSettings.Text = "v1.1";
+            this.versionSettings.Text = utils.getVersion();
             // 
             // titleSettings
             // 
@@ -417,7 +418,7 @@
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Game";
-            this.Text = "CreditClicker v1.1";
+            this.Text = utils.getTitle() + " " + utils.getVersion();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

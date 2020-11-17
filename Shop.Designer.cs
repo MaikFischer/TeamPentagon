@@ -155,6 +155,7 @@
             this.buyCheatSheet.TabIndex = 19;
             this.buyCheatSheet.Text = "$1000";
             this.buyCheatSheet.UseVisualStyleBackColor = false;
+            this.buyCheatSheet.Click += new System.EventHandler(this.buyCheatSheet_Click);
             // 
             // Shop
             // 

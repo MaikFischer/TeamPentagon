@@ -63,6 +63,16 @@ namespace CreditClicker.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cheatsheet {
+            get {
+                object obj = ResourceManager.GetObject("cheatsheet", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap clickme {
             get {
                 object obj = ResourceManager.GetObject("clickme", resourceCulture);
@@ -96,6 +106,16 @@ namespace CreditClicker.Properties {
         internal static System.Drawing.Bitmap finalbg1 {
             get {
                 object obj = ResourceManager.GetObject("finalbg1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pngkey_com_note_png_4358013 {
+            get {
+                object obj = ResourceManager.GetObject("pngkey.com-note-png-4358013", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

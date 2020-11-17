@@ -100,5 +100,11 @@
   <ItemGroup>
     <None Include="Resources\clickme.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngkey.com-note-png-4358013.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cheatsheet.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

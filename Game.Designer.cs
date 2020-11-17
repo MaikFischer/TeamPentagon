@@ -1,4 +1,6 @@
-﻿namespace CreditClicker
+﻿using System;
+
+namespace CreditClicker
 {
     partial class Game
     {
@@ -55,6 +57,7 @@
             this.button1Settings = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ClickArea)).BeginInit();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -143,9 +146,9 @@
             this.version.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.version.Location = new System.Drawing.Point(346, 27);
             this.version.Name = "version";
-            this.version.Size = new System.Drawing.Size(25, 14);
+            this.version.Size = new System.Drawing.Size(28, 14);
             this.version.TabIndex = 5;
-            this.version.Text = utils.getVersion();
+            this.version.Text = "v1.2";
             // 
             // Title
             // 
@@ -237,6 +240,7 @@
             this.shopButtonGame.TabIndex = 5;
             this.shopButtonGame.Text = "SHOP";
             this.shopButtonGame.UseVisualStyleBackColor = false;
+            this.shopButtonGame.Click += new System.EventHandler(this.shopButtonGame_Click);
             // 
             // versionGame
             // 
@@ -246,9 +250,9 @@
             this.versionGame.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.versionGame.Location = new System.Drawing.Point(349, 27);
             this.versionGame.Name = "versionGame";
-            this.versionGame.Size = new System.Drawing.Size(25, 14);
+            this.versionGame.Size = new System.Drawing.Size(28, 14);
             this.versionGame.TabIndex = 4;
-            this.versionGame.Text = utils.getVersion();
+            this.versionGame.Text = "v1.2";
             // 
             // score
             // 
@@ -256,25 +260,23 @@
             this.score.BackColor = System.Drawing.Color.Transparent;
             this.score.Font = new System.Drawing.Font("hooge 05_55", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.score.ForeColor = System.Drawing.Color.SlateBlue;
-            this.score.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.score.Location = new System.Drawing.Point(200, 61);
             this.score.Name = "score";
             this.score.Size = new System.Drawing.Size(22, 24);
             this.score.TabIndex = 3;
-            this.score.Text = pScore.ToString();
+            this.score.Text = "0";
+            this.score.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ClickArea
             // 
-            this.ClickArea.AutoSize = true;
             this.ClickArea.BackColor = System.Drawing.Color.Transparent;
             this.ClickArea.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ClickArea.Image = global::CreditClicker.Properties.Resources.clickme;
             this.ClickArea.Location = new System.Drawing.Point(114, 106);
-            //this.ClickArea.MaximumSize = new System.Drawing.Size(260, 235);
-            //this.ClickArea.MinimumSize = new System.Drawing.Size(260, 235);
             this.ClickArea.Name = "ClickArea";
-            //this.ClickArea.Size = new System.Drawing.Size(260, 235);
+            this.ClickArea.Size = new System.Drawing.Size(282, 235);
             this.ClickArea.TabIndex = 1;
+            this.ClickArea.TabStop = false;
             this.ClickArea.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ClickArea_MouseDown);
             // 
             // titleGame
@@ -373,9 +375,9 @@
             this.versionSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.versionSettings.Location = new System.Drawing.Point(349, 27);
             this.versionSettings.Name = "versionSettings";
-            this.versionSettings.Size = new System.Drawing.Size(25, 14);
+            this.versionSettings.Size = new System.Drawing.Size(28, 14);
             this.versionSettings.TabIndex = 13;
-            this.versionSettings.Text = utils.getVersion();
+            this.versionSettings.Text = "v1.2";
             // 
             // titleSettings
             // 
@@ -418,11 +420,12 @@
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Game";
-            this.Text = utils.getTitle() + " " + utils.getVersion();
+            this.Text = "CreditClicker v1.2";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ClickArea)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);

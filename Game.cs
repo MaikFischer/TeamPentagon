@@ -18,13 +18,14 @@ namespace CreditClicker
         private int pMultiplier = 1;
         private ArrayList pItems = new ArrayList();
         private Item spicker = new Item("Spicker", 1);
+        //private FormCollection fc = new FormCollection();
 
 
-        private long getScore()
+        public long getScore()
         {
             return this.pScore;
         }
-        private void setScore(long score)
+        public void setScore(long score)
         {
             this.pScore = score;
         }
@@ -91,6 +92,16 @@ namespace CreditClicker
             panel2.BringToFront();
         }
 
+        private void shopButtonGame_Click(object sender, EventArgs e)
+        {
+            if (!isShopOpen())
+            {
+                Shop shop = new Shop();
+                shop.Show(this);
+            }
+
+        }
+
         private void ClickArea_MouseDown(object sender,EventArgs e)
         {
             this.pScore += 1*this.pMultiplier;
@@ -102,7 +113,7 @@ namespace CreditClicker
             score.Text = this.pScore.ToString();
         }
 
-        public void raiseBonus()
+        public void raiseMultiplier()
         {
             pItems.Add(spicker);
             foreach (Item item in pItems)
@@ -114,6 +125,15 @@ namespace CreditClicker
         public void addItem(Item item)
         {
             pItems.Add(item);
+        }
+
+        public bool isShopOpen()
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.Name == "Shop") return true;
+            }
+            return false;
         }
     }
 }

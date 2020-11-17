@@ -11,6 +11,7 @@ namespace CreditClicker
     {
         private string name;
         private int bonus;
+        private int price;
 
         public Item(string name,int bonus)
         {

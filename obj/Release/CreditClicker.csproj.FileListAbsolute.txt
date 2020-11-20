@@ -2,9 +2,9 @@ C:\Users\Jan\source\repos\TeamPentagon\bin\Release\CreditClicker.exe.config
 C:\Users\Jan\source\repos\TeamPentagon\bin\Release\CreditClicker.exe
 C:\Users\Jan\source\repos\TeamPentagon\bin\Release\CreditClicker.pdb
 C:\Users\Jan\source\repos\TeamPentagon\obj\Release\CreditClicker.csprojAssemblyReference.cache
-C:\Users\Jan\source\repos\TeamPentagon\obj\Release\CreditClicker.MainMenu.resources
 C:\Users\Jan\source\repos\TeamPentagon\obj\Release\CreditClicker.Properties.Resources.resources
 C:\Users\Jan\source\repos\TeamPentagon\obj\Release\CreditClicker.csproj.GenerateResource.cache
-C:\Users\Jan\source\repos\TeamPentagon\obj\Release\CreditClicker.csproj.CoreCompileInputs.cache
 C:\Users\Jan\source\repos\TeamPentagon\obj\Release\CreditClicker.exe
 C:\Users\Jan\source\repos\TeamPentagon\obj\Release\CreditClicker.pdb
+C:\Users\Jan\source\repos\TeamPentagon\obj\Release\CreditClicker.Game.resources
+C:\Users\Jan\source\repos\TeamPentagon\obj\Release\CreditClicker.Shop.resources

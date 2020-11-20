@@ -173,7 +173,7 @@
             this.buyCheatSheet.Name = "buyCheatSheet";
             this.buyCheatSheet.Size = new System.Drawing.Size(118, 35);
             this.buyCheatSheet.TabIndex = 19;
-            this.buyCheatSheet.Text = "$1000";
+            this.buyCheatSheet.Text = "$150";
             this.buyCheatSheet.UseVisualStyleBackColor = false;
             this.buyCheatSheet.Click += new System.EventHandler(this.buyCheatSheet_Click);
             // 
@@ -190,8 +190,9 @@
             this.buyStudyGroup.Name = "buyStudyGroup";
             this.buyStudyGroup.Size = new System.Drawing.Size(118, 35);
             this.buyStudyGroup.TabIndex = 23;
-            this.buyStudyGroup.Text = "$5000";
+            this.buyStudyGroup.Text = "$250";
             this.buyStudyGroup.UseVisualStyleBackColor = false;
+            this.buyStudyGroup.Click += new System.EventHandler(this.buyStudyGroup_Click);
             // 
             // label3
             // 
@@ -241,8 +242,9 @@
             this.buyConsultationHour.Name = "buyConsultationHour";
             this.buyConsultationHour.Size = new System.Drawing.Size(118, 35);
             this.buyConsultationHour.TabIndex = 27;
-            this.buyConsultationHour.Text = "$10000";
+            this.buyConsultationHour.Text = "$2500";
             this.buyConsultationHour.UseVisualStyleBackColor = false;
+            this.buyConsultationHour.Click += new System.EventHandler(this.buyConsultationHour_Click);
             // 
             // label5
             // 
@@ -292,8 +294,9 @@
             this.buyOldExams.Name = "buyOldExams";
             this.buyOldExams.Size = new System.Drawing.Size(118, 35);
             this.buyOldExams.TabIndex = 31;
-            this.buyOldExams.Text = "$15000";
+            this.buyOldExams.Text = "$5000";
             this.buyOldExams.UseVisualStyleBackColor = false;
+            this.buyOldExams.Click += new System.EventHandler(this.buyOldExams_Click);
             // 
             // label7
             // 
@@ -343,8 +346,9 @@
             this.buyInsider.Name = "buyInsider";
             this.buyInsider.Size = new System.Drawing.Size(118, 35);
             this.buyInsider.TabIndex = 35;
-            this.buyInsider.Text = "$25000";
+            this.buyInsider.Text = "$15000";
             this.buyInsider.UseVisualStyleBackColor = false;
+            this.buyInsider.Click += new System.EventHandler(this.buyInsider_Click);
             // 
             // label9
             // 

@@ -6,8 +6,10 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
+using System.Media;
+using System.IO;
 
 namespace CreditClicker
 {
@@ -16,12 +18,23 @@ namespace CreditClicker
 
         private long pScore = 0;
         private int pMultiplier = 1;
-
         private int pBonus = 0;
+        private int passiveBonus = 0;
         private ArrayList pItems = new ArrayList();
+        private BackgroundWorker bw;
+
 
         private Shop shop;
 
+        public int getPassiveBonus()
+        {
+            return this.passiveBonus;
+        }
+
+        public void setPassiveBonus(int passiveBonus)
+        {
+            this.passiveBonus = passiveBonus;
+        }
 
         public long getScore()
         {
@@ -35,6 +48,28 @@ namespace CreditClicker
         public Game()
         {
             InitializeComponent();
+            InitializeSound();
+            bw = new BackgroundWorker();
+            bw.DoWork += bw_DoWork;
+            bw.RunWorkerCompleted += bw_Check_RunWorkerCompleted;
+            bw.RunWorkerAsync();
+        }
+
+        public void InitializeSound()
+        {
+            //Später können wir hier dann Sounds für das Game initialisieren
+        }
+
+        private void bw_Check_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            this.score.Text = this.getScore().ToString();
+            bw.RunWorkerAsync();
+        }
+
+        private void bw_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Thread.Sleep(1000);
+            this.setScore(this.getScore() + this.getPassiveBonus());
         }
 
         private void startGameButton_Click(object sender, EventArgs e)
@@ -105,10 +140,14 @@ namespace CreditClicker
 
         }
 
-        private void ClickArea_MouseDown(object sender,EventArgs e)
+        private void ClickArea_MouseDown(object sender,MouseEventArgs e)
         {
-            this.pScore += (1+this.pBonus) * this.pMultiplier;
-            updateScore();
+            if (e.Button == MouseButtons.Left)
+            {
+                this.pScore += (1 + (int) this.pBonus) * this.pMultiplier;
+                updateScore();
+            }
+          
         }
 
         public void updateScore()
@@ -116,10 +155,20 @@ namespace CreditClicker
             score.Text = this.pScore.ToString();
         }
 
-        public void raiseMultiplier(Item item)
+        public void raiseExtras(Item item)
         {
-                this.pMultiplier += item.getMultiplier();
-                this.pBonus += item.getBonus();
+            this.pMultiplier += item.getMultiplier();
+            this.pBonus += item.getBonus();
+        }
+
+        public void raisePassive(Item item)
+        {
+            this.passiveBonus += item.getBonus();
+        }
+
+        public void raisePrice(Item item)
+        {
+            item.setPrice(item.getPrice() + item.getPrice() * 25 / 100);
         }
 
         public void addItem(Item item)

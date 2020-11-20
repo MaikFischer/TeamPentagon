@@ -106,5 +106,11 @@
   <ItemGroup>
     <None Include="Resources\cheatsheet.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\click3.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\click.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

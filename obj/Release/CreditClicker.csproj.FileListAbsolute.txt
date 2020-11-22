@@ -8,3 +8,5 @@ C:\Users\Jan\source\repos\TeamPentagon\obj\Release\CreditClicker.exe
 C:\Users\Jan\source\repos\TeamPentagon\obj\Release\CreditClicker.pdb
 C:\Users\Jan\source\repos\TeamPentagon\obj\Release\CreditClicker.Game.resources
 C:\Users\Jan\source\repos\TeamPentagon\obj\Release\CreditClicker.Shop.resources
+C:\Users\Jan\source\repos\TeamPentagon\obj\Release\Interop.WMPLib.dll
+C:\Users\Jan\source\repos\TeamPentagon\obj\Release\CreditClicker.csproj.ResolveComReference.cache

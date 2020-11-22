@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading;
+using System.Collections;
 
 namespace CreditClicker
 {
@@ -21,11 +22,68 @@ namespace CreditClicker
         private Item conHour = new Item("ConsultationHour", 0, 2, 2500);
         private Item oldExam = new Item("OldExam", 10, 0, 5000);
         private Item insider = new Item("Insider", 0, 4, 15000);
+        private BackgroundWorker buyButtonWorker = new BackgroundWorker();
 
         public Shop(Game game)
         {
             this.game = game;
             InitializeComponent();
+            buyButtonWorker = new BackgroundWorker();
+            buyButtonWorker.DoWork += buyButtonWorker_DoWork;
+            buyButtonWorker.RunWorkerCompleted += buyButtonWorker_Check_RunWorkerCompleted;
+            buyButtonWorker.RunWorkerAsync();
+        }
+
+        public ArrayList getAllItems()
+        {
+            ArrayList allItems = new ArrayList();
+            allItems.Add(cheatSheet);
+            allItems.Add(studyGroup);
+            allItems.Add(conHour);
+            allItems.Add(oldExam);
+            allItems.Add(insider);
+
+            return allItems;
+        }
+
+        public ArrayList getAllBuyButtons()
+        {
+            ArrayList allBuyButtons = new ArrayList();
+            allBuyButtons.Add(buyCheatSheet);
+            allBuyButtons.Add(buyStudyGroup);
+            allBuyButtons.Add(buyConsultationHour);
+            allBuyButtons.Add(buyOldExams);
+            allBuyButtons.Add(buyInsider);
+
+            return allBuyButtons;
+        }
+
+        private void buyButtonWorker_Check_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            buyButtonWorker.RunWorkerAsync();
+        }
+
+        private void buyButtonWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Thread.Sleep(100);
+            foreach(Item item in getAllItems())
+            {
+                foreach(Button b in getAllBuyButtons())
+                {
+                    if ("$" + item.getPrice() == b.Text)
+                    {
+                        if (game.getScore() < item.getPrice())
+                        {
+                            b.ForeColor = Color.Red;
+                            b.BackColor = Color.DarkOrange;
+                        }else
+                        {
+                            b.ForeColor = Color.Green;
+                            b.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+                        }
+                    }
+                }
+            }
         }
 
         public void updatePrice(Button button,Item item)
@@ -37,13 +95,13 @@ namespace CreditClicker
         {
             if (game.getScore() >= cheatSheet.getPrice()) 
             {
+                game.playButtonSound();
                 game.setScore(game.getScore() - cheatSheet.getPrice());
                 game.addItem(cheatSheet);
                 game.raiseExtras(cheatSheet);
                 game.raisePrice(cheatSheet);
                 this.updatePrice(buyCheatSheet, cheatSheet);
                 game.updateScore();
-                
             }
         }
 
@@ -51,6 +109,7 @@ namespace CreditClicker
         {
             if (game.getScore() >= studyGroup.getPrice())
             {
+                game.playButtonSound();
                 game.setScore(game.getScore() - studyGroup.getPrice());
                 game.addItem(studyGroup);
                 game.raisePassive(studyGroup);
@@ -64,6 +123,7 @@ namespace CreditClicker
         {
             if (game.getScore() >= conHour.getPrice())
             {
+                game.playButtonSound();
                 game.setScore(game.getScore() - conHour.getPrice());
                 game.addItem(conHour);
                 game.raiseExtras(conHour);
@@ -77,6 +137,7 @@ namespace CreditClicker
         {
             if (game.getScore() >= oldExam.getPrice())
             {
+                game.playButtonSound();
                 game.setScore(game.getScore() - oldExam.getPrice());
                 game.addItem(oldExam);
                 game.raiseExtras(oldExam);
@@ -90,6 +151,7 @@ namespace CreditClicker
         {
             if (game.getScore() >= insider.getPrice())
             {
+                game.playButtonSound();
                 game.setScore(game.getScore() - insider.getPrice());
                 game.addItem(insider);
                 game.raiseExtras(insider);

@@ -38,6 +38,11 @@ namespace CreditClicker
             return this.price;
         }
 
+        public void setPrice(int price)
+        {
+            this.price = price;
+        }
+
         public int getMultiplier() 
         {
             return this.multiplier;

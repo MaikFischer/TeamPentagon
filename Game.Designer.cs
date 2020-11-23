@@ -1,5 +1,4 @@
 ﻿using System;
-
 namespace CreditClicker
 {
     partial class Game

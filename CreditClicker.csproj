@@ -34,6 +34,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Collections.NonGeneric, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Collections.NonGeneric.4.3.0\lib\net46\System.Collections.NonGeneric.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -78,6 +83,7 @@
     <EmbeddedResource Include="Shop.resx">
       <DependentUpon>Shop.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -105,6 +111,46 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\cheatsheet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\click3.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\click.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="clickb1.wav" />
+    <EmbeddedResource Include="clickb2.wav" />
+    <EmbeddedResource Include="clickb3.wav" />
+    <EmbeddedResource Include="clickb4.wav" />
+    <EmbeddedResource Include="clickb5.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="background.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="press.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="background1.wav" />
+    <None Include="Resources\cheatsheet1.png" />
+    <None Include="Resources\insider.png" />
+    <None Include="Resources\oldExam.png" />
+    <None Include="Resources\conHour.png" />
+    <None Include="Resources\studyGroup.png" />
+    <EmbeddedResource Include="clickb6.wav" />
+    <EmbeddedResource Include="clickb7.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

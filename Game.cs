@@ -81,7 +81,6 @@ namespace CreditClicker
             Thread.Sleep(100);
             double dScore = this.getScore() + this.getPassiveBonus() / 10;
             this.setScore(dScore);
-            Console.WriteLine(dScore);
         }
 
         private void startGameButton_Click(object sender, EventArgs e)
@@ -226,7 +225,12 @@ namespace CreditClicker
         public void playBackgroundMusic()
         {
             string path = @"C:\Users\Jan\source\repos\TeamPentagon\background1.wav";
-            string url = new Uri(path).AbsoluteUri;
+            System.Reflection.Assembly a = System.Reflection.Assembly.GetExecutingAssembly();
+            String[] s = a.GetManifestResourceNames();
+            string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
+            string newpath = Path.GetFullPath(RunningPath + "\\background1.wav");
+            string url = new Uri(newpath).AbsoluteUri;
+            Console.WriteLine("[DEBUG] " + newpath);
             player.settings.volume = 30;
             player.uiMode = "invisible";
             player.URL = url;

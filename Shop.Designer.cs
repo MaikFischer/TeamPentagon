@@ -93,7 +93,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::CreditClicker.Properties.Resources.cheatsheet;
+            this.pictureBox1.Image = global::CreditClicker.Properties.Resources.cheatsheet1;
             this.pictureBox1.Location = new System.Drawing.Point(44, 66);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 100);
@@ -223,7 +223,7 @@
             // pictureBox6
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox6.Image = global::CreditClicker.Properties.Resources.cheatsheet;
+            this.pictureBox6.Image = global::CreditClicker.Properties.Resources.studyGroup;
             this.pictureBox6.Location = new System.Drawing.Point(44, 184);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(100, 100);
@@ -275,7 +275,7 @@
             // pictureBox7
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox7.Image = global::CreditClicker.Properties.Resources.cheatsheet;
+            this.pictureBox7.Image = global::CreditClicker.Properties.Resources.conHour;
             this.pictureBox7.Location = new System.Drawing.Point(44, 306);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(100, 100);
@@ -327,7 +327,7 @@
             // pictureBox8
             // 
             this.pictureBox8.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox8.Image = global::CreditClicker.Properties.Resources.cheatsheet;
+            this.pictureBox8.Image = global::CreditClicker.Properties.Resources.oldExam;
             this.pictureBox8.Location = new System.Drawing.Point(44, 427);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(100, 100);
@@ -379,7 +379,7 @@
             // pictureBox9
             // 
             this.pictureBox9.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox9.Image = global::CreditClicker.Properties.Resources.cheatsheet;
+            this.pictureBox9.Image = global::CreditClicker.Properties.Resources.insider;
             this.pictureBox9.Location = new System.Drawing.Point(44, 547);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(100, 100);

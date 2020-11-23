@@ -144,6 +144,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="background1.wav" />
+    <None Include="Resources\cheatsheet1.png" />
+    <None Include="Resources\insider.png" />
+    <None Include="Resources\oldExam.png" />
+    <None Include="Resources\conHour.png" />
+    <None Include="Resources\studyGroup.png" />
     <EmbeddedResource Include="clickb6.wav" />
     <EmbeddedResource Include="clickb7.wav" />
   </ItemGroup>

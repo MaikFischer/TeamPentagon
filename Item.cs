@@ -11,12 +11,17 @@ namespace CreditClicker
     {
         private string name;
         private int bonus;
+        private int price;
+        private int multiplier;
 
-        public Item(string name,int bonus)
+        public Item(string name,int bonus,int multiplier,int price)
         {
             this.name = name;
             this.bonus = bonus;
+            this.price = price;
+            this.multiplier = multiplier;
         }
+
 
         public string getName()
         {
@@ -26,6 +31,21 @@ namespace CreditClicker
         public int getBonus()
         {
             return this.bonus;
+        }
+
+        public int getPrice()
+        {
+            return this.price;
+        }
+
+        public void setPrice(int price)
+        {
+            this.price = price;
+        }
+
+        public int getMultiplier() 
+        {
+            return this.multiplier;
         }
     }
 }

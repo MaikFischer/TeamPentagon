@@ -9,5 +9,22 @@
 </p>
 
 # Update Log:
+## Update 23/11/2020 Released v1.5
+- Veröffentlichung von Release v1.5
+
+### Neu:
+
+**- CreditShop**
+   - Ermöglicht das Kaufen von Items und Boni mit Credits
+   
+**- Boni/Effekte**
+   - Bonus (Bonus Credits pro Klick)
+   - Multiplier (Multiplikator pro Klick)
+   - Credits per second (Credits pro Sekunde)
+<p align="right">
+  <img src="https://i.imgur.com/7cQBImn.png">
+</p>
+- Sound Effekte hinzugefügt
+
 ## Update 16/11/2020 Released v1.2
 - Veröffentlichung der ersten spielbaren Pre-Release

@@ -22,16 +22,12 @@ namespace CreditClicker
         private Item conHour = new Item("ConsultationHour", 0, 2, 2500);
         private Item oldExam = new Item("OldExam", 10, 0, 5000);
         private Item insider = new Item("Insider", 0, 4, 15000);
-        private BackgroundWorker buyButtonWorker = new BackgroundWorker();
+        public BackgroundWorker buyButtonWorker;
 
         public Shop(Game game)
         {
             this.game = game;
             InitializeComponent();
-            buyButtonWorker = new BackgroundWorker();
-            buyButtonWorker.DoWork += buyButtonWorker_DoWork;
-            buyButtonWorker.RunWorkerCompleted += buyButtonWorker_Check_RunWorkerCompleted;
-            buyButtonWorker.RunWorkerAsync();
         }
 
         public ArrayList getAllItems()
@@ -58,12 +54,12 @@ namespace CreditClicker
             return allBuyButtons;
         }
 
-        private void buyButtonWorker_Check_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        public void buyButtonWorker_Check_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             buyButtonWorker.RunWorkerAsync();
         }
 
-        private void buyButtonWorker_DoWork(object sender, DoWorkEventArgs e)
+        public void buyButtonWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             Thread.Sleep(100);
             foreach(Item item in getAllItems())
@@ -101,7 +97,6 @@ namespace CreditClicker
                 game.raiseExtras(cheatSheet);
                 game.raisePrice(cheatSheet);
                 this.updatePrice(buyCheatSheet, cheatSheet);
-                game.updateScore();
             }
         }
 
@@ -115,7 +110,6 @@ namespace CreditClicker
                 game.raisePassive(studyGroup);
                 game.raisePrice(studyGroup);
                 this.updatePrice(buyStudyGroup, studyGroup);
-                game.updateScore();
             }
         }
 
@@ -129,7 +123,6 @@ namespace CreditClicker
                 game.raiseExtras(conHour);
                 game.raisePrice(conHour);
                 this.updatePrice(buyConsultationHour, conHour);
-                game.updateScore();
             }
         }
 
@@ -143,7 +136,6 @@ namespace CreditClicker
                 game.raiseExtras(oldExam);
                 game.raisePrice(oldExam);
                 this.updatePrice(buyOldExams, oldExam);
-                game.updateScore();
             }
         }
 
@@ -157,7 +149,28 @@ namespace CreditClicker
                 game.raiseExtras(insider);
                 game.raisePrice(insider);
                 this.updatePrice(buyInsider, insider);
-                game.updateScore();
+            }
+        }
+
+        private void quitButton_Click(object sender, EventArgs e)
+        {
+            this.Hide(); 
+        }
+
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        private void Shop_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
     }

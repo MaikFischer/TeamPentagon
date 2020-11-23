@@ -18,40 +18,50 @@ namespace CreditClicker
     public partial class Game : Form
     {
 
-        private long pScore = 0;
+        private double pScore = 0;
         private int pMultiplier = 1;
         private int pBonus = 0;
-        private int passiveBonus = 0;
+        private double passiveBonus = 0;
         private ArrayList pItems = new ArrayList();
         private BackgroundWorker bw;
         private SoundPlayer sp;
         private Shop shop;
-        private Media media = new Media();
         private WindowsMediaPlayer player = new WindowsMediaPlayer();
 
-        public int getPassiveBonus()
+        public double getPassiveBonus()
         {
             return this.passiveBonus;
         }
 
-        public void setPassiveBonus(int passiveBonus)
+        public void setPassiveBonus(double passiveBonus)
         {
             this.passiveBonus = passiveBonus;
         }
 
-        public long getScore()
+        public double getScore()
         {
             return this.pScore;
         }
-        public void setScore(long score)
+        public void setScore(double score)
         {    
             this.pScore = score;
         }
 
         public Game()
         {
+            this.shop = new Shop(this);
+            this.shop.Hide();
             InitializeComponent();
-            //playBackgroundMusic(); Spielt später Hintergrundmusik ab
+            initializeWorker();
+            playBackgroundMusic(); //Spielt später Hintergrundmusik ab
+            shop.buyButtonWorker = new BackgroundWorker();
+            shop.buyButtonWorker.DoWork += shop.buyButtonWorker_DoWork;
+            shop.buyButtonWorker.RunWorkerCompleted += shop.buyButtonWorker_Check_RunWorkerCompleted;
+            shop.buyButtonWorker.RunWorkerAsync();
+        }
+
+        public void initializeWorker()
+        {
             bw = new BackgroundWorker();
             bw.DoWork += bw_DoWork;
             bw.RunWorkerCompleted += bw_Check_RunWorkerCompleted;
@@ -61,14 +71,17 @@ namespace CreditClicker
 
         private void bw_Check_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            this.score.Text = this.getScore().ToString();
+            long test = (long) this.getScore();
+            this.score.Text = test.ToString();
             bw.RunWorkerAsync();
         }
 
         private void bw_DoWork(object sender, DoWorkEventArgs e)
         {
-            Thread.Sleep(1000);
-            this.setScore(this.getScore() + this.getPassiveBonus());
+            Thread.Sleep(100);
+            double dScore = this.getScore() + this.getPassiveBonus() / 10;
+            this.setScore(dScore);
+            Console.WriteLine(dScore);
         }
 
         private void startGameButton_Click(object sender, EventArgs e)
@@ -80,7 +93,6 @@ namespace CreditClicker
             panel2.Show();
             panel2.BringToFront();
             playButtonSound();
-
         }
 
         private void menuButtonGame_Click(object sender, EventArgs e)
@@ -143,8 +155,7 @@ namespace CreditClicker
             if (!isShopOpen())
             {
                 playButtonSound();
-                shop = new Shop(this);
-                shop.Show(this);
+                shop.Show();
             }
         }
 
@@ -154,7 +165,6 @@ namespace CreditClicker
             {
                 playClickSound();
                 this.pScore += (1 + (int) this.pBonus) * this.pMultiplier;
-                updateScore();
             }     
         }
 
@@ -186,10 +196,7 @@ namespace CreditClicker
 
         public bool isShopOpen()
         {
-            foreach (Form form in Application.OpenForms)
-            {
-                if (form.Name == "Shop") return true;
-            }
+            if (shop.Visible) return true;
             return false;
         }
 

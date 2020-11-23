@@ -54,6 +54,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.quitButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -83,7 +84,7 @@
             this.lblpentagon.BackColor = System.Drawing.Color.Transparent;
             this.lblpentagon.Font = new System.Drawing.Font("hooge 05_55", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblpentagon.ForeColor = System.Drawing.Color.White;
-            this.lblpentagon.Location = new System.Drawing.Point(182, 678);
+            this.lblpentagon.Location = new System.Drawing.Point(195, 763);
             this.lblpentagon.Name = "lblpentagon";
             this.lblpentagon.Size = new System.Drawing.Size(112, 14);
             this.lblpentagon.TabIndex = 11;
@@ -142,7 +143,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("hooge 05_55", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.GhostWhite;
-            this.label1.Location = new System.Drawing.Point(150, 60);
+            this.label1.Location = new System.Drawing.Point(147, 90);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(166, 30);
             this.label1.TabIndex = 17;
@@ -154,7 +155,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("hooge 05_55", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.SlateBlue;
-            this.label2.Location = new System.Drawing.Point(150, 95);
+            this.label2.Location = new System.Drawing.Point(152, 66);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 24);
             this.label2.TabIndex = 18;
@@ -200,7 +201,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("hooge 05_55", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.SlateBlue;
-            this.label3.Location = new System.Drawing.Point(150, 213);
+            this.label3.Location = new System.Drawing.Point(151, 184);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(158, 24);
             this.label3.TabIndex = 22;
@@ -213,7 +214,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("hooge 05_55", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.GhostWhite;
-            this.label4.Location = new System.Drawing.Point(150, 178);
+            this.label4.Location = new System.Drawing.Point(147, 208);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(169, 30);
             this.label4.TabIndex = 21;
@@ -252,7 +253,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("hooge 05_55", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.SlateBlue;
-            this.label5.Location = new System.Drawing.Point(150, 335);
+            this.label5.Location = new System.Drawing.Point(148, 306);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(157, 24);
             this.label5.TabIndex = 26;
@@ -265,7 +266,7 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("hooge 05_55", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.GhostWhite;
-            this.label6.Location = new System.Drawing.Point(150, 300);
+            this.label6.Location = new System.Drawing.Point(147, 330);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(244, 30);
             this.label6.TabIndex = 25;
@@ -304,7 +305,7 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("hooge 05_55", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.SlateBlue;
-            this.label7.Location = new System.Drawing.Point(150, 456);
+            this.label7.Location = new System.Drawing.Point(150, 427);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(110, 24);
             this.label7.TabIndex = 30;
@@ -317,7 +318,7 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("hooge 05_55", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.GhostWhite;
-            this.label8.Location = new System.Drawing.Point(150, 421);
+            this.label8.Location = new System.Drawing.Point(147, 451);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(142, 30);
             this.label8.TabIndex = 29;
@@ -356,7 +357,7 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("hooge 05_55", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.SlateBlue;
-            this.label9.Location = new System.Drawing.Point(150, 576);
+            this.label9.Location = new System.Drawing.Point(148, 547);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(157, 24);
             this.label9.TabIndex = 34;
@@ -369,7 +370,7 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("hooge 05_55", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.GhostWhite;
-            this.label10.Location = new System.Drawing.Point(150, 541);
+            this.label10.Location = new System.Drawing.Point(147, 571);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(100, 30);
             this.label10.TabIndex = 33;
@@ -385,6 +386,23 @@
             this.pictureBox9.TabIndex = 32;
             this.pictureBox9.TabStop = false;
             // 
+            // quitButton
+            // 
+            this.quitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.quitButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.quitButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.quitButton.FlatAppearance.BorderSize = 0;
+            this.quitButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.quitButton.Font = new System.Drawing.Font("hooge 05_53", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quitButton.ForeColor = System.Drawing.Color.Black;
+            this.quitButton.Location = new System.Drawing.Point(152, 678);
+            this.quitButton.Name = "quitButton";
+            this.quitButton.Size = new System.Drawing.Size(191, 54);
+            this.quitButton.TabIndex = 36;
+            this.quitButton.Text = "CLOSE";
+            this.quitButton.UseVisualStyleBackColor = false;
+            this.quitButton.Click += new System.EventHandler(this.quitButton_Click);
+            // 
             // Shop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -392,7 +410,8 @@
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = global::CreditClicker.Properties.Resources.finalbg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(492, 701);
+            this.ClientSize = new System.Drawing.Size(492, 786);
+            this.Controls.Add(this.quitButton);
             this.Controls.Add(this.buyInsider);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
@@ -420,9 +439,10 @@
             this.Controls.Add(this.lblpentagon);
             this.Controls.Add(this.titleShop);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Shop";
             this.Text = "Credit Shop";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Shop_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -465,5 +485,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.Button quitButton;
     }
 }

@@ -28,3 +28,16 @@ C:\Users\Jan\Source\Repos\MaikFischer\TeamPentagon\obj\Debug\CreditClicker.Shop.
 C:\Users\Jan\Source\Repos\MaikFischer\TeamPentagon\obj\Debug\CreditClicker.csproj.GenerateResource.cache
 C:\Users\Jan\Source\Repos\MaikFischer\TeamPentagon\obj\Debug\CreditClicker.exe
 C:\Users\Jan\Source\Repos\MaikFischer\TeamPentagon\obj\Debug\CreditClicker.pdb
+C:\Users\maikf\TeamPentagon\bin\Debug\CreditClicker.exe.config
+C:\Users\maikf\TeamPentagon\bin\Debug\CreditClicker.exe
+C:\Users\maikf\TeamPentagon\bin\Debug\CreditClicker.pdb
+C:\Users\maikf\TeamPentagon\obj\Debug\CreditClicker.csprojAssemblyReference.cache
+C:\Users\maikf\TeamPentagon\obj\Debug\Interop.WMPLib.dll
+C:\Users\maikf\TeamPentagon\obj\Debug\CreditClicker.csproj.ResolveComReference.cache
+C:\Users\maikf\TeamPentagon\obj\Debug\CreditClicker.Game.resources
+C:\Users\maikf\TeamPentagon\obj\Debug\CreditClicker.Properties.Resources.resources
+C:\Users\maikf\TeamPentagon\obj\Debug\CreditClicker.Shop.resources
+C:\Users\maikf\TeamPentagon\obj\Debug\CreditClicker.csproj.GenerateResource.cache
+C:\Users\maikf\TeamPentagon\obj\Debug\CreditClicker.csproj.CoreCompileInputs.cache
+C:\Users\maikf\TeamPentagon\obj\Debug\CreditClicker.exe
+C:\Users\maikf\TeamPentagon\obj\Debug\CreditClicker.pdb

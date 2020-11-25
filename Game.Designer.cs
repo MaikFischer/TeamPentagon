@@ -7,7 +7,6 @@ namespace CreditClicker
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        private Utils utils = new Utils();
 
         /// <summary>
         /// Clean up any resources being used.
@@ -38,6 +37,12 @@ namespace CreditClicker
             this.version = new System.Windows.Forms.Label();
             this.Title = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblCurrentBonus = new System.Windows.Forms.Label();
+            this.lblCurrentCPS = new System.Windows.Forms.Label();
+            this.lblPerClick = new System.Windows.Forms.Label();
+            this.lblPerSecond = new System.Windows.Forms.Label();
+            this.lblCreditsPerSecond = new System.Windows.Forms.Label();
+            this.lblBonus = new System.Windows.Forms.Label();
             this.lblpentagonGame = new System.Windows.Forms.Label();
             this.settingsButtonGame = new System.Windows.Forms.Button();
             this.menuButtonGame = new System.Windows.Forms.Button();
@@ -147,7 +152,7 @@ namespace CreditClicker
             this.version.Name = "version";
             this.version.Size = new System.Drawing.Size(28, 14);
             this.version.TabIndex = 5;
-            this.version.Text = "v1.2";
+            this.version.Text = utils.getVersion();
             // 
             // Title
             // 
@@ -164,6 +169,12 @@ namespace CreditClicker
             // panel2
             // 
             this.panel2.BackgroundImage = global::CreditClicker.Properties.Resources.finalbg;
+            this.panel2.Controls.Add(this.lblCurrentBonus);
+            this.panel2.Controls.Add(this.lblCurrentCPS);
+            this.panel2.Controls.Add(this.lblPerClick);
+            this.panel2.Controls.Add(this.lblPerSecond);
+            this.panel2.Controls.Add(this.lblCreditsPerSecond);
+            this.panel2.Controls.Add(this.lblBonus);
             this.panel2.Controls.Add(this.lblpentagonGame);
             this.panel2.Controls.Add(this.settingsButtonGame);
             this.panel2.Controls.Add(this.menuButtonGame);
@@ -177,6 +188,78 @@ namespace CreditClicker
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(493, 508);
             this.panel2.TabIndex = 9;
+            // 
+            // lblCurrentBonus
+            // 
+            this.lblCurrentBonus.AutoSize = true;
+            this.lblCurrentBonus.BackColor = System.Drawing.Color.Transparent;
+            this.lblCurrentBonus.Font = new System.Drawing.Font("hooge 05_55", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurrentBonus.ForeColor = System.Drawing.Color.SlateBlue;
+            this.lblCurrentBonus.Location = new System.Drawing.Point(25, 155);
+            this.lblCurrentBonus.Name = "lblCurrentBonus";
+            this.lblCurrentBonus.Size = new System.Drawing.Size(22, 24);
+            this.lblCurrentBonus.TabIndex = 12;
+            this.lblCurrentBonus.Text = "1";
+            // 
+            // lblCurrentCPS
+            // 
+            this.lblCurrentCPS.AutoSize = true;
+            this.lblCurrentCPS.BackColor = System.Drawing.Color.Transparent;
+            this.lblCurrentCPS.Font = new System.Drawing.Font("hooge 05_55", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurrentCPS.ForeColor = System.Drawing.Color.SlateBlue;
+            this.lblCurrentCPS.Location = new System.Drawing.Point(25, 237);
+            this.lblCurrentCPS.Name = "lblCurrentCPS";
+            this.lblCurrentCPS.Size = new System.Drawing.Size(22, 24);
+            this.lblCurrentCPS.TabIndex = 14;
+            this.lblCurrentCPS.Text = "0";
+            // 
+            // lblPerClick
+            // 
+            this.lblPerClick.AutoSize = true;
+            this.lblPerClick.BackColor = System.Drawing.Color.Transparent;
+            this.lblPerClick.Font = new System.Drawing.Font("hooge 05_55", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPerClick.ForeColor = System.Drawing.Color.White;
+            this.lblPerClick.Location = new System.Drawing.Point(26, 132);
+            this.lblPerClick.Name = "lblPerClick";
+            this.lblPerClick.Size = new System.Drawing.Size(62, 14);
+            this.lblPerClick.TabIndex = 16;
+            this.lblPerClick.Text = "per Click";
+            // 
+            // lblPerSecond
+            // 
+            this.lblPerSecond.AutoSize = true;
+            this.lblPerSecond.BackColor = System.Drawing.Color.Transparent;
+            this.lblPerSecond.Font = new System.Drawing.Font("hooge 05_55", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPerSecond.ForeColor = System.Drawing.Color.White;
+            this.lblPerSecond.Location = new System.Drawing.Point(23, 209);
+            this.lblPerSecond.Name = "lblPerSecond";
+            this.lblPerSecond.Size = new System.Drawing.Size(74, 14);
+            this.lblPerSecond.TabIndex = 15;
+            this.lblPerSecond.Text = "per Second";
+            // 
+            // lblCreditsPerSecond
+            // 
+            this.lblCreditsPerSecond.AutoSize = true;
+            this.lblCreditsPerSecond.BackColor = System.Drawing.Color.Transparent;
+            this.lblCreditsPerSecond.Font = new System.Drawing.Font("hooge 05_55", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCreditsPerSecond.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblCreditsPerSecond.Location = new System.Drawing.Point(19, 185);
+            this.lblCreditsPerSecond.Name = "lblCreditsPerSecond";
+            this.lblCreditsPerSecond.Size = new System.Drawing.Size(85, 24);
+            this.lblCreditsPerSecond.TabIndex = 10;
+            this.lblCreditsPerSecond.Text = "Credits";
+            // 
+            // lblBonus
+            // 
+            this.lblBonus.AutoSize = true;
+            this.lblBonus.BackColor = System.Drawing.Color.Transparent;
+            this.lblBonus.Font = new System.Drawing.Font("hooge 05_55", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBonus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblBonus.Location = new System.Drawing.Point(19, 108);
+            this.lblBonus.Name = "lblBonus";
+            this.lblBonus.Size = new System.Drawing.Size(85, 24);
+            this.lblBonus.TabIndex = 9;
+            this.lblBonus.Text = "Credits";
             // 
             // lblpentagonGame
             // 
@@ -251,7 +334,7 @@ namespace CreditClicker
             this.versionGame.Name = "versionGame";
             this.versionGame.Size = new System.Drawing.Size(28, 14);
             this.versionGame.TabIndex = 4;
-            this.versionGame.Text = "v1.2";
+            this.versionGame.Text = utils.getVersion();
             // 
             // score
             // 
@@ -376,7 +459,7 @@ namespace CreditClicker
             this.versionSettings.Name = "versionSettings";
             this.versionSettings.Size = new System.Drawing.Size(28, 14);
             this.versionSettings.TabIndex = 13;
-            this.versionSettings.Text = "v1.2";
+            this.versionSettings.Text = utils.getVersion();
             // 
             // titleSettings
             // 
@@ -419,7 +502,7 @@ namespace CreditClicker
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Game";
-            this.Text = "CreditClicker v1.2";
+            this.Text = utils.getTitle() + utils.getVersion();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -457,5 +540,11 @@ namespace CreditClicker
         private System.Windows.Forms.Button menuButtonSettings;
         private System.Windows.Forms.Button button2Settings;
         private System.Windows.Forms.Button buttonBackToGameSettings;
+        private System.Windows.Forms.Label lblBonus;
+        private System.Windows.Forms.Label lblCurrentBonus;
+        private System.Windows.Forms.Label lblCreditsPerSecond;
+        private System.Windows.Forms.Label lblCurrentCPS;
+        private System.Windows.Forms.Label lblPerClick;
+        private System.Windows.Forms.Label lblPerSecond;
     }
 }

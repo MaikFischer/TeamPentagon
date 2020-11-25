@@ -8,7 +8,7 @@ namespace CreditClicker
 {
     public class Utils
     {
-        private string version = "v1.2";
+        private string version = "v1.6";
         private string title = "CreditClicker";
 
         public string getVersion()

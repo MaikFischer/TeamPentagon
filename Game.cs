@@ -20,13 +20,14 @@ namespace CreditClicker
 
         private double pScore = 0;
         private int pMultiplier = 1;
-        private int pBonus = 0;
+        private int pBonus = 1;
         private double passiveBonus = 0;
         private ArrayList pItems = new ArrayList();
         private BackgroundWorker bw;
         private SoundPlayer sp;
         private Shop shop;
         private WindowsMediaPlayer player = new WindowsMediaPlayer();
+        private Utils utils;
 
         public double getPassiveBonus()
         {
@@ -49,6 +50,7 @@ namespace CreditClicker
 
         public Game()
         {
+            utils = new Utils();
             this.shop = new Shop(this);
             this.shop.Hide();
             InitializeComponent();
@@ -71,8 +73,10 @@ namespace CreditClicker
 
         private void bw_Check_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            long test = (long) this.getScore();
-            this.score.Text = test.ToString();
+            long longScore = (long) this.getScore();
+            this.score.Text = longScore.ToString();
+            updateBonus();
+            updateClicksPerSecond();
             bw.RunWorkerAsync();
         }
 
@@ -81,6 +85,7 @@ namespace CreditClicker
             Thread.Sleep(100);
             double dScore = this.getScore() + this.getPassiveBonus() / 10;
             this.setScore(dScore);
+
         }
 
         private void startGameButton_Click(object sender, EventArgs e)
@@ -91,7 +96,6 @@ namespace CreditClicker
             this.Size = new Size(508, 544);
             panel2.Show();
             panel2.BringToFront();
-            playButtonSound();
         }
 
         private void menuButtonGame_Click(object sender, EventArgs e)
@@ -163,13 +167,23 @@ namespace CreditClicker
             if (e.Button == MouseButtons.Left)
             {
                 playClickSound();
-                this.pScore += (1 + (int) this.pBonus) * this.pMultiplier;
+                this.pScore += ((int) this.pBonus) * this.pMultiplier;
             }     
         }
 
         public void updateScore()
         {
             score.Text = this.pScore.ToString();
+        }
+
+        public void updateBonus()
+        {
+            lblCurrentBonus.Text = (this.pBonus * this.pMultiplier).ToString();
+        }
+
+        public void updateClicksPerSecond()
+        {
+            lblCurrentCPS.Text = this.passiveBonus.ToString();
         }
 
         public void raiseExtras(Item item)

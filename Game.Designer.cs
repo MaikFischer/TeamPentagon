@@ -29,6 +29,7 @@ namespace CreditClicker
         /// </summary>
         private void InitializeComponent()
         {
+            utils = new Utils()
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblpentagon = new System.Windows.Forms.Label();
             this.quitButton = new System.Windows.Forms.Button();

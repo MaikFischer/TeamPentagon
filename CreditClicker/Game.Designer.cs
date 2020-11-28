@@ -29,7 +29,6 @@ namespace CreditClicker
         /// </summary>
         private void InitializeComponent()
         {
-            utils = new Utils();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblpentagon = new System.Windows.Forms.Label();
             this.quitButton = new System.Windows.Forms.Button();
@@ -153,7 +152,7 @@ namespace CreditClicker
             this.version.Name = "version";
             this.version.Size = new System.Drawing.Size(28, 14);
             this.version.TabIndex = 5;
-            this.version.Text = utils.getVersion();
+            this.version.Text = "";
             // 
             // Title
             // 
@@ -335,7 +334,7 @@ namespace CreditClicker
             this.versionGame.Name = "versionGame";
             this.versionGame.Size = new System.Drawing.Size(28, 14);
             this.versionGame.TabIndex = 4;
-            this.versionGame.Text = utils.getVersion();
+            this.versionGame.Text = "";
             // 
             // score
             // 
@@ -460,7 +459,7 @@ namespace CreditClicker
             this.versionSettings.Name = "versionSettings";
             this.versionSettings.Size = new System.Drawing.Size(28, 14);
             this.versionSettings.TabIndex = 13;
-            this.versionSettings.Text = utils.getVersion();
+            this.versionSettings.Text = "";
             // 
             // titleSettings
             // 
@@ -503,7 +502,7 @@ namespace CreditClicker
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Game";
-            this.Text = utils.getTitle() + " " + utils.getVersion();
+            this.Text = "";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

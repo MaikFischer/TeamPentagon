@@ -27,32 +27,24 @@ namespace CreditClicker
         private SoundPlayer sp;
         private Shop shop;
         private WindowsMediaPlayer player = new WindowsMediaPlayer();
-        private Utils utils;
+        private string title = "CreditClicker";
+        private string currentVersion = "v1.6";
 
-        public double getPassiveBonus()
-        {
-            return this.passiveBonus;
-        }
 
-        public void setPassiveBonus(double passiveBonus)
-        {
-            this.passiveBonus = passiveBonus;
-        }
+        public double getPassiveBonus() => this.passiveBonus;
 
-        public double getScore()
-        {
-            return this.pScore;
-        }
-        public void setScore(double score)
-        {    
-            this.pScore = score;
-        }
+        public void setPassiveBonus(double passiveBonus) => this.passiveBonus = passiveBonus;
+
+        public double getScore() => this.pScore;
+
+        public void setScore(double score) => this.pScore = score;
 
         public Game()
         {
             this.shop = new Shop(this);
             this.shop.Hide();
             InitializeComponent();
+            syncTitleAndVersion();
             initializeWorker();
             playBackgroundMusic(); //Spielt später Hintergrundmusik ab
             shop.buyButtonWorker = new BackgroundWorker();
@@ -69,6 +61,14 @@ namespace CreditClicker
             bw.RunWorkerAsync();
         }
 
+        public void syncTitleAndVersion()
+        {
+            this.Text = title + " " + currentVersion;
+            version.Text = currentVersion;
+            versionGame.Text = currentVersion;
+            versionSettings.Text = currentVersion;
+
+        }
 
         private void bw_Check_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {

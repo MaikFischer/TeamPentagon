@@ -50,7 +50,6 @@ namespace CreditClicker
 
         public Game()
         {
-            utils = new Utils();
             this.shop = new Shop(this);
             this.shop.Hide();
             InitializeComponent();

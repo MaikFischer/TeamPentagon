@@ -29,7 +29,7 @@ namespace CreditClicker
         /// </summary>
         private void InitializeComponent()
         {
-            utils = new Utils()
+            utils = new Utils();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblpentagon = new System.Windows.Forms.Label();
             this.quitButton = new System.Windows.Forms.Button();
@@ -503,7 +503,7 @@ namespace CreditClicker
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Game";
-            this.Text = utils.getTitle() + utils.getVersion();
+            this.Text = utils.getTitle() + " " + utils.getVersion();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

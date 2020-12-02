@@ -17,15 +17,16 @@ namespace CreditClicker
         private Game game;
 
         //Initialisierung aller Items
-        private Item cheatSheet = new Item("CheatSheet",1,0,150);
-        private Item studyGroup = new Item("StudyGroup", 3, 0, 250);
-        private Item conHour = new Item("ConsultationHour", 0, 2, 2500);
-        private Item oldExam = new Item("OldExam", 10, 0, 5000);
-        private Item insider = new Item("Insider", 0, 4, 15000);
+        public Item cheatSheet { get; set; } = new Item("CheatSheet", 1, 0, 150);
+        public Item studyGroup { get; set; } = new Item("StudyGroup", 3, 0, 250);
+        public Item conHour { get; set; } = new Item("ConsultationHour", 0, 2, 2500);
+        public Item oldExam { get; set; } = new Item("OldExam", 10, 0, 5000);
+        public Item insider { get; set; } = new Item("Insider", 0, 4, 15000);
         public BackgroundWorker buyButtonWorker;
 
         public Shop(Game game)
         {
+            FormManager.registerForm(this);
             this.game = game;
             InitializeComponent();
         }
@@ -56,6 +57,11 @@ namespace CreditClicker
 
         public void buyButtonWorker_Check_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            updatePrice(buyCheatSheet, cheatSheet);
+            updatePrice(buyStudyGroup, studyGroup);
+            updatePrice(buyConsultationHour, conHour);
+            updatePrice(buyOldExams, oldExam);
+            updatePrice(buyInsider, insider);
             buyButtonWorker.RunWorkerAsync();
         }
 
@@ -71,18 +77,16 @@ namespace CreditClicker
                         if (game.getScore() < item.getPrice())
                         {
                             b.ForeColor = Color.Red;
-                            b.BackColor = Color.DarkOrange;
                         }else
                         {
                             b.ForeColor = Color.Green;
-                            b.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
                         }
                     }
                 }
             }
         }
 
-        public void updatePrice(Button button,Item item)
+        public void updatePrice(Button button, Item item)
         {
             button.Text = "$" + item.getPrice();
         }
@@ -96,7 +100,7 @@ namespace CreditClicker
                 game.addItem(cheatSheet);
                 game.raiseExtras(cheatSheet);
                 game.raisePrice(cheatSheet);
-                this.updatePrice(buyCheatSheet, cheatSheet);
+                this.updatePrice(buyCheatSheet,cheatSheet);
             }
         }
 
@@ -154,6 +158,7 @@ namespace CreditClicker
 
         private void quitButton_Click(object sender, EventArgs e)
         {
+            game.playButtonSound();
             this.Hide(); 
         }
 

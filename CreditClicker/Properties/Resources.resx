@@ -148,6 +148,9 @@
   <data name="starsbg1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\starsbg1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="backgroundanimated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\backgroundanimated.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="starsbgs" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\starsbgs.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -156,6 +159,9 @@
   </data>
   <data name="clickme" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\clickme.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cheatsheet1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cheatsheet1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cheatsheet" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cheatsheet.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,7 +178,10 @@
   <data name="CreditClickerDummy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CreditClickerDummy.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cheatsheet1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cheatsheet1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="wallpaperflare.com_wallpaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wallpaperflare.com_wallpaper.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

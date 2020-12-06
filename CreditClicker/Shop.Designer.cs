@@ -71,7 +71,7 @@
             this.titleShop.AutoSize = true;
             this.titleShop.BackColor = System.Drawing.Color.Transparent;
             this.titleShop.Font = new System.Drawing.Font("hooge 05_55", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleShop.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.titleShop.ForeColor = System.Drawing.Color.DarkOrange;
             this.titleShop.Location = new System.Drawing.Point(146, 9);
             this.titleShop.Name = "titleShop";
             this.titleShop.Size = new System.Drawing.Size(192, 36);
@@ -163,7 +163,7 @@
             // 
             // buyCheatSheet
             // 
-            this.buyCheatSheet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buyCheatSheet.BackColor = System.Drawing.Color.DarkOrange;
             this.buyCheatSheet.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.buyCheatSheet.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buyCheatSheet.FlatAppearance.BorderSize = 0;
@@ -180,7 +180,7 @@
             // 
             // buyStudyGroup
             // 
-            this.buyStudyGroup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buyStudyGroup.BackColor = System.Drawing.Color.DarkOrange;
             this.buyStudyGroup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.buyStudyGroup.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buyStudyGroup.FlatAppearance.BorderSize = 0;
@@ -232,7 +232,7 @@
             // 
             // buyConsultationHour
             // 
-            this.buyConsultationHour.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buyConsultationHour.BackColor = System.Drawing.Color.DarkOrange;
             this.buyConsultationHour.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.buyConsultationHour.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buyConsultationHour.FlatAppearance.BorderSize = 0;
@@ -284,7 +284,7 @@
             // 
             // buyOldExams
             // 
-            this.buyOldExams.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buyOldExams.BackColor = System.Drawing.Color.DarkOrange;
             this.buyOldExams.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.buyOldExams.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buyOldExams.FlatAppearance.BorderSize = 0;
@@ -336,7 +336,7 @@
             // 
             // buyInsider
             // 
-            this.buyInsider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buyInsider.BackColor = System.Drawing.Color.DarkOrange;
             this.buyInsider.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.buyInsider.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buyInsider.FlatAppearance.BorderSize = 0;
@@ -388,7 +388,7 @@
             // 
             // quitButton
             // 
-            this.quitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.quitButton.BackColor = System.Drawing.Color.DarkOrange;
             this.quitButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.quitButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.quitButton.FlatAppearance.BorderSize = 0;

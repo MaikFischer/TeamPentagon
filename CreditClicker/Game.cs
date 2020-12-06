@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Media;
 using System.IO;
 using WMPLib;
+using AxWMPLib;
 namespace CreditClicker
 {
 
@@ -28,12 +29,11 @@ namespace CreditClicker
         private SoundPlayer sp;
         private Shop shop;
         private Settings settings;
-        private WindowsMediaPlayer player = new WindowsMediaPlayer();
         public List<Save> savesList = new List<Save>();
         private Color gameColor;
 
         public string title = "CreditClicker"; //Edit Title here
-        public string currentVersion = "v1.6"; //Edit Version here
+        public string currentVersion = "v2.0"; //Edit Version here
 
         public void setGameColor(Color color) => this.gameColor = color;
         public string getTitle() => this.title;
@@ -58,13 +58,14 @@ namespace CreditClicker
         {
             FormManager.registerForm(this);
             shop = new Shop(this);
-            settings = new Settings(this,shop);
-            getSaves();
-            
+            currentSaveId = 0;
             InitializeComponent();
+            FormManager.initAllColors();
+            settings = new Settings(this, shop);
+            getSaves();
             syncTitleAndVersion();
             initializeWorker();
-            playBackgroundMusic(); //Spielt später Hintergrundmusik ab
+            playBackgroundMusic();
             shop.buyButtonWorker = new BackgroundWorker();
             shop.buyButtonWorker.DoWork += shop.buyButtonWorker_DoWork;
             shop.buyButtonWorker.RunWorkerCompleted += shop.buyButtonWorker_Check_RunWorkerCompleted;
@@ -90,7 +91,7 @@ namespace CreditClicker
 
         private void bw_Check_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            long longScore = (long) this.getScore();
+            long longScore = (long)this.getScore();
             this.score.Text = longScore.ToString();
             updateBonus();
             updateClicksPerSecond();
@@ -175,13 +176,13 @@ namespace CreditClicker
             }
         }
 
-        private void ClickArea_MouseDown(object sender,MouseEventArgs e)
+        private void ClickArea_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
                 playClickSound();
-                this.pScore += ((int) this.pBonus) * this.pMultiplier;
-            }     
+                this.pScore += ((int)this.pBonus) * this.pMultiplier;
+            }
         }
 
         public void updateScore()
@@ -226,7 +227,8 @@ namespace CreditClicker
             return false;
         }
 
-        public void playClickSound() {
+        public void playClickSound()
+        {
             System.Reflection.Assembly a = System.Reflection.Assembly.GetExecutingAssembly();
             Stream[] streams = new Stream[7];
             streams[0] = a.GetManifestResourceStream("CreditClicker.clickb1.wav");
@@ -251,25 +253,20 @@ namespace CreditClicker
 
         public void playBackgroundMusic()
         {
-            string path = @"C:\Users\Jan\source\repos\TeamPentagon\background1.wav";
-            System.Reflection.Assembly a = System.Reflection.Assembly.GetExecutingAssembly();
-            String[] s = a.GetManifestResourceNames();
-            string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
-            string newpath = Path.GetFullPath(RunningPath + "\\background1.wav");
-            string url = new Uri(newpath).AbsoluteUri;
-            player.settings.volume = 30;
-            player.uiMode = "invisible";
-            player.URL = url;
-            player.settings.setMode("loop", true);
-            player.controls.play();
+            string path = Application.StartupPath + @"\Sounds\background1.wav";
+            axWindowsMediaPlayer1.settings.autoStart = false;
+            axWindowsMediaPlayer1.URL = path;
+            axWindowsMediaPlayer1.Ctlcontrols.play();
+            axWindowsMediaPlayer1.settings.setMode("loop", true);
+            axWindowsMediaPlayer1.settings.volume = 25;
         }
 
         public int getEmptySlot()
         {
             int empty = 0;
-            for(int i = 1; i < 5; i++)
+            for (int i = 1; i < 5; i++)
             {
-                if (!File.Exists("C:/CreditClicker/Saves/save" + i + ".txt"))
+                if (!File.Exists(Application.StartupPath + @"\Saves\save" + i + ".txt"))
                 {
                     empty = i;
                     break;
@@ -280,49 +277,37 @@ namespace CreditClicker
 
         public void saveState(int saveId)
         {
-            if (settings.isSlotCovered(saveId))
-            {
-                using (StreamWriter sw = new StreamWriter("C:/CreditClicker/Saves/save" + saveId + ".txt"))
+            if (!Directory.Exists(Application.LocalUserAppDataPath + @"\Saves\")) Directory.CreateDirectory(Application.LocalUserAppDataPath + @"\Saves\");
+            string savePath = Application.LocalUserAppDataPath + @"\Saves\save" + saveId + ".txt";
+                Save save = new Save(saveId, this.getScore(), this.getMultiplier(), this.getBonus(), this.getPassiveBonus(), this.getItems());
+                using (StreamWriter sw = new StreamWriter(savePath))
                 {
-                    sw.WriteLine(this.getScore());
-                    sw.WriteLine((long)this.getBonus());
-                    sw.WriteLine(this.getMultiplier());
-                    sw.WriteLine(this.getPassiveBonus());
-                    foreach (Item item in this.getItems())
+                    sw.WriteLine(save.score);
+                    sw.WriteLine(save.bonus);
+                    sw.WriteLine(save.multiplier);
+                    sw.WriteLine(save.passiveBonus);
+                    foreach (Item item in save.items)
                     {
                         sw.WriteLine(item.getName());
                     }
                 }
-            }
-            else
-            {
-                Directory.CreateDirectory("C:/CreditClicker/Saves/");
-                using (StreamWriter sw = new StreamWriter("C:/CreditClicker/Saves/save" + saveId + ".txt"))
-                {
-                    sw.WriteLine(this.getScore());
-                    sw.WriteLine(this.getBonus());
-                    sw.WriteLine(this.getMultiplier());
-                    sw.WriteLine(this.getPassiveBonus());
-                    foreach (Item item in this.getItems())
-                    {
-                        sw.WriteLine(item.getName());
-                    }
-                }
-                MessageBox.Show("Successfully saved current progress to Slot #" + saveId, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+                savesList.Add(save);
+                currentSaveId = saveId;
         }
 
         public void getSaves()
         {
+            string savePath = "";
+            if (!Directory.Exists(Application.LocalUserAppDataPath + @"\Saves\")) Directory.CreateDirectory(Application.LocalUserAppDataPath + @"\Saves\");
             for (int saveId = 1; saveId < 5; saveId++)
             {
-                
-                if (File.Exists("C:/CreditClicker/Saves/save" + saveId + ".txt"))
+                savePath = Application.LocalUserAppDataPath + @"\Saves\save" + saveId + ".txt";
+                if (File.Exists(savePath))
                 {
-                    string[] lines = File.ReadAllLines("C:/CreditClicker/Saves/save" + saveId + ".txt");
+                    string[] lines = settings.readFromFile(savePath);
                     if (lines != null)
                     {
-                        Save save = new Save(saveId,0,0,0,0,new List<Item>());
+                        Save save = new Save(saveId, 0, 0, 0, 0, new List<Item>());
                         save.id = saveId;
                         save.score = Double.Parse(lines[0]);
                         save.bonus = Int32.Parse(lines[1]);
@@ -358,9 +343,9 @@ namespace CreditClicker
             }
         }
 
-        public void getSave(int saveId)
+        public void getSaveFromFile(int saveId)
         {
-            foreach(Save save in savesList)
+            foreach (Save save in savesList)
             {
                 if (save.id == saveId)
                 {
@@ -373,6 +358,19 @@ namespace CreditClicker
                     settings.calcItemPrices(pItems);
                 }
             }
+        }
+
+        public Save getSave(int saveId)
+        {
+            Save s = null;
+            foreach (Save save in savesList)
+            {
+                if (save.id == saveId)
+                {
+                    s = save;
+                }
+            }
+            return s;
         }
 
 
@@ -393,7 +391,7 @@ namespace CreditClicker
 
         private void Game_Activated(object sender, EventArgs e)
         {
-            FormManager.initAllColors();
+            //FormManager.initAllColors();
         }
 
         private void Game_FormClosing(object sender, FormClosingEventArgs e)
@@ -408,23 +406,22 @@ namespace CreditClicker
                     }
                     else
                     {
-                        DialogResult result = MessageBox.Show("Auto-Save is off and you haven't saved your game yet. Do you want to save it to Slot#" + currentSaveId + "? Press 'Cancel' to cancel.", "Slot covered", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
-                        if (result == DialogResult.Yes)
+                        if (getSave(currentSaveId).score != getScore())
                         {
-                            saveState(currentSaveId);
-                            settings.Show();
-                            this.Hide();
-                        }
-                        else if (result == DialogResult.Cancel)
-                        {
-                            e.Cancel = true;
-                            settings.Show();
+                            DialogResult result = MessageBox.Show("Auto-Save is off and you haven't saved your game yet. Do you want to save it to Slot#" + currentSaveId + "? Press 'Cancel' to cancel.", "Slot covered", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+                            if (result == DialogResult.Yes)
+                            {
+                                saveState(currentSaveId);
+                                settings.Show();
+                                this.Hide();
+                            }
+                            else if (result == DialogResult.Cancel)
+                            {
+                                e.Cancel = true;
+                                settings.Show();
+                            }
                         }
 
-                        if (settings.autoSaveThemeEnabled)
-                        {
-
-                        }
                     }
                 }
                 else
@@ -436,7 +433,8 @@ namespace CreditClicker
                         {
                             e.Cancel = true;
                             settings.Show();
-                        }else
+                        }
+                        else
                         {
                             settings.Close();
                             shop.Close();
@@ -457,6 +455,10 @@ namespace CreditClicker
                         }
                     }
                 }
+            }
+            if (settings.autoSaveThemeEnabled)
+            {
+                settings.saveTheme();
             }
         }
 

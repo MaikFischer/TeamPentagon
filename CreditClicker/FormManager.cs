@@ -13,14 +13,16 @@ namespace CreditClicker
 
         private static List<Form> formList = new List<Form>();
 
-        public static Color DEFAULT_COLOR = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-        public static Color currentAllColor { get; set; }  = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-        public static Color currentButtonColor { get; set; }  = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+        public static Color DEFAULT_COLOR = Color.DarkOrange;
+
+        public static Image DEFAULT_IMAGE = global::CreditClicker.Properties.Resources.backgroundanimated;
+        public static Color currentAllColor { get; set; }  = Color.DarkOrange;
+        public static Color currentButtonColor { get; set; }  = Color.DarkOrange;
         public static Color currentButtonTextColor { get; set; } = Color.Black;
-        public static Color currentCommonTextColor { get; set; }  = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+        public static Color currentCommonTextColor { get; set; }  = Color.DarkOrange;
         public static Color currentSpecialTextColor { get; set; } = Color.White;
 
-        public static Color currentBackgroundColor;
+        public static Color currentBackgroundColor { get; set; } = Color.Black;
 
         public static string currentBackgroundImage;
 
@@ -254,6 +256,7 @@ namespace CreditClicker
                                 if (control.GetType() == typeof(PictureBox) && !control.Name.Contains("Area") && !control.Name.StartsWith("icon"))
                                 {
                                     control.Visible = false;
+                                    Console.WriteLine(image);
                                     form.BackgroundImage = Image.FromFile(image);
                                     form.BackColor = Color.Black;
                                 }
@@ -272,6 +275,42 @@ namespace CreditClicker
                     }
                 }
                 currentBackgroundImage = image;
+            }
+        }
+
+        public static void resetBackgroundImage()
+        {
+            foreach (Form form in formList)
+            {
+                foreach (Control c in form.Controls)
+                {
+                    if (c.GetType() == typeof(Panel))
+                    {
+                        foreach (Panel p in form.Controls)
+                        {
+                            foreach (Control control in p.Controls)
+                            {
+
+                                if (control.GetType() == typeof(PictureBox) && !control.Name.Contains("Area") && !control.Name.StartsWith("icon"))
+                                {
+                                    control.Visible = true;
+                                    form.BackgroundImage = DEFAULT_IMAGE;
+                                    form.BackColor = Color.Black;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (c.GetType() == typeof(PictureBox) && !c.Name.Contains("Area") && !c.Name.StartsWith("icon"))
+                        {
+                            c.Visible = true;
+                            form.BackgroundImage = DEFAULT_IMAGE;
+                            form.BackColor = Color.Black;
+                        }
+
+                    }
+                }
             }
         }
 

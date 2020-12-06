@@ -74,6 +74,7 @@ namespace CreditClicker
             this.colorAreaText = new System.Windows.Forms.PictureBox();
             this.colorAreaButton = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.resetBackground = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.colorAreaBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorAreaButtonText)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorAreaSpecialText)).BeginInit();
@@ -84,7 +85,7 @@ namespace CreditClicker
             // 
             // buttonSave1
             // 
-            this.buttonSave1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonSave1.BackColor = System.Drawing.Color.DarkOrange;
             this.buttonSave1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.buttonSave1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonSave1.FlatAppearance.BorderSize = 0;
@@ -104,7 +105,7 @@ namespace CreditClicker
             this.lblTitleSettings.AutoSize = true;
             this.lblTitleSettings.BackColor = System.Drawing.Color.Transparent;
             this.lblTitleSettings.Font = new System.Drawing.Font("hooge 05_55", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitleSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblTitleSettings.ForeColor = System.Drawing.Color.DarkOrange;
             this.lblTitleSettings.Location = new System.Drawing.Point(251, 19);
             this.lblTitleSettings.Name = "lblTitleSettings";
             this.lblTitleSettings.Size = new System.Drawing.Size(142, 36);
@@ -116,7 +117,7 @@ namespace CreditClicker
             this.labelSaveSlots.AutoSize = true;
             this.labelSaveSlots.BackColor = System.Drawing.Color.Transparent;
             this.labelSaveSlots.Font = new System.Drawing.Font("hooge 05_55", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSaveSlots.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.labelSaveSlots.ForeColor = System.Drawing.Color.DarkOrange;
             this.labelSaveSlots.Location = new System.Drawing.Point(385, 80);
             this.labelSaveSlots.Name = "labelSaveSlots";
             this.labelSaveSlots.Size = new System.Drawing.Size(189, 36);
@@ -125,7 +126,7 @@ namespace CreditClicker
             // 
             // buttonSave2
             // 
-            this.buttonSave2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonSave2.BackColor = System.Drawing.Color.DarkOrange;
             this.buttonSave2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.buttonSave2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonSave2.FlatAppearance.BorderSize = 0;
@@ -142,7 +143,7 @@ namespace CreditClicker
             // 
             // buttonSave3
             // 
-            this.buttonSave3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonSave3.BackColor = System.Drawing.Color.DarkOrange;
             this.buttonSave3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.buttonSave3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonSave3.FlatAppearance.BorderSize = 0;
@@ -159,7 +160,7 @@ namespace CreditClicker
             // 
             // quitButton
             // 
-            this.quitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.quitButton.BackColor = System.Drawing.Color.DarkOrange;
             this.quitButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.quitButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.quitButton.FlatAppearance.BorderSize = 0;
@@ -179,7 +180,7 @@ namespace CreditClicker
             this.labelOptions.AutoSize = true;
             this.labelOptions.BackColor = System.Drawing.Color.Transparent;
             this.labelOptions.Font = new System.Drawing.Font("hooge 05_55", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelOptions.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.labelOptions.ForeColor = System.Drawing.Color.DarkOrange;
             this.labelOptions.Location = new System.Drawing.Point(120, 80);
             this.labelOptions.Name = "labelOptions";
             this.labelOptions.Size = new System.Drawing.Size(134, 36);
@@ -193,7 +194,7 @@ namespace CreditClicker
             this.autoSaveSlot.Checked = true;
             this.autoSaveSlot.CheckState = System.Windows.Forms.CheckState.Checked;
             this.autoSaveSlot.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoSaveSlot.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.autoSaveSlot.ForeColor = System.Drawing.Color.DarkOrange;
             this.autoSaveSlot.Location = new System.Drawing.Point(69, 145);
             this.autoSaveSlot.Name = "autoSaveSlot";
             this.autoSaveSlot.Size = new System.Drawing.Size(101, 27);
@@ -207,7 +208,7 @@ namespace CreditClicker
             this.labelColorTheme.AutoSize = true;
             this.labelColorTheme.BackColor = System.Drawing.Color.Transparent;
             this.labelColorTheme.Font = new System.Drawing.Font("hooge 05_55", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelColorTheme.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.labelColorTheme.ForeColor = System.Drawing.Color.DarkOrange;
             this.labelColorTheme.Location = new System.Drawing.Point(86, 258);
             this.labelColorTheme.Name = "labelColorTheme";
             this.labelColorTheme.Size = new System.Drawing.Size(211, 36);
@@ -252,7 +253,7 @@ namespace CreditClicker
             // 
             // buttonPickButtonColor
             // 
-            this.buttonPickButtonColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonPickButtonColor.BackColor = System.Drawing.Color.DarkOrange;
             this.buttonPickButtonColor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.buttonPickButtonColor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonPickButtonColor.FlatAppearance.BorderSize = 0;
@@ -269,7 +270,7 @@ namespace CreditClicker
             // 
             // buttonPickTextColor
             // 
-            this.buttonPickTextColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonPickTextColor.BackColor = System.Drawing.Color.DarkOrange;
             this.buttonPickTextColor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.buttonPickTextColor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonPickTextColor.FlatAppearance.BorderSize = 0;
@@ -298,7 +299,7 @@ namespace CreditClicker
             // 
             // buttonPickSpecialTextColor
             // 
-            this.buttonPickSpecialTextColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonPickSpecialTextColor.BackColor = System.Drawing.Color.DarkOrange;
             this.buttonPickSpecialTextColor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.buttonPickSpecialTextColor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonPickSpecialTextColor.FlatAppearance.BorderSize = 0;
@@ -315,7 +316,7 @@ namespace CreditClicker
             // 
             // buttonResetButtonColor
             // 
-            this.buttonResetButtonColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonResetButtonColor.BackColor = System.Drawing.Color.DarkOrange;
             this.buttonResetButtonColor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.buttonResetButtonColor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonResetButtonColor.FlatAppearance.BorderSize = 0;
@@ -332,7 +333,7 @@ namespace CreditClicker
             // 
             // buttonResetTextColor
             // 
-            this.buttonResetTextColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonResetTextColor.BackColor = System.Drawing.Color.DarkOrange;
             this.buttonResetTextColor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.buttonResetTextColor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonResetTextColor.FlatAppearance.BorderSize = 0;
@@ -349,7 +350,7 @@ namespace CreditClicker
             // 
             // buttonResetSpecialTextColor
             // 
-            this.buttonResetSpecialTextColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonResetSpecialTextColor.BackColor = System.Drawing.Color.DarkOrange;
             this.buttonResetSpecialTextColor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.buttonResetSpecialTextColor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonResetSpecialTextColor.FlatAppearance.BorderSize = 0;
@@ -369,7 +370,7 @@ namespace CreditClicker
             this.changeBackground.AutoSize = true;
             this.changeBackground.BackColor = System.Drawing.Color.Transparent;
             this.changeBackground.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.changeBackground.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.changeBackground.ForeColor = System.Drawing.Color.DarkOrange;
             this.changeBackground.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.changeBackground.Location = new System.Drawing.Point(102, 420);
             this.changeBackground.Name = "changeBackground";
@@ -384,7 +385,7 @@ namespace CreditClicker
             this.changeToColor.AutoSize = true;
             this.changeToColor.BackColor = System.Drawing.Color.Transparent;
             this.changeToColor.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.changeToColor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.changeToColor.ForeColor = System.Drawing.Color.DarkOrange;
             this.changeToColor.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.changeToColor.Location = new System.Drawing.Point(73, 453);
             this.changeToColor.Name = "changeToColor";
@@ -400,7 +401,7 @@ namespace CreditClicker
             this.useImage.AutoSize = true;
             this.useImage.BackColor = System.Drawing.Color.Transparent;
             this.useImage.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.useImage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.useImage.ForeColor = System.Drawing.Color.DarkOrange;
             this.useImage.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.useImage.Location = new System.Drawing.Point(213, 453);
             this.useImage.Name = "useImage";
@@ -414,26 +415,26 @@ namespace CreditClicker
             // colorDialogButton
             // 
             this.colorDialogButton.AnyColor = true;
-            this.colorDialogButton.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.colorDialogButton.Color = System.Drawing.Color.DarkOrange;
             this.colorDialogButton.FullOpen = true;
             // 
             // colorDialogText
             // 
             this.colorDialogText.AnyColor = true;
-            this.colorDialogText.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.colorDialogText.Color = System.Drawing.Color.DarkOrange;
             this.colorDialogText.FullOpen = true;
             this.colorDialogText.Tag = "";
             // 
             // colorDialogSpecialText
             // 
             this.colorDialogSpecialText.AnyColor = true;
-            this.colorDialogSpecialText.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.colorDialogSpecialText.Color = System.Drawing.Color.DarkOrange;
             this.colorDialogSpecialText.FullOpen = true;
             // 
             // colorDialogBackground
             // 
             this.colorDialogBackground.AnyColor = true;
-            this.colorDialogBackground.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.colorDialogBackground.Color = System.Drawing.Color.DarkOrange;
             this.colorDialogBackground.FullOpen = true;
             // 
             // lblButtonTxt
@@ -450,7 +451,7 @@ namespace CreditClicker
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.button3.BackColor = System.Drawing.Color.DarkOrange;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.FlatAppearance.BorderSize = 0;
@@ -467,7 +468,7 @@ namespace CreditClicker
             // 
             // buttonResetButtonTxt
             // 
-            this.buttonResetButtonTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonResetButtonTxt.BackColor = System.Drawing.Color.DarkOrange;
             this.buttonResetButtonTxt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.buttonResetButtonTxt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonResetButtonTxt.FlatAppearance.BorderSize = 0;
@@ -485,7 +486,7 @@ namespace CreditClicker
             // colorDialogButtonText
             // 
             this.colorDialogButtonText.AnyColor = true;
-            this.colorDialogButtonText.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.colorDialogButtonText.Color = System.Drawing.Color.DarkOrange;
             this.colorDialogButtonText.FullOpen = true;
             // 
             // autoSaveTheme
@@ -495,7 +496,7 @@ namespace CreditClicker
             this.autoSaveTheme.Checked = true;
             this.autoSaveTheme.CheckState = System.Windows.Forms.CheckState.Checked;
             this.autoSaveTheme.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoSaveTheme.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.autoSaveTheme.ForeColor = System.Drawing.Color.DarkOrange;
             this.autoSaveTheme.Location = new System.Drawing.Point(69, 178);
             this.autoSaveTheme.Name = "autoSaveTheme";
             this.autoSaveTheme.Size = new System.Drawing.Size(145, 27);
@@ -519,7 +520,7 @@ namespace CreditClicker
             // 
             // pickBackgroundColor
             // 
-            this.pickBackgroundColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.pickBackgroundColor.BackColor = System.Drawing.Color.DarkOrange;
             this.pickBackgroundColor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pickBackgroundColor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pickBackgroundColor.FlatAppearance.BorderSize = 0;
@@ -543,7 +544,7 @@ namespace CreditClicker
             // 
             // selectImage
             // 
-            this.selectImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.selectImage.BackColor = System.Drawing.Color.DarkOrange;
             this.selectImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.selectImage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.selectImage.FlatAppearance.BorderSize = 0;
@@ -561,7 +562,7 @@ namespace CreditClicker
             // 
             // buttonSave4
             // 
-            this.buttonSave4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonSave4.BackColor = System.Drawing.Color.DarkOrange;
             this.buttonSave4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.buttonSave4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonSave4.FlatAppearance.BorderSize = 0;
@@ -581,7 +582,7 @@ namespace CreditClicker
             this.labelCurrentlyLoaded.AutoSize = true;
             this.labelCurrentlyLoaded.BackColor = System.Drawing.Color.Transparent;
             this.labelCurrentlyLoaded.Font = new System.Drawing.Font("hooge 05_55", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCurrentlyLoaded.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.labelCurrentlyLoaded.ForeColor = System.Drawing.Color.White;
             this.labelCurrentlyLoaded.Location = new System.Drawing.Point(380, 116);
             this.labelCurrentlyLoaded.Name = "labelCurrentlyLoaded";
             this.labelCurrentlyLoaded.Size = new System.Drawing.Size(188, 16);
@@ -590,7 +591,7 @@ namespace CreditClicker
             // 
             // colorAreaBackground
             // 
-            this.colorAreaBackground.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.colorAreaBackground.BackColor = System.Drawing.Color.DarkOrange;
             this.colorAreaBackground.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.colorAreaBackground.Location = new System.Drawing.Point(187, 496);
             this.colorAreaBackground.Name = "colorAreaBackground";
@@ -601,7 +602,7 @@ namespace CreditClicker
             // 
             // colorAreaButtonText
             // 
-            this.colorAreaButtonText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.colorAreaButtonText.BackColor = System.Drawing.Color.DarkOrange;
             this.colorAreaButtonText.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.colorAreaButtonText.Location = new System.Drawing.Point(157, 366);
             this.colorAreaButtonText.Name = "colorAreaButtonText";
@@ -611,7 +612,7 @@ namespace CreditClicker
             // 
             // colorAreaSpecialText
             // 
-            this.colorAreaSpecialText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.colorAreaSpecialText.BackColor = System.Drawing.Color.DarkOrange;
             this.colorAreaSpecialText.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.colorAreaSpecialText.Location = new System.Drawing.Point(157, 393);
             this.colorAreaSpecialText.Name = "colorAreaSpecialText";
@@ -621,7 +622,7 @@ namespace CreditClicker
             // 
             // colorAreaText
             // 
-            this.colorAreaText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.colorAreaText.BackColor = System.Drawing.Color.DarkOrange;
             this.colorAreaText.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.colorAreaText.Location = new System.Drawing.Point(157, 311);
             this.colorAreaText.Name = "colorAreaText";
@@ -631,7 +632,7 @@ namespace CreditClicker
             // 
             // colorAreaButton
             // 
-            this.colorAreaButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.colorAreaButton.BackColor = System.Drawing.Color.DarkOrange;
             this.colorAreaButton.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.colorAreaButton.Location = new System.Drawing.Point(157, 338);
             this.colorAreaButton.Name = "colorAreaButton";
@@ -650,6 +651,24 @@ namespace CreditClicker
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
             // 
+            // resetBackground
+            // 
+            this.resetBackground.BackColor = System.Drawing.Color.DarkOrange;
+            this.resetBackground.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.resetBackground.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.resetBackground.FlatAppearance.BorderSize = 0;
+            this.resetBackground.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.resetBackground.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resetBackground.ForeColor = System.Drawing.Color.Black;
+            this.resetBackground.Location = new System.Drawing.Point(106, 537);
+            this.resetBackground.Name = "resetBackground";
+            this.resetBackground.Size = new System.Drawing.Size(148, 21);
+            this.resetBackground.TabIndex = 73;
+            this.resetBackground.Text = "RESET BACKGROUND";
+            this.resetBackground.UseVisualStyleBackColor = false;
+            this.resetBackground.Visible = false;
+            this.resetBackground.Click += new System.EventHandler(this.resetBackground_Click);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -658,6 +677,7 @@ namespace CreditClicker
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(645, 679);
             this.ControlBox = false;
+            this.Controls.Add(this.resetBackground);
             this.Controls.Add(this.labelCurrentlyLoaded);
             this.Controls.Add(this.buttonSave4);
             this.Controls.Add(this.lblTitleSettings);
@@ -758,5 +778,6 @@ namespace CreditClicker
         private System.Windows.Forms.Button selectImage;
         private System.Windows.Forms.Button buttonSave4;
         private System.Windows.Forms.Label labelCurrentlyLoaded;
+        private System.Windows.Forms.Button resetBackground;
     }
 }

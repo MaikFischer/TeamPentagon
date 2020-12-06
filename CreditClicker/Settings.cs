@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace CreditClicker
 {
@@ -17,17 +19,74 @@ namespace CreditClicker
         private Shop shop;
         public bool autoSaveEnabled { get; set; } = true;
         public bool autoSaveThemeEnabled { get; set; } = true;
+
+        public bool changeBackgroundEnabled { get; set; } = false;
+        public bool changeToColorEnabled { get; set; } = false;
+
+        public bool useImageEnabled { get; set; } = false;
+
+        public string backgroundImagePath = "";
         public Settings(Game game,Shop shop)
         {
             FormManager.registerForm(this);
             this.shop = shop;
             this.game = game;
             InitializeComponent();
+            initAppSettings();
+            loadTheme();
+        }
+
+        public void initAppSettings()
+        {
+            //Auto-Save Game
+            if (Convert.ToBoolean(ConfigurationManager.AppSettings["autosavegame"])) {
+                autoSaveSlot.Checked = true;
+                autoSaveEnabled = true;
+            }else {
+                autoSaveSlot.Checked = false;
+                autoSaveEnabled = false;
+            }
+            //Auto-Save Theme
+            if (Convert.ToBoolean(ConfigurationManager.AppSettings["autosavetheme"])) {
+                autoSaveTheme.Checked = true;
+                autoSaveThemeEnabled = true;
+            }else {
+                autoSaveTheme.Checked = false;
+                autoSaveThemeEnabled = false;
+            }
+            if (Convert.ToBoolean(ConfigurationManager.AppSettings["changeback"]))
+            {
+                changeBackground.Checked = true;
+                changeBackgroundEnabled = true;
+            }else
+            {
+                changeBackground.Checked = false;
+                changeBackgroundEnabled = false;
+                changeToColorEnabled = false;
+                useImageEnabled = false;
+            }
+            //Change Background to Color
+            if (Convert.ToBoolean(ConfigurationManager.AppSettings["changetocolor"])) {
+                changeToColor.Checked = true;
+                changeToColorEnabled = true;
+            }else {
+                changeToColor.Checked = false;
+                changeToColorEnabled = false;
+            }
+            //Use Background Image
+            if (Convert.ToBoolean(ConfigurationManager.AppSettings["useimage"])) {
+                useImage.Checked = true;
+                useImageEnabled = true;
+            }else {
+                useImage.Checked = false;
+                useImageEnabled = false;
+            }
         }
 
         private void quitButton_Click(object sender, EventArgs e)
         {
             game.playButtonSound();
+            FormManager.initAllColors();
             this.Hide();
             game.Show();
         }
@@ -83,6 +142,30 @@ namespace CreditClicker
             {
                 changeToColor.Visible = true;
                 useImage.Visible = true;
+                changeBackgroundEnabled = true;
+                resetBackground.Visible = true;
+                SavesManager.AddUpdateAppSettings("changeback", "True");
+                if (Convert.ToBoolean(ConfigurationManager.AppSettings["changetocolor"]))
+                {
+                    changeToColorEnabled = true;
+                    changeToColor.Checked = true;
+                }
+                else
+                {
+                    changeToColorEnabled = false;
+                    changeToColor.Checked = false;
+                }
+                if (Convert.ToBoolean(ConfigurationManager.AppSettings["useimage"]))
+                {
+                    useImage.Checked = true;
+                    useImageEnabled = true;
+                }
+                else
+                {
+                    useImageEnabled = false;
+                    useImage.Checked = false;
+                }
+
             }else
             {
                 changeToColor.Checked = false;
@@ -90,10 +173,14 @@ namespace CreditClicker
                 lblBackground.Visible = false;
                 colorAreaBackground.Visible = false;
                 pickBackgroundColor.Visible = false;
-
                 useImage.Checked = false;
                 useImage.Visible = false;
-                
+                useImageEnabled = false;
+                changeBackgroundEnabled = false;
+                resetBackground.Visible = false;
+                SavesManager.AddUpdateAppSettings("changeback", "False");
+                SavesManager.AddUpdateAppSettings("changetocolor", "False");
+                SavesManager.AddUpdateAppSettings("useimage", "False");
             }
         }
 
@@ -102,16 +189,21 @@ namespace CreditClicker
             if (changeToColor.Checked)
             {
                 useImage.Checked = false;
+                useImageEnabled = false;
                 selectImage.Visible = false;
                 lblBackground.Visible = true;
                 colorAreaBackground.Visible = true;
                 pickBackgroundColor.Visible = true;
+                changeToColorEnabled = true;
+                SavesManager.AddUpdateAppSettings("changetocolor", "True");
+                SavesManager.AddUpdateAppSettings("useimage", "False");
             }
             else
             {
                 lblBackground.Visible = false;
                 colorAreaBackground.Visible = false;
                 pickBackgroundColor.Visible = false;
+                SavesManager.AddUpdateAppSettings("changetocolor", "False");
             }
         }
 
@@ -120,13 +212,20 @@ namespace CreditClicker
             if (useImage.Checked)
             {
                 changeToColor.Checked = false;
+                changeToColorEnabled = false;
                 lblBackground.Visible = false;
                 colorAreaBackground.Visible = false;
                 pickBackgroundColor.Visible = false;
                 selectImage.Visible = true;
-            }else
+                useImageEnabled = true;
+                SavesManager.AddUpdateAppSettings("useimage", "True");
+                SavesManager.AddUpdateAppSettings("changetocolor", "False");
+            }
+            else
             {
                 selectImage.Visible = false;
+                useImageEnabled = false;
+                SavesManager.AddUpdateAppSettings("useimage", "False");
             }
         }
 
@@ -193,6 +292,7 @@ namespace CreditClicker
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 FormManager.changeBackgroundImage(openFileDialog1.FileName);
+                backgroundImagePath = openFileDialog1.FileName;
             }
         }
 
@@ -205,8 +305,32 @@ namespace CreditClicker
             }
             else if (game.currentSaveId == 0)
             {
-                if (isSlotCovered(1) && game.hasPlayed())
+                if (isSlotCovered(1))
                 {
+                    if (game.hasPlayed()) {
+                        DialogResult result = MessageBox.Show("This Slot is covered. Do you wish to overwrite or load from it? Press 'Yes' to override and 'No' to load.", "Slot covered", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                        if (result == DialogResult.Yes)
+                        {
+                            game.saveState(1);
+                            game.currentSaveId = 1;
+                            MessageBox.Show("Successfully saved current progress to Slot #" + 1, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else if (result == DialogResult.No)
+                        {
+                            loadSave(1);
+                        }
+                    }else {
+                        loadSave(1);
+                    }
+                }
+                else
+                {
+                    loadSave(1);                
+                }
+            }
+            else
+            {
+                if (game.getSave(game.currentSaveId).score != game.getScore()) {
                     DialogResult result = MessageBox.Show("This Slot is covered. Do you wish to overwrite or load from it? Press 'Yes' to override and 'No' to load.", "Slot covered", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
@@ -218,23 +342,14 @@ namespace CreditClicker
                         loadSave(1);
                     }
                 }
-                else if (game.hasPlayed())
-                {
-                    game.saveState(1);
-                    MessageBox.Show("Successfully saved current progress to Slot #" + 1, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else
-            {
-                DialogResult result = MessageBox.Show("This Slot is covered. Do you wish to overwrite or load from it? Press 'Yes' to override and 'No' to load.", "Slot covered", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    game.saveState(1);
-                    MessageBox.Show("Successfully saved current progress to Slot #" + 1, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else if (result == DialogResult.No)
+                else if (isSlotCovered(game.currentSaveId))
                 {
                     loadSave(1);
+                }
+                else
+                {
+                    game.saveState(1);
+                    MessageBox.Show("Successfully saved current progress to Slot #" + 1, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -248,8 +363,32 @@ namespace CreditClicker
             }
             else if (game.currentSaveId == 0)
             {
-                if (isSlotCovered(2) && game.hasPlayed())
+                if (isSlotCovered(2))
                 {
+                    if (game.hasPlayed()) {
+                        DialogResult result = MessageBox.Show("This Slot is covered. Do you wish to overwrite or load from it? Press 'Yes' to override and 'No' to load.", "Slot covered", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                        if (result == DialogResult.Yes)
+                        {
+                            game.saveState(2);
+                            game.currentSaveId = 2;
+                            MessageBox.Show("Successfully saved current progress to Slot #" + 2, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else if (result == DialogResult.No)
+                        {
+                            loadSave(2);
+                        }
+                    }else {
+                        loadSave(2);
+                    }
+                }
+                else
+                {
+                    loadSave(2);
+                }
+            }
+            else
+            {
+                if (game.getSave(game.currentSaveId).score != game.getScore()) {
                     DialogResult result = MessageBox.Show("This Slot is covered. Do you wish to overwrite or load from it? Press 'Yes' to override and 'No' to load.", "Slot covered", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
@@ -260,24 +399,12 @@ namespace CreditClicker
                     {
                         loadSave(2);
                     }
-                }
-                else if (game.hasPlayed())
-                {
-                    game.saveState(2);
-                    MessageBox.Show("Successfully saved current progress to Slot #" + 2, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else
-            {
-                DialogResult result = MessageBox.Show("This Slot is covered. Do you wish to overwrite or load from it? Press 'Yes' to override and 'No' to load.", "Slot covered", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    game.saveState(2);
-                    MessageBox.Show("Successfully saved current progress to Slot #" + 2, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else if (result == DialogResult.No)
-                {
+                }else if (isSlotCovered(game.currentSaveId)){
                     loadSave(2);
+                }else
+                {
+                    game.saveState(2);
+                    MessageBox.Show("Successfully saved current progress to Slot #" + 2, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -291,8 +418,34 @@ namespace CreditClicker
             }
             else if (game.currentSaveId == 0)
             {
-                if (isSlotCovered(3) && game.hasPlayed())
+                if (isSlotCovered(3))
                 {
+                    if (game.hasPlayed())
+                    {
+                        DialogResult result = MessageBox.Show("This Slot is covered. Do you wish to overwrite or load from it? Press 'Yes' to override and 'No' to load.", "Slot covered", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                        if (result == DialogResult.Yes)
+                        {
+                            game.saveState(3);
+                            MessageBox.Show("Successfully saved current progress to Slot #" + 3, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else if (result == DialogResult.No)
+                        {
+                            loadSave(3);
+                        }
+                    }
+                    else
+                    {
+                        loadSave(3);
+                    }
+                }
+                else
+                {
+                    loadSave(3);
+                }
+            }
+            else
+            {
+                if (game.getSave(game.currentSaveId).score != game.getScore()) {
                     DialogResult result = MessageBox.Show("This Slot is covered. Do you wish to overwrite or load from it? Press 'Yes' to override and 'No' to load.", "Slot covered", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
@@ -304,23 +457,14 @@ namespace CreditClicker
                         loadSave(3);
                     }
                 }
-                else if (game.hasPlayed())
-                {
-                    game.saveState(3);
-                    MessageBox.Show("Successfully saved current progress to Slot #" + 3, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else
-            {
-                DialogResult result = MessageBox.Show("This Slot is covered. Do you wish to overwrite or load from it? Press 'Yes' to override and 'No' to load.", "Slot covered", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    game.saveState(3);
-                    MessageBox.Show("Successfully saved current progress to Slot #" + 3, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else if (result == DialogResult.No)
+                else if (isSlotCovered(game.currentSaveId))
                 {
                     loadSave(3);
+                }
+                else
+                {
+                    game.saveState(3);
+                    MessageBox.Show("Successfully saved current progress to Slot #" + 3, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -331,10 +475,37 @@ namespace CreditClicker
             {
                 game.saveState(4);
                 MessageBox.Show("Successfully saved current progress to Slot #" + 4, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }else if(game.currentSaveId == 0)
+            }
+            else if (game.currentSaveId == 0)
             {
-                if (isSlotCovered(4) && game.hasPlayed())
+                if (isSlotCovered(4))
                 {
+                    if (game.hasPlayed())
+                    {
+                        DialogResult result = MessageBox.Show("This Slot is covered. Do you wish to overwrite or load from it? Press 'Yes' to override and 'No' to load.", "Slot covered", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                        if (result == DialogResult.Yes)
+                        {
+                            game.saveState(4);
+                            MessageBox.Show("Successfully saved current progress to Slot #" + 4, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else if (result == DialogResult.No)
+                        {
+                            loadSave(4);
+                        }
+                    }
+                    else
+                    {
+                        loadSave(4);
+                    }
+                }
+                else
+                {
+                    loadSave(4);
+                }
+            }
+            else
+            {
+                if (game.getSave(game.currentSaveId).score != game.getScore()) {
                     DialogResult result = MessageBox.Show("This Slot is covered. Do you wish to overwrite or load from it? Press 'Yes' to override and 'No' to load.", "Slot covered", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
@@ -345,39 +516,46 @@ namespace CreditClicker
                     {
                         loadSave(4);
                     }
-                }else if (game.hasPlayed())
-                {
-                    game.saveState(4);
-                    MessageBox.Show("Successfully saved current progress to Slot #" + 4, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                } 
-            }
-            else
-            {
-                DialogResult result = MessageBox.Show("This Slot is covered. Do you wish to overwrite or load from it? Press 'Yes' to override and 'No' to load.", "Slot covered", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    game.saveState(4);
-                    MessageBox.Show("Successfully saved current progress to Slot #" + 4, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else if (result == DialogResult.No)
+                else if (isSlotCovered(game.currentSaveId))
                 {
-                    game.currentSaveId = 4;
                     loadSave(4);
+                }
+                else
+                {
+                    game.saveState(4);
+                    MessageBox.Show("Successfully saved current progress to Slot #" + 4, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
 
         private void autoSaveSlot_CheckedChanged(object sender, EventArgs e)
         {
-            if (autoSaveSlot.Checked) autoSaveEnabled = true;
-            else autoSaveEnabled = false;
+            if (autoSaveSlot.Checked)
+            {
+                autoSaveEnabled = true;
+                SavesManager.AddUpdateAppSettings("autosavegame", "True");
+            }
+            else
+            {
+                autoSaveEnabled = false;
+                SavesManager.AddUpdateAppSettings("autosavegame", "False");
+            }
 
         }
 
         private void autoSaveTheme_CheckedChanged(object sender, EventArgs e)
         {
-            if (autoSaveTheme.Checked) autoSaveThemeEnabled = true;
-            else autoSaveThemeEnabled = false;
+            if (autoSaveTheme.Checked)
+            {
+                autoSaveThemeEnabled = true;
+                SavesManager.AddUpdateAppSettings("autosavetheme", "True");
+            }
+            else
+            {
+                autoSaveThemeEnabled = false;
+                SavesManager.AddUpdateAppSettings("autosavetheme", "False");
+            }
         }
 
         public void loadSave(int saveId)
@@ -385,7 +563,7 @@ namespace CreditClicker
             game.getSaves();
             if (isSlotCovered(saveId))
             {
-                game.getSave(saveId);
+                game.getSaveFromFile(saveId);
                 MessageBox.Show("Sucessfully loaded Save #" + saveId + "\n" + "Score: " + (long)game.getScore() + "\n" + "CreditsPerClick: " + (long)(game.getBonus() * game.getMultiplier()) + "\n" + "CreditsPerSecond: " + game.getPassiveBonus(),"Success",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             else if (game.getScore() > 0 || game.getBonus() > 1 || game.getMultiplier() > 1 || game.getPassiveBonus() > 0)
@@ -393,9 +571,10 @@ namespace CreditClicker
                 if (autoSaveEnabled)
                 {
                     game.currentSaveId = saveId;
-                    game.getSave(saveId);
+                    game.getSaveFromFile(saveId);
                 }
                 game.saveState(saveId);
+                MessageBox.Show("Successfully saved current progress to Slot #" + saveId, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -403,9 +582,91 @@ namespace CreditClicker
             }
         }
 
+        public void saveTheme() {
+            string themePath = Application.LocalUserAppDataPath + @"\Themes\theme.txt";
+            string[] lines = new string[6];
+            lines[0] = FormManager.currentCommonTextColor.ToArgb().ToString();
+            lines[1] = FormManager.currentButtonColor.ToArgb().ToString();
+            lines[2] = FormManager.currentButtonTextColor.ToArgb().ToString();
+            lines[3] = FormManager.currentSpecialTextColor.ToArgb().ToString();
+            if (changeBackgroundEnabled)
+            {
+                if (changeToColorEnabled) lines[4] = FormManager.currentBackgroundColor.ToArgb().ToString();
+                else lines[4] = "empty";
+                if (useImageEnabled)
+                {
+                    if (File.Exists(FormManager.currentBackgroundImage))
+                    {
+                        lines[5] = FormManager.currentBackgroundImage;
+                    }
+                    else
+                    {
+                        lines[5] = "empty";
+                    }
+                }
+                else lines[5] = "empty";
+            }
+            else
+            {
+                lines[4] = "empty";
+                lines[5] = "empty";
+            }
+            writeToFile(themePath,lines);
+        }
+
+        public void loadTheme() {
+            if (!Directory.Exists(Application.LocalUserAppDataPath + @"\Themes\")) Directory.CreateDirectory(Application.LocalUserAppDataPath + @"\Themes\");
+            string themePath = Application.LocalUserAppDataPath + @"\Themes\theme.txt";
+            if (File.Exists(themePath))
+            {
+                string[] lines = readFromFile(themePath);
+                FormManager.changeCommonTextColor(Color.FromArgb(Int32.Parse(lines[0])));
+                FormManager.changeButtonColor(Color.FromArgb(Int32.Parse(lines[1])));
+                FormManager.changeButtonTextColor(Color.FromArgb(Int32.Parse(lines[2])));
+                FormManager.changeSpecialTextColor(Color.FromArgb(Int32.Parse(lines[3])));
+                string backColor = lines[4];
+                string imagepath = lines[5];
+                if (backColor != "empty")
+                {
+                    FormManager.changeBackgroundColor(Color.FromArgb(Int32.Parse(backColor)));
+                }
+                if (imagepath != "empty")
+                {
+                    FormManager.changeBackgroundImage(imagepath);
+                }
+            }
+        }
+
+        public string[] readFromFile(string filePath)
+        {
+            StreamReader sr = new StreamReader(filePath);
+            List<string> lines = new List<string>();
+            for(int i = 0;i < 6; i++)
+            {
+                string line = sr.ReadLine();
+                if (line != null)
+                {
+                    lines.Add(line);
+                }
+            }
+            sr.Close();
+            return lines.ToArray();
+        }
+
+        public void writeToFile(string filepath,string[] lines)
+        {
+            StreamWriter sw = new StreamWriter(filepath);
+            for(int i = 0;i < lines.Length;i++)
+            {
+                sw.WriteLine(lines[i]);
+            }
+            sw.Close();
+        }
+
         public bool isSlotCovered(int saveId)
         {
-            if (System.IO.File.Exists("C:/CreditClicker/Saves/save" + saveId + ".txt")) return true;
+            if (!Directory.Exists(Application.LocalUserAppDataPath + @"\Saves\")) return false;
+            if (File.Exists(Application.LocalUserAppDataPath + @"\Saves\save" + saveId + ".txt")) return true;
             return false;
         }
 
@@ -421,24 +682,19 @@ namespace CreditClicker
                 switch (item.getName())
                 {
                     case "CheatSheet":
-                        shop.cheatSheet.setPrice(shop.cheatSheet.getPrice()+ (shop.cheatSheet.getPrice() * 25 / 100));
-                        Console.WriteLine("[DEBUG] Cheat Sheet: "+shop.cheatSheet.getPrice());
+                        shop.cheatSheet.setPrice(shop.cheatSheet.getPrice() + (shop.cheatSheet.getPrice() * 25 / 100));
                         break;
                     case "StudyGroup":
                         shop.studyGroup.setPrice(shop.studyGroup.getPrice() + (shop.studyGroup.getPrice() * 25 / 100));
-                        Console.WriteLine("[DEBUG] Study Group: " + shop.studyGroup.getPrice());
                         break;
                     case "ConsultationHour":
                         shop.conHour.setPrice(shop.conHour.getPrice() + (shop.conHour.getPrice() * 25 / 100));
-                        Console.WriteLine("[DEBUG] Con Hour: " + shop.conHour.getPrice());
                         break;
                     case "OldExam":
                         shop.oldExam.setPrice(shop.oldExam.getPrice() + (shop.oldExam.getPrice() * 25 / 100));
-                        Console.WriteLine("[DEBUG] Old Exam " + shop.oldExam.getPrice());
                         break;
                     case "Insider":
                         shop.insider.setPrice(shop.insider.getPrice() + (shop.insider.getPrice() * 25 / 100));
-                        Console.WriteLine("[DEBUG] Insider " + shop.insider.getPrice());
                         break;
                 }
             }
@@ -467,5 +723,10 @@ namespace CreditClicker
             FormManager.changeSpecialTextColor(Color.White);
             colorAreaSpecialText.BackColor = Color.White;
         }
-    }
+
+        private void resetBackground_Click(object sender, EventArgs e)
+        {
+            FormManager.resetBackgroundImage();
+        }
+    }  
 }

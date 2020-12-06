@@ -65,17 +65,20 @@ namespace CreditClicker
             this.versionSettings = new System.Windows.Forms.Label();
             this.titleSettings = new System.Windows.Forms.Label();
             this.button1Settings = new System.Windows.Forms.Button();
+            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ClickArea)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.axWindowsMediaPlayer1);
             this.panel1.Controls.Add(this.lblpentagon);
             this.panel1.Controls.Add(this.quitButton);
             this.panel1.Controls.Add(this.buttonSettings);
@@ -103,7 +106,7 @@ namespace CreditClicker
             // 
             // quitButton
             // 
-            this.quitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.quitButton.BackColor = System.Drawing.Color.DarkOrange;
             this.quitButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.quitButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.quitButton.FlatAppearance.BorderSize = 0;
@@ -120,7 +123,7 @@ namespace CreditClicker
             // 
             // buttonSettings
             // 
-            this.buttonSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonSettings.BackColor = System.Drawing.Color.DarkOrange;
             this.buttonSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.buttonSettings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonSettings.FlatAppearance.BorderSize = 0;
@@ -137,7 +140,7 @@ namespace CreditClicker
             // 
             // startGameButton
             // 
-            this.startGameButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.startGameButton.BackColor = System.Drawing.Color.DarkOrange;
             this.startGameButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.startGameButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.startGameButton.FlatAppearance.BorderSize = 0;
@@ -157,7 +160,7 @@ namespace CreditClicker
             this.version.AutoSize = true;
             this.version.BackColor = System.Drawing.Color.Transparent;
             this.version.Font = new System.Drawing.Font("hooge 05_55", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.version.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.version.ForeColor = System.Drawing.Color.DarkOrange;
             this.version.Location = new System.Drawing.Point(346, 27);
             this.version.Name = "version";
             this.version.Size = new System.Drawing.Size(0, 14);
@@ -168,7 +171,7 @@ namespace CreditClicker
             this.Title.AutoSize = true;
             this.Title.BackColor = System.Drawing.Color.Transparent;
             this.Title.Font = new System.Drawing.Font("hooge 05_55", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.Title.ForeColor = System.Drawing.Color.DarkOrange;
             this.Title.Location = new System.Drawing.Point(125, 9);
             this.Title.Name = "Title";
             this.Title.Size = new System.Drawing.Size(232, 36);
@@ -288,7 +291,7 @@ namespace CreditClicker
             this.lblCreditsPerSecond.AutoSize = true;
             this.lblCreditsPerSecond.BackColor = System.Drawing.Color.Transparent;
             this.lblCreditsPerSecond.Font = new System.Drawing.Font("hooge 05_55", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreditsPerSecond.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblCreditsPerSecond.ForeColor = System.Drawing.Color.DarkOrange;
             this.lblCreditsPerSecond.Location = new System.Drawing.Point(19, 185);
             this.lblCreditsPerSecond.Name = "lblCreditsPerSecond";
             this.lblCreditsPerSecond.Size = new System.Drawing.Size(85, 24);
@@ -300,7 +303,7 @@ namespace CreditClicker
             this.lblBonus.AutoSize = true;
             this.lblBonus.BackColor = System.Drawing.Color.Transparent;
             this.lblBonus.Font = new System.Drawing.Font("hooge 05_55", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBonus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblBonus.ForeColor = System.Drawing.Color.DarkOrange;
             this.lblBonus.Location = new System.Drawing.Point(19, 108);
             this.lblBonus.Name = "lblBonus";
             this.lblBonus.Size = new System.Drawing.Size(85, 24);
@@ -321,7 +324,7 @@ namespace CreditClicker
             // 
             // settingsButtonGame
             // 
-            this.settingsButtonGame.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.settingsButtonGame.BackColor = System.Drawing.Color.DarkOrange;
             this.settingsButtonGame.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.settingsButtonGame.Cursor = System.Windows.Forms.Cursors.Hand;
             this.settingsButtonGame.FlatAppearance.BorderSize = 0;
@@ -338,7 +341,7 @@ namespace CreditClicker
             // 
             // menuButtonGame
             // 
-            this.menuButtonGame.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.menuButtonGame.BackColor = System.Drawing.Color.DarkOrange;
             this.menuButtonGame.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.menuButtonGame.Cursor = System.Windows.Forms.Cursors.Hand;
             this.menuButtonGame.FlatAppearance.BorderSize = 0;
@@ -355,7 +358,7 @@ namespace CreditClicker
             // 
             // shopButtonGame
             // 
-            this.shopButtonGame.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.shopButtonGame.BackColor = System.Drawing.Color.DarkOrange;
             this.shopButtonGame.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.shopButtonGame.Cursor = System.Windows.Forms.Cursors.Hand;
             this.shopButtonGame.FlatAppearance.BorderSize = 0;
@@ -375,7 +378,7 @@ namespace CreditClicker
             this.versionGame.AutoSize = true;
             this.versionGame.BackColor = System.Drawing.Color.Transparent;
             this.versionGame.Font = new System.Drawing.Font("hooge 05_55", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.versionGame.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.versionGame.ForeColor = System.Drawing.Color.DarkOrange;
             this.versionGame.Location = new System.Drawing.Point(349, 27);
             this.versionGame.Name = "versionGame";
             this.versionGame.Size = new System.Drawing.Size(0, 14);
@@ -411,7 +414,7 @@ namespace CreditClicker
             this.titleGame.AutoSize = true;
             this.titleGame.BackColor = System.Drawing.Color.Transparent;
             this.titleGame.Font = new System.Drawing.Font("hooge 05_55", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleGame.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.titleGame.ForeColor = System.Drawing.Color.DarkOrange;
             this.titleGame.Location = new System.Drawing.Point(129, 9);
             this.titleGame.Name = "titleGame";
             this.titleGame.Size = new System.Drawing.Size(232, 36);
@@ -423,7 +426,7 @@ namespace CreditClicker
             this.lblScore.AutoSize = true;
             this.lblScore.BackColor = System.Drawing.Color.Transparent;
             this.lblScore.Font = new System.Drawing.Font("hooge 05_55", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblScore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblScore.ForeColor = System.Drawing.Color.DarkOrange;
             this.lblScore.Location = new System.Drawing.Point(113, 61);
             this.lblScore.Name = "lblScore";
             this.lblScore.Size = new System.Drawing.Size(75, 24);
@@ -479,6 +482,16 @@ namespace CreditClicker
             this.button1Settings.Size = new System.Drawing.Size(75, 23);
             this.button1Settings.TabIndex = 0;
             // 
+            // axWindowsMediaPlayer1
+            // 
+            this.axWindowsMediaPlayer1.Enabled = true;
+            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(86, 255);
+            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
+            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
+            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(75, 23);
+            this.axWindowsMediaPlayer1.TabIndex = 12;
+            this.axWindowsMediaPlayer1.Visible = false;
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -508,6 +521,7 @@ namespace CreditClicker
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ClickArea)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -547,5 +561,6 @@ namespace CreditClicker
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
     }
 }

@@ -551,9 +551,9 @@ namespace CreditClicker
             this.selectImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.selectImage.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selectImage.ForeColor = System.Drawing.Color.Black;
-            this.selectImage.Location = new System.Drawing.Point(126, 496);
+            this.selectImage.Location = new System.Drawing.Point(106, 496);
             this.selectImage.Name = "selectImage";
-            this.selectImage.Size = new System.Drawing.Size(113, 35);
+            this.selectImage.Size = new System.Drawing.Size(148, 35);
             this.selectImage.TabIndex = 70;
             this.selectImage.Text = "SELECT IMAGE";
             this.selectImage.UseVisualStyleBackColor = false;

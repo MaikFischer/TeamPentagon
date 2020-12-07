@@ -100,7 +100,7 @@ namespace CreditClicker
 
         private void bw_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (panel2.Visible)
+            if (this.Visible && panel2.Visible)
             {
                 Thread.Sleep(100);
                 double dScore = this.getScore() + this.getPassiveBonus() / 10;
@@ -304,7 +304,7 @@ namespace CreditClicker
                 savePath = Application.LocalUserAppDataPath + @"\Saves\save" + saveId + ".txt";
                 if (File.Exists(savePath))
                 {
-                    string[] lines = settings.readFromFile(savePath);
+                    string[] lines = settings.readSaveFromFile(savePath);
                     if (lines != null)
                     {
                         Save save = new Save(saveId, 0, 0, 0, 0, new List<Item>());
@@ -338,6 +338,10 @@ namespace CreditClicker
                             }
                         }
                         savesList.Add(save);
+                        foreach(Item item in save.items)
+                        {
+                            Console.WriteLine();
+                        }
                     }
                 }
             }

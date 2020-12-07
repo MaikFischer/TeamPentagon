@@ -16,7 +16,6 @@ namespace CreditClicker
         public static Color DEFAULT_COLOR = Color.DarkOrange;
 
         public static Image DEFAULT_IMAGE = global::CreditClicker.Properties.Resources.backgroundanimated;
-        public static Color currentAllColor { get; set; }  = Color.DarkOrange;
         public static Color currentButtonColor { get; set; }  = Color.DarkOrange;
         public static Color currentButtonTextColor { get; set; } = Color.Black;
         public static Color currentCommonTextColor { get; set; }  = Color.DarkOrange;

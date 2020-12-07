@@ -19,10 +19,8 @@ namespace CreditClicker
         private Shop shop;
         public bool autoSaveEnabled { get; set; } = true;
         public bool autoSaveThemeEnabled { get; set; } = true;
-
         public bool changeBackgroundEnabled { get; set; } = false;
         public bool changeToColorEnabled { get; set; } = false;
-
         public bool useImageEnabled { get; set; } = false;
 
         public string backgroundImagePath = "";
@@ -388,7 +386,7 @@ namespace CreditClicker
             }
             else
             {
-                if (game.getSave(game.currentSaveId).score != game.getScore()) {
+                if (game.getSave(game.currentSaveId).score != game.getScore() && isSlotCovered(2)) {
                     DialogResult result = MessageBox.Show("This Slot is covered. Do you wish to overwrite or load from it? Press 'Yes' to override and 'No' to load.", "Slot covered", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
@@ -564,6 +562,7 @@ namespace CreditClicker
             if (isSlotCovered(saveId))
             {
                 game.getSaveFromFile(saveId);
+                game.currentSaveId = saveId;
                 MessageBox.Show("Sucessfully loaded Save #" + saveId + "\n" + "Score: " + (long)game.getScore() + "\n" + "CreditsPerClick: " + (long)(game.getBonus() * game.getMultiplier()) + "\n" + "CreditsPerSecond: " + game.getPassiveBonus(),"Success",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             else if (game.getScore() > 0 || game.getBonus() > 1 || game.getMultiplier() > 1 || game.getPassiveBonus() > 0)
@@ -652,6 +651,28 @@ namespace CreditClicker
             sr.Close();
             return lines.ToArray();
         }
+
+        public string[] readSaveFromFile(string filePath)
+        {
+            StreamReader sr = new StreamReader(filePath);
+            List<string> lines = new List<string>();
+            
+            while (true)
+            {
+                string line = sr.ReadLine();
+                if (line != null)
+                {
+                    lines.Add(line);
+                }else
+                {
+                    break;
+                }
+            }
+            sr.Close();
+            return lines.ToArray();
+        }
+
+
 
         public void writeToFile(string filepath,string[] lines)
         {

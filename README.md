@@ -9,6 +9,10 @@
 </p>
 
 # Update Log:
+
+## Update 06/12/2020 Released v2.0
+- Veröffentlichung von [Release v2.0](https://github.com/MaikFischer/TeamPentagon/releases/tag/2.0)
+
 ## Update 25/11/2020 Released v1.6
 - Veröffentlichung von Release v1.6
 

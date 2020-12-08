@@ -75,12 +75,17 @@ namespace CreditClicker
             this.colorAreaButton = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.resetBackground = new System.Windows.Forms.Button();
+            this.optionsPanel = new System.Windows.Forms.Panel();
+            this.buttonOptions = new System.Windows.Forms.Button();
+            this.buttonAudio = new System.Windows.Forms.Button();
+            this.buttonSaves = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.colorAreaBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorAreaButtonText)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorAreaSpecialText)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorAreaText)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorAreaButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.optionsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonSave1
@@ -92,9 +97,9 @@ namespace CreditClicker
             this.buttonSave1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave1.Font = new System.Drawing.Font("hooge 05_53", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave1.ForeColor = System.Drawing.Color.Black;
-            this.buttonSave1.Location = new System.Drawing.Point(383, 151);
+            this.buttonSave1.Location = new System.Drawing.Point(383, 159);
             this.buttonSave1.Name = "buttonSave1";
-            this.buttonSave1.Size = new System.Drawing.Size(191, 54);
+            this.buttonSave1.Size = new System.Drawing.Size(191, 57);
             this.buttonSave1.TabIndex = 9;
             this.buttonSave1.Text = "SAVE #1";
             this.buttonSave1.UseVisualStyleBackColor = false;
@@ -646,7 +651,7 @@ namespace CreditClicker
             this.pictureBox1.Image = global::CreditClicker.Properties.Resources.backgroundanimated;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(645, 679);
+            this.pictureBox1.Size = new System.Drawing.Size(650, 678);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
@@ -669,52 +674,114 @@ namespace CreditClicker
             this.resetBackground.Visible = false;
             this.resetBackground.Click += new System.EventHandler(this.resetBackground_Click);
             // 
+            // optionsPanel
+            // 
+            this.optionsPanel.BackColor = System.Drawing.Color.Black;
+            this.optionsPanel.Controls.Add(this.labelCurrentlyLoaded);
+            this.optionsPanel.Controls.Add(this.buttonSave1);
+            this.optionsPanel.Controls.Add(this.buttonSave4);
+            this.optionsPanel.Controls.Add(this.lblTitleSettings);
+            this.optionsPanel.Controls.Add(this.lblPentagonSettings);
+            this.optionsPanel.Controls.Add(this.labelSaveSlots);
+            this.optionsPanel.Controls.Add(this.labelOptions);
+            this.optionsPanel.Controls.Add(this.labelColorTheme);
+            this.optionsPanel.Controls.Add(this.pickBackgroundColor);
+            this.optionsPanel.Controls.Add(this.lblBackground);
+            this.optionsPanel.Controls.Add(this.useImage);
+            this.optionsPanel.Controls.Add(this.changeToColor);
+            this.optionsPanel.Controls.Add(this.changeBackground);
+            this.optionsPanel.Controls.Add(this.autoSaveTheme);
+            this.optionsPanel.Controls.Add(this.autoSaveSlot);
+            this.optionsPanel.Controls.Add(this.selectImage);
+            this.optionsPanel.Controls.Add(this.colorAreaBackground);
+            this.optionsPanel.Controls.Add(this.buttonResetButtonTxt);
+            this.optionsPanel.Controls.Add(this.button3);
+            this.optionsPanel.Controls.Add(this.colorAreaButtonText);
+            this.optionsPanel.Controls.Add(this.lblButtonTxt);
+            this.optionsPanel.Controls.Add(this.buttonSave2);
+            this.optionsPanel.Controls.Add(this.buttonResetSpecialTextColor);
+            this.optionsPanel.Controls.Add(this.buttonResetTextColor);
+            this.optionsPanel.Controls.Add(this.buttonResetButtonColor);
+            this.optionsPanel.Controls.Add(this.buttonPickSpecialTextColor);
+            this.optionsPanel.Controls.Add(this.colorAreaSpecialText);
+            this.optionsPanel.Controls.Add(this.lbl2ndText);
+            this.optionsPanel.Controls.Add(this.buttonPickTextColor);
+            this.optionsPanel.Controls.Add(this.buttonPickButtonColor);
+            this.optionsPanel.Controls.Add(this.colorAreaText);
+            this.optionsPanel.Controls.Add(this.lblText);
+            this.optionsPanel.Controls.Add(this.colorAreaButton);
+            this.optionsPanel.Controls.Add(this.lblButtons);
+            this.optionsPanel.Controls.Add(this.quitButton);
+            this.optionsPanel.Controls.Add(this.buttonSave3);
+            this.optionsPanel.Controls.Add(this.resetBackground);
+            this.optionsPanel.Controls.Add(this.pictureBox1);
+            this.optionsPanel.Location = new System.Drawing.Point(-1, 61);
+            this.optionsPanel.Name = "optionsPanel";
+            this.optionsPanel.Size = new System.Drawing.Size(650, 678);
+            this.optionsPanel.TabIndex = 74;
+            // 
+            // buttonOptions
+            // 
+            this.buttonOptions.BackColor = System.Drawing.Color.DarkOrange;
+            this.buttonOptions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonOptions.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonOptions.FlatAppearance.BorderSize = 0;
+            this.buttonOptions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonOptions.Font = new System.Drawing.Font("hooge 05_53", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonOptions.ForeColor = System.Drawing.Color.Black;
+            this.buttonOptions.Location = new System.Drawing.Point(-1, -2);
+            this.buttonOptions.Name = "buttonOptions";
+            this.buttonOptions.Size = new System.Drawing.Size(224, 57);
+            this.buttonOptions.TabIndex = 77;
+            this.buttonOptions.Text = "SAVE #1";
+            this.buttonOptions.UseVisualStyleBackColor = false;
+            this.buttonOptions.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // buttonAudio
+            // 
+            this.buttonAudio.BackColor = System.Drawing.Color.DarkOrange;
+            this.buttonAudio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonAudio.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonAudio.FlatAppearance.BorderSize = 0;
+            this.buttonAudio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAudio.Font = new System.Drawing.Font("hooge 05_53", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAudio.ForeColor = System.Drawing.Color.Black;
+            this.buttonAudio.Location = new System.Drawing.Point(229, -2);
+            this.buttonAudio.Name = "buttonAudio";
+            this.buttonAudio.Size = new System.Drawing.Size(203, 57);
+            this.buttonAudio.TabIndex = 75;
+            this.buttonAudio.Text = "SAVE #1";
+            this.buttonAudio.UseVisualStyleBackColor = false;
+            // 
+            // buttonSaves
+            // 
+            this.buttonSaves.BackColor = System.Drawing.Color.DarkOrange;
+            this.buttonSaves.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonSaves.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonSaves.FlatAppearance.BorderSize = 0;
+            this.buttonSaves.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSaves.Font = new System.Drawing.Font("hooge 05_53", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSaves.ForeColor = System.Drawing.Color.Black;
+            this.buttonSaves.Location = new System.Drawing.Point(438, -2);
+            this.buttonSaves.Name = "buttonSaves";
+            this.buttonSaves.Size = new System.Drawing.Size(211, 57);
+            this.buttonSaves.TabIndex = 76;
+            this.buttonSaves.Text = "SAVE #1";
+            this.buttonSaves.UseVisualStyleBackColor = false;
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(645, 679);
+            this.ClientSize = new System.Drawing.Size(645, 738);
             this.ControlBox = false;
-            this.Controls.Add(this.resetBackground);
-            this.Controls.Add(this.labelCurrentlyLoaded);
-            this.Controls.Add(this.buttonSave4);
-            this.Controls.Add(this.lblTitleSettings);
-            this.Controls.Add(this.lblPentagonSettings);
-            this.Controls.Add(this.labelSaveSlots);
-            this.Controls.Add(this.labelOptions);
-            this.Controls.Add(this.labelColorTheme);
-            this.Controls.Add(this.pickBackgroundColor);
-            this.Controls.Add(this.lblBackground);
-            this.Controls.Add(this.useImage);
-            this.Controls.Add(this.changeToColor);
-            this.Controls.Add(this.changeBackground);
-            this.Controls.Add(this.autoSaveTheme);
-            this.Controls.Add(this.autoSaveSlot);
-            this.Controls.Add(this.selectImage);
-            this.Controls.Add(this.colorAreaBackground);
-            this.Controls.Add(this.buttonResetButtonTxt);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.colorAreaButtonText);
-            this.Controls.Add(this.lblButtonTxt);
-            this.Controls.Add(this.buttonSave2);
-            this.Controls.Add(this.buttonResetSpecialTextColor);
-            this.Controls.Add(this.buttonResetTextColor);
-            this.Controls.Add(this.buttonResetButtonColor);
-            this.Controls.Add(this.buttonPickSpecialTextColor);
-            this.Controls.Add(this.colorAreaSpecialText);
-            this.Controls.Add(this.lbl2ndText);
-            this.Controls.Add(this.buttonPickTextColor);
-            this.Controls.Add(this.buttonPickButtonColor);
-            this.Controls.Add(this.colorAreaText);
-            this.Controls.Add(this.lblText);
-            this.Controls.Add(this.colorAreaButton);
-            this.Controls.Add(this.lblButtons);
-            this.Controls.Add(this.quitButton);
-            this.Controls.Add(this.buttonSave3);
-            this.Controls.Add(this.buttonSave1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.buttonOptions);
+            this.Controls.Add(this.buttonSaves);
+            this.Controls.Add(this.buttonAudio);
+            this.Controls.Add(this.optionsPanel);
+            this.ForeColor = System.Drawing.Color.Transparent;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -728,8 +795,9 @@ namespace CreditClicker
             ((System.ComponentModel.ISupportInitialize)(this.colorAreaText)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorAreaButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.optionsPanel.ResumeLayout(false);
+            this.optionsPanel.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -779,5 +847,9 @@ namespace CreditClicker
         private System.Windows.Forms.Button buttonSave4;
         private System.Windows.Forms.Label labelCurrentlyLoaded;
         private System.Windows.Forms.Button resetBackground;
+        private System.Windows.Forms.Panel optionsPanel;
+        private System.Windows.Forms.Button buttonAudio;
+        private System.Windows.Forms.Button buttonSaves;
+        private System.Windows.Forms.Button buttonOptions;
     }
 }

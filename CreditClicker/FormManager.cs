@@ -90,25 +90,55 @@ namespace CreditClicker
         {
             foreach(Form form in formList)
             {
-                foreach (Control c in form.Controls)
+                if (form.Name == "Settings")
                 {
-                    //Falls das Form Panel beinhaltet
-                    if (c.GetType() == typeof(Panel))
+                    foreach (Control c in form.Controls)
                     {
-                        foreach (Panel p in form.Controls)
+                        //Falls das Form Panel beinhaltet
+                        if (c.GetType() == typeof(Panel))
                         {
-                            foreach (Control control in p.Controls)
+
+                            List<Control> panelList = new List<Control>();
+                            foreach (Control con in form.Controls)
                             {
-                                if (control.GetType() == typeof(Button))
+                                if (con.GetType() != typeof(Button)) panelList.Add(con);
+                            }
+                            foreach (Panel p in panelList)
+                            {
+                                foreach (Control control in p.Controls)
                                 {
-                                    control.BackColor = color;
+                                    if (control.GetType() == typeof(Button))
+                                    {
+                                        control.BackColor = color;
+                                    }
                                 }
                             }
                         }
+                        else if (c.GetType() == typeof(Button))
+                        {
+                            c.BackColor = color;
+                        }
                     }
-                    else if (c.GetType() == typeof(Button))
+                }else
+                {
+                    foreach (Control c in form.Controls)
                     {
-                        c.BackColor = color;
+                        if (c.GetType() == typeof(Panel)) { 
+                            foreach(Panel p in form.Controls)
+                            {
+                                foreach(Control control in p.Controls)
+                                {
+                                    if (control.GetType() == typeof(Button))
+                                    {
+                                        control.BackColor = color;
+                                    }
+                                }
+                            }
+                        }
+                        else if (c.GetType() == typeof(Button))
+                        {
+                            c.BackColor = color;
+                        }
                     }
                 }
             }
@@ -119,27 +149,58 @@ namespace CreditClicker
         {
             foreach(Form form in formList)
             {
-                foreach (Control c in form.Controls)
+                if (form.Name == "Settings")
                 {
-                    //Falls das Form Panel beinhaltet
-                    if (c.GetType() == typeof(Panel))
+                    foreach (Control c in form.Controls)
                     {
-                        foreach (Panel p in form.Controls)
+                        //Falls das Form Panel beinhaltet
+                        if (c.GetType() == typeof(Panel))
                         {
-                            foreach (Control control in p.Controls)
+
+                            List<Control> panelList = new List<Control>();
+                            foreach (Control con in form.Controls)
                             {
-                                if (control.GetType() == typeof(Button) && !control.Text.StartsWith("$"))
+                                if (con.GetType() != typeof(Button)) panelList.Add(con);
+                            }
+                            foreach (Panel p in panelList)
+                            {
+                                foreach (Control control in p.Controls)
                                 {
-                                    control.ForeColor = color;
+                                    if (control.GetType() == typeof(Button) && !control.Text.StartsWith("$"))
+                                    {
+                                        control.ForeColor = color;
+                                    }
                                 }
                             }
                         }
+                        else if (c.GetType() == typeof(Button) && !c.Text.StartsWith("$"))
+                        {
+                            c.ForeColor = color;
+                        }
                     }
-                    else if (c.GetType() == typeof(Button) && !c.Text.StartsWith("$"))
+                }
+                else
+                {
+                    foreach (Control c in form.Controls)
                     {
-                        c.ForeColor = color;
+                        if (c.GetType() == typeof(Panel))
+                        {
+                            foreach (Panel p in form.Controls)
+                            {
+                                foreach (Control control in p.Controls)
+                                {
+                                    if (control.GetType() == typeof(Button) && !control.Text.StartsWith("$"))
+                                    {
+                                        control.ForeColor = color;
+                                    }
+                                }
+                            }
+                        }
+                        else if (c.GetType() == typeof(Button) && !c.Text.StartsWith("$"))
+                        {
+                            c.ForeColor = color;
+                        }
                     }
-
                 }
             }
             currentButtonTextColor = color;
@@ -149,29 +210,68 @@ namespace CreditClicker
         {
             foreach(Form form in formList)
             {
-                foreach (Control c in form.Controls)
+                if (form.Name == "Settings")
                 {
-                    if (c.GetType() == typeof(Panel))
+                    foreach (Control c in form.Controls)
                     {
-                        foreach (Panel p in form.Controls)
+                        //Falls das Form Panel beinhaltet
+                        if (c.GetType() == typeof(Panel))
                         {
-                            foreach (Control control in p.Controls)
+
+                            List<Control> panelList = new List<Control>();
+                            foreach (Control con in form.Controls)
                             {
-                                if (control.GetType() == typeof(Label) ||  control.GetType() == typeof(CheckBox))
+                                if (con.GetType() != typeof(Button)) panelList.Add(con);
+                            }
+                            foreach (Panel p in panelList)
+                            {
+                                foreach (Control control in p.Controls)
                                 {
-                                    if (control.ForeColor == currentCommonTextColor)
+                                    if (control.GetType() == typeof(Label) || control.GetType() == typeof(CheckBox))
                                     {
-                                        control.ForeColor = color;
-                                    } 
+                                        if (control.ForeColor == currentCommonTextColor)
+                                        {
+                                            control.ForeColor = color;
+                                        }
+                                    }
                                 }
                             }
                         }
-                    }
-                    else if (c.GetType() == typeof(Label) || c.GetType() == typeof(CheckBox))
-                    {
-                        if (c.ForeColor == currentCommonTextColor)
+                        else if (c.GetType() == typeof(Label) || c.GetType() == typeof(CheckBox))
                         {
-                            c.ForeColor = color;
+                            if (c.ForeColor == currentCommonTextColor)
+                            {
+                                c.ForeColor = color;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (Control c in form.Controls)
+                    {
+                        if (c.GetType() == typeof(Panel))
+                        {
+                            foreach (Panel p in form.Controls)
+                            {
+                                foreach (Control control in p.Controls)
+                                {
+                                    if (control.GetType() == typeof(Label) || control.GetType() == typeof(CheckBox))
+                                    {
+                                        if (control.ForeColor == currentCommonTextColor)
+                                        {
+                                            control.ForeColor = color;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else if (c.GetType() == typeof(Label) || c.GetType() == typeof(CheckBox))
+                        {
+                            if (c.ForeColor == currentCommonTextColor)
+                            {
+                                c.ForeColor = color;
+                            }
                         }
                     }
                 }
@@ -183,24 +283,60 @@ namespace CreditClicker
         {
             foreach(Form form in formList)
             {
-                foreach (Control c in form.Controls)
+                if (form.Name == "Settings")
                 {
-                    if (c.GetType() == typeof(Panel))
+                    foreach (Control c in form.Controls)
                     {
-                        foreach (Panel p in form.Controls)
+                        //Falls das Form Panel beinhaltet
+                        if (c.GetType() == typeof(Panel))
                         {
-                            foreach (Control control in p.Controls)
+
+                            List<Control> panelList = new List<Control>();
+                            foreach (Control con in form.Controls)
                             {
-                                if (control.GetType() == typeof(Label) && control.ForeColor == currentSpecialTextColor)
+                                if (con.GetType() != typeof(Button)) panelList.Add(con);
+                            }
+                            foreach (Panel p in panelList)
+                            {
+                                foreach (Control control in p.Controls)
                                 {
-                                    control.ForeColor = color;
+                                    if (control.GetType() == typeof(Label) && control.ForeColor == currentSpecialTextColor)
+                                    {
+                                        control.ForeColor = color;
+                                    }
                                 }
                             }
                         }
+                        else if (c.GetType() == typeof(Label) && c.ForeColor == currentSpecialTextColor)
+                        {
+                            c.ForeColor = color;
+                        }
                     }
-                    else if (c.GetType() == typeof(Label) && c.ForeColor == currentSpecialTextColor)
+                }
+                else
+                {
+                    foreach (Control c in form.Controls)
                     {
-                        c.ForeColor = color;
+                        if (c.GetType() == typeof(Panel))
+                        {
+                            foreach (Panel p in form.Controls)
+                            {
+                                foreach (Control control in p.Controls)
+                                {
+                                    if (control.GetType() == typeof(Label) || control.GetType() == typeof(CheckBox))
+                                    {
+                                        if (control.GetType() == typeof(Label) && control.ForeColor == currentSpecialTextColor)
+                                        {
+                                            control.ForeColor = color;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else if (c.GetType() == typeof(Label) && c.ForeColor == currentSpecialTextColor)
+                        {
+                            c.ForeColor = color;
+                        }
                     }
                 }
             }
@@ -211,28 +347,65 @@ namespace CreditClicker
         {
             foreach(Form form in formList)
             {
-                foreach(Control c in form.Controls)
+                if (form.Name == "Settings")
                 {
-                    if (c.GetType() == typeof(Panel))
+                    foreach (Control c in form.Controls)
                     {
-                        foreach (Panel p in form.Controls)
+                        //Falls das Form Panel beinhaltet
+                        if (c.GetType() == typeof(Panel))
                         {
-                            foreach (Control control in p.Controls)
+
+                            List<Control> panelList = new List<Control>();
+                            foreach (Control con in form.Controls)
                             {
-                                if (control.GetType() == typeof(PictureBox) && !control.Name.Contains("Area"))
+                                if (con.GetType() != typeof(Button)) panelList.Add(con);
+                            }
+                            foreach (Panel p in panelList)
+                            {
+                                foreach (Control control in p.Controls)
                                 {
-                                    control.Visible = false;
-                                    form.BackgroundImage = null;
-                                    form.BackColor = color;
+                                    if (control.GetType() == typeof(PictureBox) && !control.Name.Contains("Area"))
+                                    {
+                                        control.Visible = false;
+                                        form.BackgroundImage = null;
+                                        form.BackColor = color;
+                                    }
                                 }
                             }
                         }
+                        else if (c.GetType() == typeof(PictureBox) && !c.Name.Contains("Area"))
+                        {
+                            c.Visible = false;
+                            form.BackgroundImage = null;
+                            form.BackColor = color;
+                        }
                     }
-                    else if (c.GetType() == typeof(PictureBox) && !c.Name.Contains("Area"))
+                }
+                else
+                {
+                    foreach (Control c in form.Controls)
                     {
-                        c.Visible = false;
-                        form.BackgroundImage = null;
-                        form.BackColor = color;
+                        if (c.GetType() == typeof(Panel))
+                        {
+                            foreach (Panel p in form.Controls)
+                            {
+                                foreach (Control control in p.Controls)
+                                {
+                                    if (control.GetType() == typeof(PictureBox) && !control.Name.Contains("Area"))
+                                    {
+                                        control.Visible = false;
+                                        form.BackgroundImage = null;
+                                        form.BackColor = color;
+                                    }
+                                }
+                            }
+                        }
+                        else if (c.GetType() == typeof(PictureBox) && !c.Name.Contains("Area"))
+                        {
+                            c.Visible = false;
+                            form.BackgroundImage = null;
+                            form.BackColor = color;
+                        }
                     }
                 }
             }
@@ -243,34 +416,71 @@ namespace CreditClicker
         {
             foreach (Form form in formList)
             {
-                foreach (Control c in form.Controls)
+                if (form.Name == "Settings")
                 {
-                    if (c.GetType() == typeof(Panel))
+                    foreach (Control c in form.Controls)
                     {
-                        foreach (Panel p in form.Controls)
+                        if (c.GetType() == typeof(Panel))
                         {
-                            foreach (Control control in p.Controls)
+                            List<Control> panelList = new List<Control>();
+                            foreach (Control con in form.Controls)
                             {
-                                
-                                if (control.GetType() == typeof(PictureBox) && !control.Name.Contains("Area") && !control.Name.StartsWith("icon"))
+                                if (con.GetType() != typeof(Button)) panelList.Add(con);
+                            }
+                                foreach (Control control in panelList)
                                 {
-                                    control.Visible = false;
-                                    Console.WriteLine(image);
-                                    form.BackgroundImage = Image.FromFile(image);
-                                    form.BackColor = Color.Black;
+
+                                    if (control.GetType() == typeof(PictureBox) && !control.Name.Contains("Area") && !control.Name.StartsWith("icon"))
+                                    {
+                                        control.Visible = false;
+                                        Console.WriteLine(image);
+                                        form.BackgroundImage = Image.FromFile(image);
+                                        form.BackColor = Color.Black;
+                                    }
+                                }
+                        }
+                        else
+                        {
+                            if (c.GetType() == typeof(PictureBox) && !c.Name.Contains("Area") && !c.Name.StartsWith("icon"))
+                            {
+                                c.Visible = false;
+                                form.BackgroundImage = Image.FromFile(image);
+                                form.BackColor = Color.Black;
+                            }
+
+                        }
+                    }
+                }else
+                {
+                    foreach (Control c in form.Controls)
+                    {
+                        if (c.GetType() == typeof(Panel))
+                        {
+                            foreach (Panel p in form.Controls)
+                            {
+                                foreach (Control control in p.Controls)
+                                {
+
+                                    if (control.GetType() == typeof(PictureBox) && !control.Name.Contains("Area") && !control.Name.StartsWith("icon"))
+                                    {
+                                        control.Visible = false;
+                                        Console.WriteLine(image);
+                                        form.BackgroundImage = Image.FromFile(image);
+                                        form.BackColor = Color.Black;
+                                    }
                                 }
                             }
                         }
-                    }
-                    else 
-                    {
-                        if (c.GetType() == typeof(PictureBox) && !c.Name.Contains("Area") && !c.Name.StartsWith("icon"))
+                        else
                         {
-                            c.Visible = false;
-                            form.BackgroundImage = Image.FromFile(image);
-                            form.BackColor = Color.Black;
+                            if (c.GetType() == typeof(PictureBox) && !c.Name.Contains("Area") && !c.Name.StartsWith("icon"))
+                            {
+                                c.Visible = false;
+                                form.BackgroundImage = Image.FromFile(image);
+                                form.BackColor = Color.Black;
+                            }
+
                         }
-                        
                     }
                 }
                 currentBackgroundImage = image;
@@ -281,38 +491,72 @@ namespace CreditClicker
         {
             foreach (Form form in formList)
             {
-                foreach (Control c in form.Controls)
+                if (form.Name == "Settings")
                 {
-                    if (c.GetType() == typeof(Panel))
+                    foreach (Control c in form.Controls)
                     {
-                        foreach (Panel p in form.Controls)
+                        if (c.GetType() == typeof(Panel))
                         {
-                            foreach (Control control in p.Controls)
+                            List<Control> panelList = new List<Control>();
+                            foreach (Control con in form.Controls)
                             {
-
-                                if (control.GetType() == typeof(PictureBox) && !control.Name.Contains("Area") && !control.Name.StartsWith("icon"))
+                                if (con.GetType() != typeof(Button)) panelList.Add(con);
+                            }
+                                foreach (Control control in panelList)
                                 {
-                                    control.Visible = true;
-                                    form.BackgroundImage = DEFAULT_IMAGE;
-                                    form.BackColor = Color.Black;
+                                    if (control.GetType() == typeof(PictureBox) && !control.Name.Contains("Area") && !control.Name.StartsWith("icon"))
+                                    {
+                                        control.Visible = true;
+                                        form.BackgroundImage = DEFAULT_IMAGE;
+                                        form.BackColor = Color.Black;
+                                    }
+                                }
+                        }
+                        else
+                        {
+                            if (c.GetType() == typeof(PictureBox) && !c.Name.Contains("Area") && !c.Name.StartsWith("icon"))
+                            {
+                                c.Visible = true;
+                                form.BackgroundImage = DEFAULT_IMAGE;
+                                form.BackColor = Color.Black;
+                            }
+
+                        }
+                    }
+                }else
+                {
+                    foreach (Control c in form.Controls)
+                    {
+                        if (c.GetType() == typeof(Panel))
+                        {
+                            foreach (Panel p in form.Controls)
+                            {
+                                foreach (Control control in p.Controls)
+                                {
+
+                                    if (control.GetType() == typeof(PictureBox) && !control.Name.Contains("Area") && !control.Name.StartsWith("icon"))
+                                    {
+                                        control.Visible = true;
+                                        form.BackgroundImage = DEFAULT_IMAGE;
+                                        form.BackColor = Color.Black;
+                                    }
                                 }
                             }
                         }
-                    }
-                    else
-                    {
-                        if (c.GetType() == typeof(PictureBox) && !c.Name.Contains("Area") && !c.Name.StartsWith("icon"))
+                        else
                         {
-                            c.Visible = true;
-                            form.BackgroundImage = DEFAULT_IMAGE;
-                            form.BackColor = Color.Black;
-                        }
+                            if (c.GetType() == typeof(PictureBox) && !c.Name.Contains("Area") && !c.Name.StartsWith("icon"))
+                            {
+                                c.Visible = true;
+                                form.BackgroundImage = DEFAULT_IMAGE;
+                                form.BackColor = Color.Black;
+                            }
 
+                        }
                     }
                 }
             }
         }
-
     }
 
   

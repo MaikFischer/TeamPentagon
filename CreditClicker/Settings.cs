@@ -750,9 +750,40 @@ namespace CreditClicker
             FormManager.resetBackgroundImage();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonOptions_Click(object sender, EventArgs e)
         {
+            optionsPanel.Visible = true;
+            themePanel.Visible = false;
+            savesPanel.Visible = false;
+        }
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            savesPanel.Visible = true;
+            themePanel.Visible = false;
+            optionsPanel.Visible = false;
+        }
 
+        private void buttonTheme_Click(object sender, EventArgs e)
+        {
+            themePanel.Visible = true;
+            savesPanel.Visible = false;
+            optionsPanel.Visible = false;
+        }
+
+        private void quitButtonTheme_Click(object sender, EventArgs e)
+        {
+            game.playButtonSound();
+            FormManager.initAllColors();
+            this.Hide();
+            game.Show();
+        }
+
+        private void quitButtonSave_Click(object sender, EventArgs e)
+        {
+            game.playButtonSound();
+            FormManager.initAllColors();
+            this.Hide();
+            game.Show();
         }
     }  
 }

@@ -79,6 +79,7 @@ namespace CreditClicker
                 useImage.Checked = false;
                 useImageEnabled = false;
             }
+            this.textBox1.Text = trackBar1.Value * 2 + "%";
         }
 
         private void quitButton_Click(object sender, EventArgs e)
@@ -91,11 +92,11 @@ namespace CreditClicker
 
         private void Settings_Shown(object sender, EventArgs e)
         {
-            FormManager.initAllColors();
+            /*FormManager.initAllColors();
             this.colorAreaButton.BackColor = FormManager.currentButtonColor;
             this.colorAreaButtonText.BackColor = FormManager.currentButtonTextColor;
             this.colorAreaText.BackColor = FormManager.currentCommonTextColor;
-            this.colorAreaSpecialText.BackColor = FormManager.currentSpecialTextColor;
+            this.colorAreaSpecialText.BackColor = FormManager.currentSpecialTextColor;*/
         }
 
         private void buttonPickTextColor_Click(object sender, EventArgs e)
@@ -168,7 +169,6 @@ namespace CreditClicker
             {
                 changeToColor.Checked = false;
                 changeToColor.Visible = false; 
-                lblBackground.Visible = false;
                 colorAreaBackground.Visible = false;
                 pickBackgroundColor.Visible = false;
                 useImage.Checked = false;
@@ -189,7 +189,6 @@ namespace CreditClicker
                 useImage.Checked = false;
                 useImageEnabled = false;
                 selectImage.Visible = false;
-                lblBackground.Visible = true;
                 colorAreaBackground.Visible = true;
                 pickBackgroundColor.Visible = true;
                 changeToColorEnabled = true;
@@ -198,7 +197,6 @@ namespace CreditClicker
             }
             else
             {
-                lblBackground.Visible = false;
                 colorAreaBackground.Visible = false;
                 pickBackgroundColor.Visible = false;
                 SavesManager.AddUpdateAppSettings("changetocolor", "False");
@@ -211,7 +209,6 @@ namespace CreditClicker
             {
                 changeToColor.Checked = false;
                 changeToColorEnabled = false;
-                lblBackground.Visible = false;
                 colorAreaBackground.Visible = false;
                 pickBackgroundColor.Visible = false;
                 selectImage.Visible = true;
@@ -752,22 +749,34 @@ namespace CreditClicker
 
         private void buttonOptions_Click(object sender, EventArgs e)
         {
-            optionsPanel.Visible = true;
-            themePanel.Visible = false;
-            savesPanel.Visible = false;
+            if (!optionsPanel.Visible)
+            {
+                game.playButtonSound();
+                optionsPanel.Visible = true;
+                themePanel.Visible = false;
+                savesPanel.Visible = false;
+            }
         }
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            savesPanel.Visible = true;
-            themePanel.Visible = false;
-            optionsPanel.Visible = false;
+            if (!savesPanel.Visible)
+            {
+                game.playButtonSound();
+                savesPanel.Visible = true;
+                themePanel.Visible = false;
+                optionsPanel.Visible = false;
+            }
         }
 
         private void buttonTheme_Click(object sender, EventArgs e)
-        {
-            themePanel.Visible = true;
-            savesPanel.Visible = false;
-            optionsPanel.Visible = false;
+        { 
+            if (!themePanel.Visible)
+            {
+                game.playButtonSound();
+                themePanel.Visible = true;
+                savesPanel.Visible = false;
+                optionsPanel.Visible = false;
+            }
         }
 
         private void quitButtonTheme_Click(object sender, EventArgs e)
@@ -784,6 +793,63 @@ namespace CreditClicker
             FormManager.initAllColors();
             this.Hide();
             game.Show();
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            game.getMediaPlayer().settings.volume = trackBar1.Value;
+            textBox1.Text = trackBar1.Value * 2 + "%";
+        }
+
+        private int getVolumeFromBox()
+        {
+            return Convert.ToInt32(textBox1.Text);
+        }
+
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                if (textBox1.Text != "")
+                {
+                    if (getVolumeFromBox() < 100)
+                    {
+                        trackBar1.Value = getVolumeFromBox() / 2;
+                        game.getMediaPlayer().settings.volume = getVolumeFromBox() / 2;
+                        textBox1.Text = getVolumeFromBox() + "%";
+                        optionsPanel.Focus();
+                    }
+                    else
+                    {
+                        trackBar1.Value = 50;
+                        game.getMediaPlayer().settings.volume = 50;
+                        textBox1.Text = 100 + "%";
+                        optionsPanel.Focus();
+                    }
+                   
+                }else
+                {
+                    textBox1.Text = trackBar1.Value * 2 + "%";
+                    optionsPanel.Focus();
+                }
+            }
+            else if(e.KeyChar == Convert.ToChar(Keys.Back))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = !char.IsDigit(e.KeyChar);
+            }
+        }
+
+        private void textBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                if (textBox1.Focused) textBox1.Text = "";
+            }
         }
     }  
 }

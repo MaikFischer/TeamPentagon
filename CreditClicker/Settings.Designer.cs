@@ -32,12 +32,10 @@ namespace CreditClicker
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
             this.buttonSave1 = new System.Windows.Forms.Button();
-            this.lblTitleSettings = new System.Windows.Forms.Label();
             this.labelSaveSlots = new System.Windows.Forms.Label();
             this.buttonSave2 = new System.Windows.Forms.Button();
             this.buttonSave3 = new System.Windows.Forms.Button();
             this.quitButtonOptions = new System.Windows.Forms.Button();
-            this.labelOptions = new System.Windows.Forms.Label();
             this.autoSaveSlot = new System.Windows.Forms.CheckBox();
             this.labelColorTheme = new System.Windows.Forms.Label();
             this.lblPentagonSettings = new System.Windows.Forms.Label();
@@ -75,12 +73,20 @@ namespace CreditClicker
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.resetBackground = new System.Windows.Forms.Button();
             this.optionsPanel = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.savesPanel = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.quitButtonSave = new System.Windows.Forms.Button();
             this.lblPentagonSaves = new System.Windows.Forms.Label();
             this.themePanel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelBackground = new System.Windows.Forms.Label();
             this.lblPentagonTheme = new System.Windows.Forms.Label();
             this.quitButtonTheme = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -94,7 +100,9 @@ namespace CreditClicker
             ((System.ComponentModel.ISupportInitialize)(this.colorAreaButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.optionsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.savesPanel.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.themePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -109,7 +117,7 @@ namespace CreditClicker
             this.buttonSave1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave1.Font = new System.Drawing.Font("hooge 05_53", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave1.ForeColor = System.Drawing.Color.Black;
-            this.buttonSave1.Location = new System.Drawing.Point(383, 159);
+            this.buttonSave1.Location = new System.Drawing.Point(70, 118);
             this.buttonSave1.Name = "buttonSave1";
             this.buttonSave1.Size = new System.Drawing.Size(191, 57);
             this.buttonSave1.TabIndex = 9;
@@ -117,25 +125,13 @@ namespace CreditClicker
             this.buttonSave1.UseVisualStyleBackColor = false;
             this.buttonSave1.Click += new System.EventHandler(this.buttonSave1_Click);
             // 
-            // lblTitleSettings
-            // 
-            this.lblTitleSettings.AutoSize = true;
-            this.lblTitleSettings.BackColor = System.Drawing.Color.Transparent;
-            this.lblTitleSettings.Font = new System.Drawing.Font("hooge 05_55", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitleSettings.ForeColor = System.Drawing.Color.DarkOrange;
-            this.lblTitleSettings.Location = new System.Drawing.Point(251, 19);
-            this.lblTitleSettings.Name = "lblTitleSettings";
-            this.lblTitleSettings.Size = new System.Drawing.Size(142, 36);
-            this.lblTitleSettings.TabIndex = 13;
-            this.lblTitleSettings.Text = "Settings";
-            // 
             // labelSaveSlots
             // 
             this.labelSaveSlots.AutoSize = true;
             this.labelSaveSlots.BackColor = System.Drawing.Color.Transparent;
             this.labelSaveSlots.Font = new System.Drawing.Font("hooge 05_55", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSaveSlots.ForeColor = System.Drawing.Color.DarkOrange;
-            this.labelSaveSlots.Location = new System.Drawing.Point(385, 80);
+            this.labelSaveSlots.Location = new System.Drawing.Point(236, 19);
             this.labelSaveSlots.Name = "labelSaveSlots";
             this.labelSaveSlots.Size = new System.Drawing.Size(189, 36);
             this.labelSaveSlots.TabIndex = 11;
@@ -150,7 +146,7 @@ namespace CreditClicker
             this.buttonSave2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave2.Font = new System.Drawing.Font("hooge 05_53", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave2.ForeColor = System.Drawing.Color.Black;
-            this.buttonSave2.Location = new System.Drawing.Point(383, 253);
+            this.buttonSave2.Location = new System.Drawing.Point(377, 119);
             this.buttonSave2.Name = "buttonSave2";
             this.buttonSave2.Size = new System.Drawing.Size(191, 54);
             this.buttonSave2.TabIndex = 12;
@@ -167,7 +163,7 @@ namespace CreditClicker
             this.buttonSave3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave3.Font = new System.Drawing.Font("hooge 05_53", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave3.ForeColor = System.Drawing.Color.Black;
-            this.buttonSave3.Location = new System.Drawing.Point(383, 355);
+            this.buttonSave3.Location = new System.Drawing.Point(70, 404);
             this.buttonSave3.Name = "buttonSave3";
             this.buttonSave3.Size = new System.Drawing.Size(191, 54);
             this.buttonSave3.TabIndex = 13;
@@ -182,7 +178,7 @@ namespace CreditClicker
             this.quitButtonOptions.Cursor = System.Windows.Forms.Cursors.Hand;
             this.quitButtonOptions.FlatAppearance.BorderSize = 0;
             this.quitButtonOptions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.quitButtonOptions.Font = new System.Drawing.Font("hooge 05_55", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quitButtonOptions.Font = new System.Drawing.Font("hooge 05_53", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.quitButtonOptions.ForeColor = System.Drawing.Color.Black;
             this.quitButtonOptions.Location = new System.Drawing.Point(222, 584);
             this.quitButtonOptions.Name = "quitButtonOptions";
@@ -192,18 +188,6 @@ namespace CreditClicker
             this.quitButtonOptions.UseVisualStyleBackColor = false;
             this.quitButtonOptions.Click += new System.EventHandler(this.quitButton_Click);
             // 
-            // labelOptions
-            // 
-            this.labelOptions.AutoSize = true;
-            this.labelOptions.BackColor = System.Drawing.Color.Transparent;
-            this.labelOptions.Font = new System.Drawing.Font("hooge 05_55", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelOptions.ForeColor = System.Drawing.Color.DarkOrange;
-            this.labelOptions.Location = new System.Drawing.Point(120, 80);
-            this.labelOptions.Name = "labelOptions";
-            this.labelOptions.Size = new System.Drawing.Size(134, 36);
-            this.labelOptions.TabIndex = 38;
-            this.labelOptions.Text = "Options:";
-            // 
             // autoSaveSlot
             // 
             this.autoSaveSlot.AutoSize = true;
@@ -212,7 +196,7 @@ namespace CreditClicker
             this.autoSaveSlot.CheckState = System.Windows.Forms.CheckState.Checked;
             this.autoSaveSlot.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoSaveSlot.ForeColor = System.Drawing.Color.DarkOrange;
-            this.autoSaveSlot.Location = new System.Drawing.Point(69, 145);
+            this.autoSaveSlot.Location = new System.Drawing.Point(270, 504);
             this.autoSaveSlot.Name = "autoSaveSlot";
             this.autoSaveSlot.Size = new System.Drawing.Size(101, 27);
             this.autoSaveSlot.TabIndex = 39;
@@ -420,7 +404,7 @@ namespace CreditClicker
             this.useImage.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.useImage.ForeColor = System.Drawing.Color.DarkOrange;
             this.useImage.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.useImage.Location = new System.Drawing.Point(393, 185);
+            this.useImage.Location = new System.Drawing.Point(452, 180);
             this.useImage.Name = "useImage";
             this.useImage.Size = new System.Drawing.Size(116, 32);
             this.useImage.TabIndex = 61;
@@ -555,7 +539,7 @@ namespace CreditClicker
             this.selectImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.selectImage.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selectImage.ForeColor = System.Drawing.Color.Black;
-            this.selectImage.Location = new System.Drawing.Point(392, 238);
+            this.selectImage.Location = new System.Drawing.Point(438, 238);
             this.selectImage.Name = "selectImage";
             this.selectImage.Size = new System.Drawing.Size(148, 35);
             this.selectImage.TabIndex = 70;
@@ -573,7 +557,7 @@ namespace CreditClicker
             this.buttonSave4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave4.Font = new System.Drawing.Font("hooge 05_53", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave4.ForeColor = System.Drawing.Color.Black;
-            this.buttonSave4.Location = new System.Drawing.Point(383, 453);
+            this.buttonSave4.Location = new System.Drawing.Point(377, 404);
             this.buttonSave4.Name = "buttonSave4";
             this.buttonSave4.Size = new System.Drawing.Size(191, 54);
             this.buttonSave4.TabIndex = 71;
@@ -663,7 +647,7 @@ namespace CreditClicker
             this.resetBackground.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.resetBackground.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resetBackground.ForeColor = System.Drawing.Color.Black;
-            this.resetBackground.Location = new System.Drawing.Point(485, 290);
+            this.resetBackground.Location = new System.Drawing.Point(438, 286);
             this.resetBackground.Name = "resetBackground";
             this.resetBackground.Size = new System.Drawing.Size(148, 21);
             this.resetBackground.TabIndex = 73;
@@ -675,9 +659,11 @@ namespace CreditClicker
             // optionsPanel
             // 
             this.optionsPanel.BackColor = System.Drawing.Color.Black;
-            this.optionsPanel.Controls.Add(this.lblTitleSettings);
+            this.optionsPanel.Controls.Add(this.textBox1);
+            this.optionsPanel.Controls.Add(this.trackBar1);
+            this.optionsPanel.Controls.Add(this.label4);
+            this.optionsPanel.Controls.Add(this.label3);
             this.optionsPanel.Controls.Add(this.lblPentagonSettings);
-            this.optionsPanel.Controls.Add(this.labelOptions);
             this.optionsPanel.Controls.Add(this.quitButtonOptions);
             this.optionsPanel.Controls.Add(this.pictureBox1);
             this.optionsPanel.Location = new System.Drawing.Point(0, 60);
@@ -685,9 +671,62 @@ namespace CreditClicker
             this.optionsPanel.Size = new System.Drawing.Size(650, 678);
             this.optionsPanel.TabIndex = 74;
             // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.Black;
+            this.textBox1.CausesValidation = false;
+            this.textBox1.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.White;
+            this.textBox1.Location = new System.Drawing.Point(520, 177);
+            this.textBox1.MaxLength = 4;
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(66, 39);
+            this.textBox1.TabIndex = 43;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.textBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseDown);
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(246, 185);
+            this.trackBar1.Maximum = 50;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(268, 45);
+            this.trackBar1.TabIndex = 42;
+            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar1.Value = 25;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(37, 177);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(149, 34);
+            this.label4.TabIndex = 40;
+            this.label4.Text = "Music Volume";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("hooge 05_55", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label3.Location = new System.Drawing.Point(12, 48);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(126, 44);
+            this.label3.TabIndex = 39;
+            this.label3.Text = "Audio:";
+            // 
             // savesPanel
             // 
             this.savesPanel.BackColor = System.Drawing.Color.Black;
+            this.savesPanel.Controls.Add(this.label1);
+            this.savesPanel.Controls.Add(this.button1);
+            this.savesPanel.Controls.Add(this.groupBox1);
             this.savesPanel.Controls.Add(this.buttonSave1);
             this.savesPanel.Controls.Add(this.buttonSave2);
             this.savesPanel.Controls.Add(this.buttonSave3);
@@ -703,6 +742,58 @@ namespace CreditClicker
             this.savesPanel.Size = new System.Drawing.Size(650, 678);
             this.savesPanel.TabIndex = 78;
             this.savesPanel.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("hooge 05_55", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.label1.Location = new System.Drawing.Point(267, 656);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(112, 14);
+            this.label1.TabIndex = 79;
+            this.label1.Text = "by Team Pentagon";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.DarkOrange;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("hooge 05_53", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(222, 584);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(191, 54);
+            this.button1.TabIndex = 78;
+            this.button1.Text = "Close";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox1.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.SlateBlue;
+            this.groupBox1.Location = new System.Drawing.Point(70, 173);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(191, 100);
+            this.groupBox1.TabIndex = 77;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Score";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(62, 42);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 23);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "<empty>";
             // 
             // pictureBox2
             // 
@@ -749,7 +840,7 @@ namespace CreditClicker
             // 
             this.themePanel.BackColor = System.Drawing.Color.Black;
             this.themePanel.Controls.Add(this.pickBackgroundColor);
-            this.themePanel.Controls.Add(this.label1);
+            this.themePanel.Controls.Add(this.labelBackground);
             this.themePanel.Controls.Add(this.lblPentagonTheme);
             this.themePanel.Controls.Add(this.quitButtonTheme);
             this.themePanel.Controls.Add(this.labelColorTheme);
@@ -783,17 +874,17 @@ namespace CreditClicker
             this.themePanel.TabIndex = 79;
             this.themePanel.Visible = false;
             // 
-            // label1
+            // labelBackground
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("hooge 05_55", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label1.Location = new System.Drawing.Point(384, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(249, 44);
-            this.label1.TabIndex = 79;
-            this.label1.Text = "background:";
+            this.labelBackground.AutoSize = true;
+            this.labelBackground.BackColor = System.Drawing.Color.Transparent;
+            this.labelBackground.Font = new System.Drawing.Font("hooge 05_55", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBackground.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelBackground.Location = new System.Drawing.Point(384, 33);
+            this.labelBackground.Name = "labelBackground";
+            this.labelBackground.Size = new System.Drawing.Size(249, 44);
+            this.labelBackground.TabIndex = 79;
+            this.labelBackground.Text = "background:";
             // 
             // lblPentagonTheme
             // 
@@ -814,7 +905,7 @@ namespace CreditClicker
             this.quitButtonTheme.Cursor = System.Windows.Forms.Cursors.Hand;
             this.quitButtonTheme.FlatAppearance.BorderSize = 0;
             this.quitButtonTheme.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.quitButtonTheme.Font = new System.Drawing.Font("hooge 05_55", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quitButtonTheme.Font = new System.Drawing.Font("hooge 05_53", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.quitButtonTheme.ForeColor = System.Drawing.Color.Black;
             this.quitButtonTheme.Location = new System.Drawing.Point(222, 584);
             this.quitButtonTheme.Name = "quitButtonTheme";
@@ -895,12 +986,12 @@ namespace CreditClicker
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(645, 738);
             this.ControlBox = false;
+            this.Controls.Add(this.optionsPanel);
+            this.Controls.Add(this.savesPanel);
+            this.Controls.Add(this.themePanel);
             this.Controls.Add(this.buttonOptions);
             this.Controls.Add(this.buttonTheme);
             this.Controls.Add(this.buttonSave);
-            this.Controls.Add(this.themePanel);
-            this.Controls.Add(this.optionsPanel);
-            this.Controls.Add(this.savesPanel);
             this.ForeColor = System.Drawing.Color.Transparent;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -917,8 +1008,11 @@ namespace CreditClicker
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.optionsPanel.ResumeLayout(false);
             this.optionsPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.savesPanel.ResumeLayout(false);
             this.savesPanel.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.themePanel.ResumeLayout(false);
             this.themePanel.PerformLayout();
@@ -930,14 +1024,12 @@ namespace CreditClicker
         #endregion
 
         private System.Windows.Forms.Button buttonSave1;
-        private System.Windows.Forms.Label lblTitleSettings;
         private System.Windows.Forms.Label labelSaveSlots;
         private System.Windows.Forms.Button buttonSave2;
         private System.Windows.Forms.Button buttonSave3;
         private System.Windows.Forms.Label lblPentagonSettings;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button quitButtonOptions;
-        private System.Windows.Forms.Label labelOptions;
         private System.Windows.Forms.CheckBox autoSaveSlot;
         private System.Windows.Forms.Label labelColorTheme;
         private System.Windows.Forms.Label lblButtons;
@@ -984,6 +1076,14 @@ namespace CreditClicker
         private System.Windows.Forms.Button quitButtonSave;
         private System.Windows.Forms.Label lblPentagonSaves;
         private System.Windows.Forms.Label lblPentagonTheme;
+        private System.Windows.Forms.Label labelBackground;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

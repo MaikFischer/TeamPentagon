@@ -30,19 +30,20 @@ namespace CreditClicker
         private Shop shop;
         private Settings settings;
         public List<Save> savesList = new List<Save>();
-        private Color gameColor;
 
         public string title = "CreditClicker"; //Edit Title here
         public string currentVersion = "v2.0"; //Edit Version here
 
-        public void setGameColor(Color color) => this.gameColor = color;
         public string getTitle() => this.title;
 
         public string getCurrentVersion() => this.currentVersion;
 
-        public List<Item> getItems() => this.pItems;
+        public List<Item> Items => this.pItems;
 
-        public int getMultiplier() => this.pMultiplier;
+        public int getMultiplier()
+        {
+            return this.pMultiplier;
+        }
 
         public int getBonus() => this.pBonus;
 
@@ -53,6 +54,8 @@ namespace CreditClicker
         public double getScore() => this.pScore;
 
         public void setScore(double score) => this.pScore = score;
+
+        public AxWindowsMediaPlayer getMediaPlayer() => this.axWindowsMediaPlayer1;
 
         public Game()
         {
@@ -254,12 +257,13 @@ namespace CreditClicker
         public void playBackgroundMusic()
         {
             string path = Application.StartupPath + @"\Sounds\background1.wav";
-            axWindowsMediaPlayer1.settings.autoStart = false;
-            axWindowsMediaPlayer1.URL = path;
-            axWindowsMediaPlayer1.Ctlcontrols.play();
-            axWindowsMediaPlayer1.settings.setMode("loop", true);
-            axWindowsMediaPlayer1.settings.volume = 25;
+            this.axWindowsMediaPlayer1.settings.autoStart = false;
+            this.axWindowsMediaPlayer1.URL = path;
+            this.axWindowsMediaPlayer1.Ctlcontrols.play();
+            this.axWindowsMediaPlayer1.settings.setMode("loop", true);
+            this.axWindowsMediaPlayer1.settings.volume = 20;
         }
+
 
         public int getEmptySlot()
         {
@@ -279,7 +283,7 @@ namespace CreditClicker
         {
             if (!Directory.Exists(Application.LocalUserAppDataPath + @"\Saves\")) Directory.CreateDirectory(Application.LocalUserAppDataPath + @"\Saves\");
             string savePath = Application.LocalUserAppDataPath + @"\Saves\save" + saveId + ".txt";
-                Save save = new Save(saveId, this.getScore(), this.getMultiplier(), this.getBonus(), this.getPassiveBonus(), this.getItems());
+                Save save = new Save(saveId, this.getScore(), this.getMultiplier(), this.getBonus(), this.getPassiveBonus(), this.Items);
                 using (StreamWriter sw = new StreamWriter(savePath))
                 {
                     sw.WriteLine(save.score);

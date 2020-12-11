@@ -257,11 +257,11 @@ namespace CreditClicker
         public void playBackgroundMusic()
         {
             string path = Application.StartupPath + @"\Sounds\background1.wav";
-            this.axWindowsMediaPlayer1.settings.autoStart = false;
-            this.axWindowsMediaPlayer1.URL = path;
-            this.axWindowsMediaPlayer1.Ctlcontrols.play();
-            this.axWindowsMediaPlayer1.settings.setMode("loop", true);
-            this.axWindowsMediaPlayer1.settings.volume = 25;
+            axWindowsMediaPlayer1.settings.autoStart = false;
+            axWindowsMediaPlayer1.URL = path;
+            axWindowsMediaPlayer1.Ctlcontrols.play();
+            axWindowsMediaPlayer1.settings.setMode("loop", true);
+            axWindowsMediaPlayer1.settings.volume = 25;
         }
 
 

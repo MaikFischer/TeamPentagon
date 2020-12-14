@@ -30,8 +30,6 @@ namespace CreditClicker
             this.shop = shop;
             this.game = game;
             InitializeComponent();
-            initAppSettings();
-            loadTheme();
         }
 
         public void initAppSettings()
@@ -79,7 +77,19 @@ namespace CreditClicker
                 useImage.Checked = false;
                 useImageEnabled = false;
             }
-            this.textBox1.Text = trackBar1.Value * 2 + "%";
+
+            //Initilize Volumes
+
+
+            game.getMusicPlayer().settings.volume = Convert.ToInt32(ConfigurationManager.AppSettings["musicvolume"]);
+            game.getButtonPlayer().settings.volume = Convert.ToInt32(ConfigurationManager.AppSettings["buttonvolume"]);
+            this.musicVolTextBox.Text = Convert.ToInt32(ConfigurationManager.AppSettings["musicvolume"]) * 2 + "%";
+            this.musicVolumeBar.Value = Convert.ToInt32(ConfigurationManager.AppSettings["musicvolume"]);
+            this.buttonVolTextBox.Text = Convert.ToInt32(ConfigurationManager.AppSettings["buttonvolume"]) * 2 + "%";
+            this.buttonVolumeBar.Value = Convert.ToInt32(ConfigurationManager.AppSettings["buttonvolume"]);
+            this.effectsVolumeBar.Value = Decimal.ToInt32(Decimal.Parse(ConfigurationManager.AppSettings["effectsvolume"]) * 50);
+            this.effectsVolTextBox.Text = Decimal.ToInt32(Decimal.Parse(ConfigurationManager.AppSettings["effectsvolume"]) * 100) + "%";
+
         }
 
         private void quitButton_Click(object sender, EventArgs e)
@@ -797,13 +807,15 @@ namespace CreditClicker
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            game.getMediaPlayer().settings.volume = trackBar1.Value;
-            textBox1.Text = trackBar1.Value * 2 + "%";
+            game.getMusicPlayer().settings.volume = musicVolumeBar.Value;
+            musicVolTextBox.Text = musicVolumeBar.Value * 2 + "%";
+            
+            SavesManager.AddUpdateAppSettings("musicvolume", musicVolumeBar.Value.ToString());
         }
 
-        private int getVolumeFromBox()
+        private int getVolumeFromBox(TextBox box)
         {
-            return Convert.ToInt32(textBox1.Text);
+            return Convert.ToInt32(box.Text);
         }
 
 
@@ -811,26 +823,26 @@ namespace CreditClicker
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                if (textBox1.Text != "")
+                if (musicVolTextBox.Text != "")
                 {
-                    if (getVolumeFromBox() < 100)
+                    if (getVolumeFromBox(musicVolTextBox) < 100)
                     {
-                        trackBar1.Value = getVolumeFromBox() / 2;
-                        game.getMediaPlayer().settings.volume = getVolumeFromBox() / 2;
-                        textBox1.Text = getVolumeFromBox() + "%";
+                        musicVolumeBar.Value = getVolumeFromBox(musicVolTextBox) / 2;
+                        game.getMusicPlayer().settings.volume = getVolumeFromBox(musicVolTextBox) / 2;
+                        musicVolTextBox.Text = getVolumeFromBox(musicVolTextBox) + "%";
                         optionsPanel.Focus();
                     }
                     else
                     {
-                        trackBar1.Value = 50;
-                        game.getMediaPlayer().settings.volume = 50;
-                        textBox1.Text = 100 + "%";
+                        musicVolumeBar.Value = 50;
+                        game.getMusicPlayer().settings.volume = 50;
+                        musicVolTextBox.Text = 100 + "%";
                         optionsPanel.Focus();
                     }
                    
                 }else
                 {
-                    textBox1.Text = trackBar1.Value * 2 + "%";
+                    musicVolTextBox.Text = musicVolumeBar.Value * 2 + "%";
                     optionsPanel.Focus();
                 }
             }
@@ -848,7 +860,123 @@ namespace CreditClicker
         {
             if (e.Button == MouseButtons.Left)
             {
-                if (textBox1.Focused) textBox1.Text = "";
+                if (musicVolTextBox.Focused) musicVolTextBox.Text = "";
+            }
+        }
+
+        private void effectsVolumeBar_Scroll(object sender, EventArgs e)
+        {
+            effectsVolTextBox.Text = effectsVolumeBar.Value * 2 + "%";
+            game.waveChannel.Volume = effectsVolumeBar.Value / 50;
+            SavesManager.AddUpdateAppSettings("effectsvolume", "" + Decimal.Divide(effectsVolumeBar.Value, 50));
+            Console.WriteLine(game.waveChannel.Volume);
+        }
+
+        private void buttonApplyOptions_Click(object sender, EventArgs e)
+        {
+            //ConfigurationManager.AppSettings["musicvolume"] = musicVolumeBar.Value.ToString();
+            //ConfigurationManager.AppSettings["effectsvolume"] = effectsVolumeBar.Value.ToString();
+        }
+
+        private void effectsVolTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                if (effectsVolTextBox.Text != "")
+                {
+                    if (getVolumeFromBox(effectsVolTextBox) < 100)
+                    {
+                        effectsVolumeBar.Value = getVolumeFromBox(effectsVolTextBox) / 2;
+                        game.waveChannel.Volume = getVolumeFromBox(effectsVolTextBox) / 50;
+                        effectsVolTextBox.Text = getVolumeFromBox(effectsVolTextBox) + "%";
+                        SavesManager.AddUpdateAppSettings("effectsvolume", "" + Decimal.Divide(effectsVolumeBar.Value, 50));
+                        optionsPanel.Focus();
+                    }
+                    else
+                    {
+                        effectsVolumeBar.Value = 50;
+                        game.waveChannel.Volume = 1;
+                        effectsVolTextBox.Text = 100 + "%";
+                        SavesManager.AddUpdateAppSettings("effectsvolume", "" + 1);
+                        optionsPanel.Focus();
+                    }
+
+                }
+                else
+                {
+                    effectsVolTextBox.Text = effectsVolumeBar.Value * 2 + "%";
+                    optionsPanel.Focus();
+                }
+            }
+            else if (e.KeyChar == Convert.ToChar(Keys.Back))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = !char.IsDigit(e.KeyChar);
+            }
+        }
+
+        private void effectsVolTextBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                if (effectsVolTextBox.Focused) effectsVolTextBox.Text = "";
+            }
+        }
+
+        private void buttonVolumeBar_Scroll(object sender, EventArgs e)
+        {
+            game.getButtonPlayer().settings.volume = buttonVolumeBar.Value;
+            buttonVolTextBox.Text = buttonVolumeBar.Value * 2 + "%";
+
+            SavesManager.AddUpdateAppSettings("buttonvolume", buttonVolumeBar.Value.ToString());
+        }
+
+        private void buttonVolTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                if (buttonVolTextBox.Text != "")
+                {
+                    if (getVolumeFromBox(buttonVolTextBox) < 100)
+                    {
+                        buttonVolumeBar.Value = getVolumeFromBox(buttonVolTextBox) / 2;
+                        game.getButtonPlayer().settings.volume = getVolumeFromBox(buttonVolTextBox) / 2;
+                        buttonVolTextBox.Text = getVolumeFromBox(buttonVolTextBox) + "%";
+                        optionsPanel.Focus();
+                    }
+                    else
+                    {
+                        buttonVolumeBar.Value = 50;
+                        game.getButtonPlayer().settings.volume = 50;
+                        buttonVolTextBox.Text = 100 + "%";
+                        optionsPanel.Focus();
+                    }
+
+                }
+                else
+                {
+                    buttonVolTextBox.Text = buttonVolumeBar.Value * 2 + "%";
+                    optionsPanel.Focus();
+                }
+            }
+            else if (e.KeyChar == Convert.ToChar(Keys.Back))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = !char.IsDigit(e.KeyChar);
+            }
+        }
+
+        private void buttonVolTextBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                if (buttonVolTextBox.Focused) buttonVolTextBox.Text = "";
             }
         }
     }  

@@ -33,6 +33,7 @@ namespace CreditClicker
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.musicPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.lblpentagon = new System.Windows.Forms.Label();
             this.quitButton = new System.Windows.Forms.Button();
             this.buttonSettings = new System.Windows.Forms.Button();
@@ -65,20 +66,25 @@ namespace CreditClicker
             this.versionSettings = new System.Windows.Forms.Label();
             this.titleSettings = new System.Windows.Forms.Label();
             this.button1Settings = new System.Windows.Forms.Button();
-            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
+            this.buttonSoundPlayer = new AxWMPLib.AxWindowsMediaPlayer();
+            this.gameSoundPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.musicPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ClickArea)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonSoundPlayer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gameSoundPlayer)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.axWindowsMediaPlayer1);
+            this.panel1.Controls.Add(this.gameSoundPlayer);
+            this.panel1.Controls.Add(this.buttonSoundPlayer);
+            this.panel1.Controls.Add(this.musicPlayer);
             this.panel1.Controls.Add(this.lblpentagon);
             this.panel1.Controls.Add(this.quitButton);
             this.panel1.Controls.Add(this.buttonSettings);
@@ -91,6 +97,16 @@ namespace CreditClicker
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(493, 368);
             this.panel1.TabIndex = 11;
+            // 
+            // musicPlayer
+            // 
+            this.musicPlayer.Enabled = true;
+            this.musicPlayer.Location = new System.Drawing.Point(86, 255);
+            this.musicPlayer.Name = "musicPlayer";
+            this.musicPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("musicPlayer.OcxState")));
+            this.musicPlayer.Size = new System.Drawing.Size(75, 23);
+            this.musicPlayer.TabIndex = 12;
+            this.musicPlayer.Visible = false;
             // 
             // lblpentagon
             // 
@@ -482,15 +498,25 @@ namespace CreditClicker
             this.button1Settings.Size = new System.Drawing.Size(75, 23);
             this.button1Settings.TabIndex = 0;
             // 
-            // axWindowsMediaPlayer1
+            // buttonSoundPlayer
             // 
-            this.axWindowsMediaPlayer1.Enabled = true;
-            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(86, 255);
-            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
-            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
-            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(75, 23);
-            this.axWindowsMediaPlayer1.TabIndex = 12;
-            this.axWindowsMediaPlayer1.Visible = false;
+            this.buttonSoundPlayer.Enabled = true;
+            this.buttonSoundPlayer.Location = new System.Drawing.Point(67, 183);
+            this.buttonSoundPlayer.Name = "buttonSoundPlayer";
+            this.buttonSoundPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("buttonSoundPlayer.OcxState")));
+            this.buttonSoundPlayer.Size = new System.Drawing.Size(75, 23);
+            this.buttonSoundPlayer.TabIndex = 13;
+            this.buttonSoundPlayer.Visible = false;
+            // 
+            // gameSoundPlayer
+            // 
+            this.gameSoundPlayer.Enabled = true;
+            this.gameSoundPlayer.Location = new System.Drawing.Point(58, 132);
+            this.gameSoundPlayer.Name = "gameSoundPlayer";
+            this.gameSoundPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("gameSoundPlayer.OcxState")));
+            this.gameSoundPlayer.Size = new System.Drawing.Size(75, 23);
+            this.gameSoundPlayer.TabIndex = 14;
+            this.gameSoundPlayer.Visible = false;
             // 
             // Game
             // 
@@ -515,13 +541,15 @@ namespace CreditClicker
             this.Shown += new System.EventHandler(this.Game_Shown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.musicPlayer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ClickArea)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonSoundPlayer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gameSoundPlayer)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -561,6 +589,8 @@ namespace CreditClicker
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
+        private AxWMPLib.AxWindowsMediaPlayer musicPlayer;
+        private AxWMPLib.AxWindowsMediaPlayer buttonSoundPlayer;
+        private AxWMPLib.AxWindowsMediaPlayer gameSoundPlayer;
     }
 }

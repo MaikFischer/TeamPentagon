@@ -73,9 +73,13 @@ namespace CreditClicker
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.resetBackground = new System.Windows.Forms.Button();
             this.optionsPanel = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.label4 = new System.Windows.Forms.Label();
+            this.buttonApplyOptions = new System.Windows.Forms.Button();
+            this.effectsVolTextBox = new System.Windows.Forms.TextBox();
+            this.effectsVolumeBar = new System.Windows.Forms.TrackBar();
+            this.lblEffectsVolume = new System.Windows.Forms.Label();
+            this.musicVolTextBox = new System.Windows.Forms.TextBox();
+            this.musicVolumeBar = new System.Windows.Forms.TrackBar();
+            this.lblMusicVolume = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.savesPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -93,6 +97,9 @@ namespace CreditClicker
             this.buttonOptions = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonTheme = new System.Windows.Forms.Button();
+            this.lblButtonVolume = new System.Windows.Forms.Label();
+            this.buttonVolumeBar = new System.Windows.Forms.TrackBar();
+            this.buttonVolTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.colorAreaBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorAreaButtonText)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorAreaSpecialText)).BeginInit();
@@ -100,12 +107,14 @@ namespace CreditClicker
             ((System.ComponentModel.ISupportInitialize)(this.colorAreaButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.optionsPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.effectsVolumeBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.musicVolumeBar)).BeginInit();
             this.savesPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.themePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonVolumeBar)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonSave1
@@ -180,7 +189,7 @@ namespace CreditClicker
             this.quitButtonOptions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.quitButtonOptions.Font = new System.Drawing.Font("hooge 05_53", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.quitButtonOptions.ForeColor = System.Drawing.Color.Black;
-            this.quitButtonOptions.Location = new System.Drawing.Point(222, 584);
+            this.quitButtonOptions.Location = new System.Drawing.Point(116, 584);
             this.quitButtonOptions.Name = "quitButtonOptions";
             this.quitButtonOptions.Size = new System.Drawing.Size(191, 54);
             this.quitButtonOptions.TabIndex = 37;
@@ -659,9 +668,16 @@ namespace CreditClicker
             // optionsPanel
             // 
             this.optionsPanel.BackColor = System.Drawing.Color.Black;
-            this.optionsPanel.Controls.Add(this.textBox1);
-            this.optionsPanel.Controls.Add(this.trackBar1);
-            this.optionsPanel.Controls.Add(this.label4);
+            this.optionsPanel.Controls.Add(this.buttonVolTextBox);
+            this.optionsPanel.Controls.Add(this.buttonVolumeBar);
+            this.optionsPanel.Controls.Add(this.lblButtonVolume);
+            this.optionsPanel.Controls.Add(this.buttonApplyOptions);
+            this.optionsPanel.Controls.Add(this.effectsVolTextBox);
+            this.optionsPanel.Controls.Add(this.effectsVolumeBar);
+            this.optionsPanel.Controls.Add(this.lblEffectsVolume);
+            this.optionsPanel.Controls.Add(this.musicVolTextBox);
+            this.optionsPanel.Controls.Add(this.musicVolumeBar);
+            this.optionsPanel.Controls.Add(this.lblMusicVolume);
             this.optionsPanel.Controls.Add(this.label3);
             this.optionsPanel.Controls.Add(this.lblPentagonSettings);
             this.optionsPanel.Controls.Add(this.quitButtonOptions);
@@ -671,43 +687,98 @@ namespace CreditClicker
             this.optionsPanel.Size = new System.Drawing.Size(650, 678);
             this.optionsPanel.TabIndex = 74;
             // 
-            // textBox1
+            // buttonApplyOptions
             // 
-            this.textBox1.BackColor = System.Drawing.Color.Black;
-            this.textBox1.CausesValidation = false;
-            this.textBox1.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(520, 177);
-            this.textBox1.MaxLength = 4;
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(66, 39);
-            this.textBox1.TabIndex = 43;
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
-            this.textBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseDown);
+            this.buttonApplyOptions.BackColor = System.Drawing.Color.DarkOrange;
+            this.buttonApplyOptions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonApplyOptions.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonApplyOptions.FlatAppearance.BorderSize = 0;
+            this.buttonApplyOptions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonApplyOptions.Font = new System.Drawing.Font("hooge 05_53", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonApplyOptions.ForeColor = System.Drawing.Color.Black;
+            this.buttonApplyOptions.Location = new System.Drawing.Point(323, 584);
+            this.buttonApplyOptions.Name = "buttonApplyOptions";
+            this.buttonApplyOptions.Size = new System.Drawing.Size(191, 54);
+            this.buttonApplyOptions.TabIndex = 47;
+            this.buttonApplyOptions.Text = "Apply";
+            this.buttonApplyOptions.UseVisualStyleBackColor = false;
+            this.buttonApplyOptions.Click += new System.EventHandler(this.buttonApplyOptions_Click);
             // 
-            // trackBar1
+            // effectsVolTextBox
             // 
-            this.trackBar1.Location = new System.Drawing.Point(246, 185);
-            this.trackBar1.Maximum = 50;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(268, 45);
-            this.trackBar1.TabIndex = 42;
-            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar1.Value = 25;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            this.effectsVolTextBox.BackColor = System.Drawing.Color.Black;
+            this.effectsVolTextBox.CausesValidation = false;
+            this.effectsVolTextBox.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.effectsVolTextBox.ForeColor = System.Drawing.Color.White;
+            this.effectsVolTextBox.Location = new System.Drawing.Point(523, 232);
+            this.effectsVolTextBox.MaxLength = 4;
+            this.effectsVolTextBox.Multiline = true;
+            this.effectsVolTextBox.Name = "effectsVolTextBox";
+            this.effectsVolTextBox.Size = new System.Drawing.Size(66, 39);
+            this.effectsVolTextBox.TabIndex = 46;
+            this.effectsVolTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.effectsVolTextBox_KeyPress);
+            this.effectsVolTextBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.effectsVolTextBox_MouseDown);
             // 
-            // label4
+            // effectsVolumeBar
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(37, 177);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(149, 34);
-            this.label4.TabIndex = 40;
-            this.label4.Text = "Music Volume";
+            this.effectsVolumeBar.Location = new System.Drawing.Point(246, 238);
+            this.effectsVolumeBar.Maximum = 50;
+            this.effectsVolumeBar.Name = "effectsVolumeBar";
+            this.effectsVolumeBar.Size = new System.Drawing.Size(268, 45);
+            this.effectsVolumeBar.TabIndex = 45;
+            this.effectsVolumeBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.effectsVolumeBar.Value = 25;
+            this.effectsVolumeBar.Scroll += new System.EventHandler(this.effectsVolumeBar_Scroll);
+            // 
+            // lblEffectsVolume
+            // 
+            this.lblEffectsVolume.AutoSize = true;
+            this.lblEffectsVolume.BackColor = System.Drawing.Color.Transparent;
+            this.lblEffectsVolume.Font = new System.Drawing.Font("Poppins", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEffectsVolume.ForeColor = System.Drawing.Color.White;
+            this.lblEffectsVolume.Location = new System.Drawing.Point(37, 232);
+            this.lblEffectsVolume.Name = "lblEffectsVolume";
+            this.lblEffectsVolume.Size = new System.Drawing.Size(196, 42);
+            this.lblEffectsVolume.TabIndex = 44;
+            this.lblEffectsVolume.Text = "Effects Volume";
+            // 
+            // musicVolTextBox
+            // 
+            this.musicVolTextBox.BackColor = System.Drawing.Color.Black;
+            this.musicVolTextBox.CausesValidation = false;
+            this.musicVolTextBox.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.musicVolTextBox.ForeColor = System.Drawing.Color.White;
+            this.musicVolTextBox.Location = new System.Drawing.Point(523, 173);
+            this.musicVolTextBox.MaxLength = 4;
+            this.musicVolTextBox.Multiline = true;
+            this.musicVolTextBox.Name = "musicVolTextBox";
+            this.musicVolTextBox.Size = new System.Drawing.Size(66, 39);
+            this.musicVolTextBox.TabIndex = 43;
+            this.musicVolTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.musicVolTextBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseDown);
+            // 
+            // musicVolumeBar
+            // 
+            this.musicVolumeBar.Location = new System.Drawing.Point(246, 185);
+            this.musicVolumeBar.Maximum = 50;
+            this.musicVolumeBar.Name = "musicVolumeBar";
+            this.musicVolumeBar.Size = new System.Drawing.Size(268, 45);
+            this.musicVolumeBar.TabIndex = 42;
+            this.musicVolumeBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.musicVolumeBar.Value = 25;
+            this.musicVolumeBar.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
+            // lblMusicVolume
+            // 
+            this.lblMusicVolume.AutoSize = true;
+            this.lblMusicVolume.BackColor = System.Drawing.Color.Transparent;
+            this.lblMusicVolume.Font = new System.Drawing.Font("Poppins", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMusicVolume.ForeColor = System.Drawing.Color.White;
+            this.lblMusicVolume.Location = new System.Drawing.Point(37, 177);
+            this.lblMusicVolume.Name = "lblMusicVolume";
+            this.lblMusicVolume.Size = new System.Drawing.Size(186, 42);
+            this.lblMusicVolume.TabIndex = 40;
+            this.lblMusicVolume.Text = "Music Volume";
             // 
             // label3
             // 
@@ -978,6 +1049,44 @@ namespace CreditClicker
             this.buttonTheme.UseVisualStyleBackColor = false;
             this.buttonTheme.Click += new System.EventHandler(this.buttonTheme_Click);
             // 
+            // lblButtonVolume
+            // 
+            this.lblButtonVolume.AutoSize = true;
+            this.lblButtonVolume.BackColor = System.Drawing.Color.Transparent;
+            this.lblButtonVolume.Font = new System.Drawing.Font("Poppins", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblButtonVolume.ForeColor = System.Drawing.Color.White;
+            this.lblButtonVolume.Location = new System.Drawing.Point(39, 290);
+            this.lblButtonVolume.Name = "lblButtonVolume";
+            this.lblButtonVolume.Size = new System.Drawing.Size(194, 42);
+            this.lblButtonVolume.TabIndex = 48;
+            this.lblButtonVolume.Text = "Button Volume";
+            // 
+            // buttonVolumeBar
+            // 
+            this.buttonVolumeBar.Location = new System.Drawing.Point(246, 302);
+            this.buttonVolumeBar.Maximum = 50;
+            this.buttonVolumeBar.Name = "buttonVolumeBar";
+            this.buttonVolumeBar.Size = new System.Drawing.Size(268, 45);
+            this.buttonVolumeBar.TabIndex = 49;
+            this.buttonVolumeBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.buttonVolumeBar.Value = 25;
+            this.buttonVolumeBar.Scroll += new System.EventHandler(this.buttonVolumeBar_Scroll);
+            // 
+            // buttonVolTextBox
+            // 
+            this.buttonVolTextBox.BackColor = System.Drawing.Color.Black;
+            this.buttonVolTextBox.CausesValidation = false;
+            this.buttonVolTextBox.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonVolTextBox.ForeColor = System.Drawing.Color.White;
+            this.buttonVolTextBox.Location = new System.Drawing.Point(523, 292);
+            this.buttonVolTextBox.MaxLength = 4;
+            this.buttonVolTextBox.Multiline = true;
+            this.buttonVolTextBox.Name = "buttonVolTextBox";
+            this.buttonVolTextBox.Size = new System.Drawing.Size(66, 39);
+            this.buttonVolTextBox.TabIndex = 50;
+            this.buttonVolTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.buttonVolTextBox_KeyPress);
+            this.buttonVolTextBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonVolTextBox_MouseDown);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1008,7 +1117,8 @@ namespace CreditClicker
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.optionsPanel.ResumeLayout(false);
             this.optionsPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.effectsVolumeBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.musicVolumeBar)).EndInit();
             this.savesPanel.ResumeLayout(false);
             this.savesPanel.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -1017,6 +1127,7 @@ namespace CreditClicker
             this.themePanel.ResumeLayout(false);
             this.themePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonVolumeBar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1079,11 +1190,18 @@ namespace CreditClicker
         private System.Windows.Forms.Label labelBackground;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TrackBar musicVolumeBar;
+        private System.Windows.Forms.Label lblMusicVolume;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox musicVolTextBox;
+        private System.Windows.Forms.Label lblEffectsVolume;
+        private System.Windows.Forms.TrackBar effectsVolumeBar;
+        private System.Windows.Forms.TextBox effectsVolTextBox;
+        private System.Windows.Forms.Button buttonApplyOptions;
+        private System.Windows.Forms.TextBox buttonVolTextBox;
+        private System.Windows.Forms.TrackBar buttonVolumeBar;
+        private System.Windows.Forms.Label lblButtonVolume;
     }
 }

@@ -111,10 +111,10 @@ namespace CreditClicker
         {
             if (this.Visible && panel2.Visible)
             {
-                Thread.Sleep(100);
                 double dScore = this.getScore() + this.getPassiveBonus() / 10;
                 this.setScore(dScore);
             }
+            Thread.Sleep(100);
         }
 
         private void startGameButton_Click(object sender, EventArgs e)

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -353,16 +354,12 @@ namespace CreditClicker
                             }
                         }
                         savesList.Add(save);
-                        foreach(Item item in save.items)
-                        {
-                            Console.WriteLine();
-                        }
                     }
                 }
             }
         }
 
-        public void getSaveFromFile(int saveId)
+        public void setSaveFromFile(int saveId)
         {
             foreach (Save save in savesList)
             {
@@ -377,6 +374,18 @@ namespace CreditClicker
                     settings.calcItemPrices(pItems);
                 }
             }
+        }
+
+        public Save getSaveFromFile(int saveId)
+        {
+            foreach (Save save in savesList)
+            {
+                if (save.id == saveId)
+                {
+                    return save;
+                }
+            }
+            return null;
         }
 
         public Save getSave(int saveId)

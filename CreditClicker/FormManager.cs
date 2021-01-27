@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Text;
 
 namespace CreditClicker
 {
     public static class FormManager
     {
-
+        
         private static List<Form> formList = new List<Form>();
 
         public static Color DEFAULT_COLOR = Color.DarkOrange;
@@ -34,6 +35,7 @@ namespace CreditClicker
         {
             if (formList.Contains(form)) formList.Remove(form);
         }
+
 
         public static void initAllColors()
         {

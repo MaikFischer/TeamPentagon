@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.titleShop = new System.Windows.Forms.Label();
-            this.lblpentagon = new System.Windows.Forms.Label();
+            this.hoogePentagon = new System.Windows.Forms.Label();
             this.iconCheatSheet = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -78,17 +78,17 @@
             this.titleShop.TabIndex = 2;
             this.titleShop.Text = "CREDIT SHOP";
             // 
-            // lblpentagon
+            // hoogePentagon
             // 
-            this.lblpentagon.AutoSize = true;
-            this.lblpentagon.BackColor = System.Drawing.Color.Transparent;
-            this.lblpentagon.Font = new System.Drawing.Font("hooge 05_55", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblpentagon.ForeColor = System.Drawing.Color.White;
-            this.lblpentagon.Location = new System.Drawing.Point(195, 763);
-            this.lblpentagon.Name = "lblpentagon";
-            this.lblpentagon.Size = new System.Drawing.Size(112, 14);
-            this.lblpentagon.TabIndex = 11;
-            this.lblpentagon.Text = "by Team Pentagon";
+            this.hoogePentagon.AutoSize = true;
+            this.hoogePentagon.BackColor = System.Drawing.Color.Transparent;
+            this.hoogePentagon.Font = new System.Drawing.Font("hooge 05_55", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hoogePentagon.ForeColor = System.Drawing.Color.White;
+            this.hoogePentagon.Location = new System.Drawing.Point(195, 763);
+            this.hoogePentagon.Name = "hoogePentagon";
+            this.hoogePentagon.Size = new System.Drawing.Size(112, 14);
+            this.hoogePentagon.TabIndex = 11;
+            this.hoogePentagon.Text = "by Team Pentagon";
             // 
             // iconCheatSheet
             // 
@@ -436,7 +436,7 @@
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.iconCheatSheet);
-            this.Controls.Add(this.lblpentagon);
+            this.Controls.Add(this.hoogePentagon);
             this.Controls.Add(this.titleShop);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -460,7 +460,7 @@
         #endregion
 
         private System.Windows.Forms.Label titleShop;
-        private System.Windows.Forms.Label lblpentagon;
+        private System.Windows.Forms.Label hoogePentagon;
         private System.Windows.Forms.PictureBox iconCheatSheet;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;

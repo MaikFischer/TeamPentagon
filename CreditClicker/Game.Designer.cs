@@ -33,8 +33,10 @@ namespace CreditClicker
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.gameSoundPlayer = new AxWMPLib.AxWindowsMediaPlayer();
+            this.buttonSoundPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.musicPlayer = new AxWMPLib.AxWindowsMediaPlayer();
-            this.lblpentagon = new System.Windows.Forms.Label();
+            this.hoogePentagon = new System.Windows.Forms.Label();
             this.quitButton = new System.Windows.Forms.Button();
             this.buttonSettings = new System.Windows.Forms.Button();
             this.startGameButton = new System.Windows.Forms.Button();
@@ -66,17 +68,15 @@ namespace CreditClicker
             this.versionSettings = new System.Windows.Forms.Label();
             this.titleSettings = new System.Windows.Forms.Label();
             this.button1Settings = new System.Windows.Forms.Button();
-            this.buttonSoundPlayer = new AxWMPLib.AxWindowsMediaPlayer();
-            this.gameSoundPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gameSoundPlayer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonSoundPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.musicPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ClickArea)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonSoundPlayer)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gameSoundPlayer)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -85,7 +85,7 @@ namespace CreditClicker
             this.panel1.Controls.Add(this.gameSoundPlayer);
             this.panel1.Controls.Add(this.buttonSoundPlayer);
             this.panel1.Controls.Add(this.musicPlayer);
-            this.panel1.Controls.Add(this.lblpentagon);
+            this.panel1.Controls.Add(this.hoogePentagon);
             this.panel1.Controls.Add(this.quitButton);
             this.panel1.Controls.Add(this.buttonSettings);
             this.panel1.Controls.Add(this.startGameButton);
@@ -98,6 +98,26 @@ namespace CreditClicker
             this.panel1.Size = new System.Drawing.Size(493, 368);
             this.panel1.TabIndex = 11;
             // 
+            // gameSoundPlayer
+            // 
+            this.gameSoundPlayer.Enabled = true;
+            this.gameSoundPlayer.Location = new System.Drawing.Point(58, 132);
+            this.gameSoundPlayer.Name = "gameSoundPlayer";
+            this.gameSoundPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("gameSoundPlayer.OcxState")));
+            this.gameSoundPlayer.Size = new System.Drawing.Size(75, 23);
+            this.gameSoundPlayer.TabIndex = 14;
+            this.gameSoundPlayer.Visible = false;
+            // 
+            // buttonSoundPlayer
+            // 
+            this.buttonSoundPlayer.Enabled = true;
+            this.buttonSoundPlayer.Location = new System.Drawing.Point(67, 183);
+            this.buttonSoundPlayer.Name = "buttonSoundPlayer";
+            this.buttonSoundPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("buttonSoundPlayer.OcxState")));
+            this.buttonSoundPlayer.Size = new System.Drawing.Size(75, 23);
+            this.buttonSoundPlayer.TabIndex = 13;
+            this.buttonSoundPlayer.Visible = false;
+            // 
             // musicPlayer
             // 
             this.musicPlayer.Enabled = true;
@@ -108,17 +128,17 @@ namespace CreditClicker
             this.musicPlayer.TabIndex = 12;
             this.musicPlayer.Visible = false;
             // 
-            // lblpentagon
+            // hoogePentagon
             // 
-            this.lblpentagon.AutoSize = true;
-            this.lblpentagon.BackColor = System.Drawing.Color.Transparent;
-            this.lblpentagon.Font = new System.Drawing.Font("hooge 05_55", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblpentagon.ForeColor = System.Drawing.Color.White;
-            this.lblpentagon.Location = new System.Drawing.Point(184, 338);
-            this.lblpentagon.Name = "lblpentagon";
-            this.lblpentagon.Size = new System.Drawing.Size(112, 14);
-            this.lblpentagon.TabIndex = 10;
-            this.lblpentagon.Text = "by Team Pentagon";
+            this.hoogePentagon.AutoSize = true;
+            this.hoogePentagon.BackColor = System.Drawing.Color.Transparent;
+            this.hoogePentagon.Font = new System.Drawing.Font("hooge 05_55", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hoogePentagon.ForeColor = System.Drawing.Color.White;
+            this.hoogePentagon.Location = new System.Drawing.Point(184, 338);
+            this.hoogePentagon.Name = "hoogePentagon";
+            this.hoogePentagon.Size = new System.Drawing.Size(112, 14);
+            this.hoogePentagon.TabIndex = 10;
+            this.hoogePentagon.Text = "by Team Pentagon";
             // 
             // quitButton
             // 
@@ -498,26 +518,6 @@ namespace CreditClicker
             this.button1Settings.Size = new System.Drawing.Size(75, 23);
             this.button1Settings.TabIndex = 0;
             // 
-            // buttonSoundPlayer
-            // 
-            this.buttonSoundPlayer.Enabled = true;
-            this.buttonSoundPlayer.Location = new System.Drawing.Point(67, 183);
-            this.buttonSoundPlayer.Name = "buttonSoundPlayer";
-            this.buttonSoundPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("buttonSoundPlayer.OcxState")));
-            this.buttonSoundPlayer.Size = new System.Drawing.Size(75, 23);
-            this.buttonSoundPlayer.TabIndex = 13;
-            this.buttonSoundPlayer.Visible = false;
-            // 
-            // gameSoundPlayer
-            // 
-            this.gameSoundPlayer.Enabled = true;
-            this.gameSoundPlayer.Location = new System.Drawing.Point(58, 132);
-            this.gameSoundPlayer.Name = "gameSoundPlayer";
-            this.gameSoundPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("gameSoundPlayer.OcxState")));
-            this.gameSoundPlayer.Size = new System.Drawing.Size(75, 23);
-            this.gameSoundPlayer.TabIndex = 14;
-            this.gameSoundPlayer.Visible = false;
-            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -541,6 +541,8 @@ namespace CreditClicker
             this.Shown += new System.EventHandler(this.Game_Shown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gameSoundPlayer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonSoundPlayer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.musicPlayer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -548,8 +550,6 @@ namespace CreditClicker
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ClickArea)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonSoundPlayer)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gameSoundPlayer)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -561,7 +561,7 @@ namespace CreditClicker
         private System.Windows.Forms.Button startGameButton;
         private System.Windows.Forms.Button buttonSettings;
         private System.Windows.Forms.Button quitButton;
-        private System.Windows.Forms.Label lblpentagon;
+        private System.Windows.Forms.Label hoogePentagon;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label titleGame;
         private System.Windows.Forms.PictureBox ClickArea;

@@ -44,37 +44,37 @@ namespace CreditClicker
             }
             //Auto-Save Theme
             if (Convert.ToBoolean(ConfigurationManager.AppSettings["autosavetheme"])) {
-                autoSaveTheme.Checked = true;
+                popAutoSaveTheme.Checked = true;
                 autoSaveThemeEnabled = true;
             }else {
-                autoSaveTheme.Checked = false;
+                popAutoSaveTheme.Checked = false;
                 autoSaveThemeEnabled = false;
             }
             if (Convert.ToBoolean(ConfigurationManager.AppSettings["changeback"]))
             {
-                changeBackground.Checked = true;
+                popChangeBackground.Checked = true;
                 changeBackgroundEnabled = true;
             }else
             {
-                changeBackground.Checked = false;
+                popChangeBackground.Checked = false;
                 changeBackgroundEnabled = false;
                 changeToColorEnabled = false;
                 useImageEnabled = false;
             }
             //Change Background to Color
             if (Convert.ToBoolean(ConfigurationManager.AppSettings["changetocolor"])) {
-                changeToColor.Checked = true;
+                popChangeToColor.Checked = true;
                 changeToColorEnabled = true;
             }else {
-                changeToColor.Checked = false;
+                popChangeToColor.Checked = false;
                 changeToColorEnabled = false;
             }
             //Use Background Image
             if (Convert.ToBoolean(ConfigurationManager.AppSettings["useimage"])) {
-                useImage.Checked = true;
+                popUseImage.Checked = true;
                 useImageEnabled = true;
             }else {
-                useImage.Checked = false;
+                popUseImage.Checked = false;
                 useImageEnabled = false;
             }
 
@@ -147,45 +147,45 @@ namespace CreditClicker
 
         private void changeBackground_CheckedChanged(object sender, EventArgs e)
         {
-            if (changeBackground.Checked)
+            if (popChangeBackground.Checked)
             {
-                changeToColor.Visible = true;
-                useImage.Visible = true;
+                popChangeToColor.Visible = true;
+                popUseImage.Visible = true;
                 changeBackgroundEnabled = true;
-                resetBackground.Visible = true;
+                popResetBackground.Visible = true;
                 SavesManager.AddUpdateAppSettings("changeback", "True");
                 if (Convert.ToBoolean(ConfigurationManager.AppSettings["changetocolor"]))
                 {
                     changeToColorEnabled = true;
-                    changeToColor.Checked = true;
+                    popChangeToColor.Checked = true;
                 }
                 else
                 {
                     changeToColorEnabled = false;
-                    changeToColor.Checked = false;
+                    popChangeToColor.Checked = false;
                 }
                 if (Convert.ToBoolean(ConfigurationManager.AppSettings["useimage"]))
                 {
-                    useImage.Checked = true;
+                    popUseImage.Checked = true;
                     useImageEnabled = true;
                 }
                 else
                 {
                     useImageEnabled = false;
-                    useImage.Checked = false;
+                    popUseImage.Checked = false;
                 }
 
             }else
             {
-                changeToColor.Checked = false;
-                changeToColor.Visible = false; 
+                popChangeToColor.Checked = false;
+                popChangeToColor.Visible = false; 
                 colorAreaBackground.Visible = false;
-                pickBackgroundColor.Visible = false;
-                useImage.Checked = false;
-                useImage.Visible = false;
+                popPickBackgroundColor.Visible = false;
+                popUseImage.Checked = false;
+                popUseImage.Visible = false;
                 useImageEnabled = false;
                 changeBackgroundEnabled = false;
-                resetBackground.Visible = false;
+                popResetBackground.Visible = false;
                 SavesManager.AddUpdateAppSettings("changeback", "False");
                 SavesManager.AddUpdateAppSettings("changetocolor", "False");
                 SavesManager.AddUpdateAppSettings("useimage", "False");
@@ -194,13 +194,13 @@ namespace CreditClicker
 
         private void changeToColor_CheckedChanged(object sender, EventArgs e)
         {
-            if (changeToColor.Checked)
+            if (popChangeToColor.Checked)
             {
-                useImage.Checked = false;
+                popUseImage.Checked = false;
                 useImageEnabled = false;
-                selectImage.Visible = false;
+                popSelectImage.Visible = false;
                 colorAreaBackground.Visible = true;
-                pickBackgroundColor.Visible = true;
+                popPickBackgroundColor.Visible = true;
                 changeToColorEnabled = true;
                 SavesManager.AddUpdateAppSettings("changetocolor", "True");
                 SavesManager.AddUpdateAppSettings("useimage", "False");
@@ -208,27 +208,27 @@ namespace CreditClicker
             else
             {
                 colorAreaBackground.Visible = false;
-                pickBackgroundColor.Visible = false;
+                popPickBackgroundColor.Visible = false;
                 SavesManager.AddUpdateAppSettings("changetocolor", "False");
             }
         }
 
         private void useImage_CheckedChanged(object sender, EventArgs e)
         {
-            if (useImage.Checked)
+            if (popUseImage.Checked)
             {
-                changeToColor.Checked = false;
+                popChangeToColor.Checked = false;
                 changeToColorEnabled = false;
                 colorAreaBackground.Visible = false;
-                pickBackgroundColor.Visible = false;
-                selectImage.Visible = true;
+                popPickBackgroundColor.Visible = false;
+                popSelectImage.Visible = true;
                 useImageEnabled = true;
                 SavesManager.AddUpdateAppSettings("useimage", "True");
                 SavesManager.AddUpdateAppSettings("changetocolor", "False");
             }
             else
             {
-                selectImage.Visible = false;
+                popSelectImage.Visible = false;
                 useImageEnabled = false;
                 SavesManager.AddUpdateAppSettings("useimage", "False");
             }
@@ -246,48 +246,51 @@ namespace CreditClicker
         private void Settings_Activated(object sender, EventArgs e)
         {
             FormManager.initAllColors();
-            switch (game.currentSaveId)
+        }
+
+        public void initLoadState(int saveId)
+        {
+            game.getSaves();
+            if (isSlotCovered(1)) buttonSave1.Text = "Load #1";
+            else
+            {
+                buttonSave1.Text = "Save #1";
+                popGroupBox1.Controls[0].Text = "<empty>";
+            }
+            if (isSlotCovered(2)) buttonSave2.Text = "Load #2";
+            else 
+            {
+                buttonSave2.Text = "Save #2";
+                popGroupBox2.Controls[0].Text = "<empty>";
+            }
+            if (isSlotCovered(3)) buttonSave3.Text = "Load #3";
+            else 
+            {
+                buttonSave3.Text = "Save #3";
+                popGroupBox3.Controls[0].Text = "<empty>";
+            }
+            if (isSlotCovered(4)) buttonSave4.Text = "Load #4";
+            else 
+            {
+                buttonSave4.Text = "Save #4";
+                popGroupBox4.Controls[0].Text = "<empty>";
+            }
+            /*
+            switch (saveId)
             {
                 case 1:
                     buttonSave1.Text = "Save #1";
-                    buttonSave2.Text = "Load #2";
-                    buttonSave3.Text = "Load #3";
-                    buttonSave4.Text = "Load #4";
-                    labelCurrentlyLoaded.Text = "Currently Loaded: Save #1";
                     break;
                 case 2:
                     buttonSave2.Text = "Save #2";
-                    buttonSave1.Text = "Load #1";
-                    buttonSave3.Text = "Load #3";
-                    buttonSave4.Text = "Load #4";
-                    labelCurrentlyLoaded.Text = "Currently Loaded: Save #2";
                     break;
                 case 3:
                     buttonSave3.Text = "Save #3";
-                    buttonSave2.Text = "Load #2";
-                    buttonSave4.Text = "Load #4";
-                    buttonSave1.Text = "Load #1";
-                    labelCurrentlyLoaded.Text = "Currently Loaded: Save #3";
                     break;
                 case 4:
                     buttonSave4.Text = "Save #4";
-                    buttonSave1.Text = "Load #1";
-                    buttonSave2.Text = "Load #2";
-                    buttonSave3.Text = "Load #3";
-                    labelCurrentlyLoaded.Text = "Currently Loaded: Save #4";
                     break;
-                case 0:
-                    if (isSlotCovered(1)) buttonSave1.Text = "Load #1";
-                    else buttonSave1.Text = "Save #1";
-                    if (isSlotCovered(2)) buttonSave2.Text = "Load #2";
-                    else buttonSave2.Text = "Save #2";
-                    if (isSlotCovered(3)) buttonSave3.Text = "Load #3";
-                    else buttonSave3.Text = "Save #3";
-                    if (isSlotCovered(4)) buttonSave4.Text = "Load #4";
-                    else buttonSave4.Text = "Save #4";
-                    break;
-            }
-           
+            }*/
         }
 
 
@@ -303,235 +306,91 @@ namespace CreditClicker
 
         private void buttonSave1_Click(object sender, EventArgs e)
         {
-            if (game.currentSaveId == 1)
-            {
-                game.saveState(1);
-                MessageBox.Show("Successfully saved current progress to Slot #" + 1, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (game.currentSaveId == 0)
-            {
-                if (isSlotCovered(1))
-                {
-                    if (game.hasPlayed()) {
-                        DialogResult result = MessageBox.Show("This Slot is covered. Do you wish to overwrite or load from it? Press 'Yes' to override and 'No' to load.", "Slot covered", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                        if (result == DialogResult.Yes)
-                        {
-                            game.saveState(1);
-                            game.currentSaveId = 1;
-                            MessageBox.Show("Successfully saved current progress to Slot #" + 1, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else if (result == DialogResult.No)
-                        {
-                            loadSave(1);
-                        }
-                    }else {
-                        loadSave(1);
-                    }
-                }
-                else
-                {
-                    loadSave(1);                
-                }
-            }
-            else
-            {
-                if (game.getSave(game.currentSaveId).score != game.getScore()) {
-                    DialogResult result = MessageBox.Show("This Slot is covered. Do you wish to overwrite or load from it? Press 'Yes' to override and 'No' to load.", "Slot covered", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
-                    {
-                        game.saveState(1);
-                        MessageBox.Show("Successfully saved current progress to Slot #" + 1, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else if (result == DialogResult.No)
-                    {
-                        loadSave(1);
-                    }
-                }
-                else if (isSlotCovered(game.currentSaveId))
-                {
-                    loadSave(1);
-                }
-                else
-                {
-                    game.saveState(1);
-                    MessageBox.Show("Successfully saved current progress to Slot #" + 1, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
+            loadSaveLogic(1);
         }
 
         private void buttonSave2_Click(object sender, EventArgs e)
         {
-            if (game.currentSaveId == 2)
-            {
-                game.saveState(2);
-                MessageBox.Show("Successfully saved current progress to Slot #" + 2, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (game.currentSaveId == 0)
-            {
-                if (isSlotCovered(2))
-                {
-                    if (game.hasPlayed()) {
-                        DialogResult result = MessageBox.Show("This Slot is covered. Do you wish to overwrite or load from it? Press 'Yes' to override and 'No' to load.", "Slot covered", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                        if (result == DialogResult.Yes)
-                        {
-                            game.saveState(2);
-                            game.currentSaveId = 2;
-                            MessageBox.Show("Successfully saved current progress to Slot #" + 2, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else if (result == DialogResult.No)
-                        {
-                            loadSave(2);
-                        }
-                    }else {
-                        loadSave(2);
-                    }
-                }
-                else
-                {
-                    loadSave(2);
-                }
-            }
-            else
-            {
-                if (game.getSave(game.currentSaveId).score != game.getScore() && isSlotCovered(2)) {
-                    DialogResult result = MessageBox.Show("This Slot is covered. Do you wish to overwrite or load from it? Press 'Yes' to override and 'No' to load.", "Slot covered", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
-                    {
-                        game.saveState(2);
-                        MessageBox.Show("Successfully saved current progress to Slot #" + 2, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else if (result == DialogResult.No)
-                    {
-                        loadSave(2);
-                    }
-                }else if (isSlotCovered(game.currentSaveId)){
-                    loadSave(2);
-                }else
-                {
-                    game.saveState(2);
-                    MessageBox.Show("Successfully saved current progress to Slot #" + 2, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
+            loadSaveLogic(2);
         }
 
         private void buttonSave3_Click(object sender, EventArgs e)
         {
-            if (game.currentSaveId == 3)
-            {
-                game.saveState(3);
-                MessageBox.Show("Successfully saved current progress to Slot #" + 3, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (game.currentSaveId == 0)
-            {
-                if (isSlotCovered(3))
-                {
-                    if (game.hasPlayed())
-                    {
-                        DialogResult result = MessageBox.Show("This Slot is covered. Do you wish to overwrite or load from it? Press 'Yes' to override and 'No' to load.", "Slot covered", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                        if (result == DialogResult.Yes)
-                        {
-                            game.saveState(3);
-                            MessageBox.Show("Successfully saved current progress to Slot #" + 3, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else if (result == DialogResult.No)
-                        {
-                            loadSave(3);
-                        }
-                    }
-                    else
-                    {
-                        loadSave(3);
-                    }
-                }
-                else
-                {
-                    loadSave(3);
-                }
-            }
-            else
-            {
-                if (game.getSave(game.currentSaveId).score != game.getScore()) {
-                    DialogResult result = MessageBox.Show("This Slot is covered. Do you wish to overwrite or load from it? Press 'Yes' to override and 'No' to load.", "Slot covered", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
-                    {
-                        game.saveState(3);
-                        MessageBox.Show("Successfully saved current progress to Slot #" + 3, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else if (result == DialogResult.No)
-                    {
-                        loadSave(3);
-                    }
-                }
-                else if (isSlotCovered(game.currentSaveId))
-                {
-                    loadSave(3);
-                }
-                else
-                {
-                    game.saveState(3);
-                    MessageBox.Show("Successfully saved current progress to Slot #" + 3, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
+            loadSaveLogic(3);
         }
 
         private void buttonSave4_Click(object sender, EventArgs e)
         {
-            if (game.currentSaveId == 4)
+            loadSaveLogic(4);
+        }
+
+        private void loadSaveLogic(int saveId)
+        {
+            if (game.currentSaveId == saveId)
             {
-                game.saveState(4);
-                MessageBox.Show("Successfully saved current progress to Slot #" + 4, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                game.saveState(saveId);
+                labelCurrentlyLoaded.Text = "Currently Loaded: Save #" + saveId;
+                MessageBox.Show("Successfully saved current progress to Slot #" + saveId, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (game.currentSaveId == 0)
             {
-                if (isSlotCovered(4))
+                if (isSlotCovered(saveId))
                 {
                     if (game.hasPlayed())
                     {
                         DialogResult result = MessageBox.Show("This Slot is covered. Do you wish to overwrite or load from it? Press 'Yes' to override and 'No' to load.", "Slot covered", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                         if (result == DialogResult.Yes)
                         {
-                            game.saveState(4);
-                            MessageBox.Show("Successfully saved current progress to Slot #" + 4, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            game.saveState(saveId);
+                            labelCurrentlyLoaded.Text = "Currently Loaded: Save #" + saveId;
+
+                            MessageBox.Show("Successfully saved current progress to Slot #" + saveId, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else if (result == DialogResult.No)
                         {
-                            loadSave(4);
+                            loadSave(saveId);
                         }
                     }
                     else
                     {
-                        loadSave(4);
+                        loadSave(saveId);
                     }
                 }
                 else
                 {
-                    loadSave(4);
+                    loadSave(saveId);
                 }
             }
             else
             {
-                if (game.getSave(game.currentSaveId).score != game.getScore()) {
+                if (game.getSave(game.currentSaveId).score != game.getScore() && isSlotCovered(saveId))
+                {
                     DialogResult result = MessageBox.Show("This Slot is covered. Do you wish to overwrite or load from it? Press 'Yes' to override and 'No' to load.", "Slot covered", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        game.saveState(4);
-                        MessageBox.Show("Successfully saved current progress to Slot #" + 4, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        game.saveState(saveId);
+                        labelCurrentlyLoaded.Text = "Currently Loaded: Save #" + saveId;
+                        MessageBox.Show("Successfully saved current progress to Slot #" + saveId, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else if (result == DialogResult.No)
                     {
-                        loadSave(4);
+                        loadSave(saveId);
                     }
                 }
                 else if (isSlotCovered(game.currentSaveId))
                 {
-                    loadSave(4);
+                    loadSave(saveId);
                 }
                 else
                 {
-                    game.saveState(4);
-                    MessageBox.Show("Successfully saved current progress to Slot #" + 4, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    game.saveState(saveId);
+                    labelCurrentlyLoaded.Text = "Currently Loaded: Save #" + saveId;
+                    initLoadState(saveId);
+                    MessageBox.Show("Successfully saved current progress to Slot #" + saveId, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+            initLoadState(saveId);
+            initializeSaves();
         }
 
         private void autoSaveSlot_CheckedChanged(object sender, EventArgs e)
@@ -551,7 +410,7 @@ namespace CreditClicker
 
         private void autoSaveTheme_CheckedChanged(object sender, EventArgs e)
         {
-            if (autoSaveTheme.Checked)
+            if (popAutoSaveTheme.Checked)
             {
                 autoSaveThemeEnabled = true;
                 SavesManager.AddUpdateAppSettings("autosavetheme", "True");
@@ -568,8 +427,10 @@ namespace CreditClicker
             game.getSaves();
             if (isSlotCovered(saveId))
             {
-                game.getSaveFromFile(saveId);
+                game.setSaveFromFile(saveId);
                 game.currentSaveId = saveId;
+                labelCurrentlyLoaded.Text = "Currently Loaded: Save #" + saveId;
+                initLoadState(saveId);
                 MessageBox.Show("Sucessfully loaded Save #" + saveId + "\n" + "Score: " + (long)game.getScore() + "\n" + "CreditsPerClick: " + (long)(game.getBonus() * game.getMultiplier()) + "\n" + "CreditsPerSecond: " + game.getPassiveBonus(),"Success",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             else if (game.getScore() > 0 || game.getBonus() > 1 || game.getMultiplier() > 1 || game.getPassiveBonus() > 0)
@@ -577,9 +438,11 @@ namespace CreditClicker
                 if (autoSaveEnabled)
                 {
                     game.currentSaveId = saveId;
-                    game.getSaveFromFile(saveId);
+                    game.setSaveFromFile(saveId);
                 }
                 game.saveState(saveId);
+                labelCurrentlyLoaded.Text = "Currently Loaded: Save #" + saveId;
+                initLoadState(saveId);
                 MessageBox.Show("Successfully saved current progress to Slot #" + saveId, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -809,7 +672,6 @@ namespace CreditClicker
         {
             game.getMusicPlayer().settings.volume = musicVolumeBar.Value;
             musicVolTextBox.Text = musicVolumeBar.Value * 2 + "%";
-            
             SavesManager.AddUpdateAppSettings("musicvolume", musicVolumeBar.Value.ToString());
         }
 
@@ -869,13 +731,6 @@ namespace CreditClicker
             effectsVolTextBox.Text = effectsVolumeBar.Value * 2 + "%";
             game.waveChannel.Volume = effectsVolumeBar.Value / 50;
             SavesManager.AddUpdateAppSettings("effectsvolume", "" + Decimal.Divide(effectsVolumeBar.Value, 50));
-            Console.WriteLine(game.waveChannel.Volume);
-        }
-
-        private void buttonApplyOptions_Click(object sender, EventArgs e)
-        {
-            //ConfigurationManager.AppSettings["musicvolume"] = musicVolumeBar.Value.ToString();
-            //ConfigurationManager.AppSettings["effectsvolume"] = effectsVolumeBar.Value.ToString();
         }
 
         private void effectsVolTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -949,12 +804,12 @@ namespace CreditClicker
                     }
                     else
                     {
+                    }
+
                         buttonVolumeBar.Value = 50;
                         game.getButtonPlayer().settings.volume = 50;
                         buttonVolTextBox.Text = 100 + "%";
                         optionsPanel.Focus();
-                    }
-
                 }
                 else
                 {
@@ -978,6 +833,40 @@ namespace CreditClicker
             {
                 if (buttonVolTextBox.Focused) buttonVolTextBox.Text = "";
             }
+        }
+
+
+        private void initializeSaves()
+        {
+            game.getSaves();
+            for(int i = 1; i < 5;i++)
+            {
+                if (isSlotCovered(i))
+                {
+                    switch (i)
+                    {
+                        case 1:
+                            popGroupBox1.Controls[0].Text = "" + (long) game.getSaveFromFile(1).score;
+                            break;
+                        case 2:
+                            popGroupBox2.Controls[0].Text = "" + (long) game.getSaveFromFile(2).score;
+                            break;
+                        case 3:
+                            popGroupBox3.Controls[0].Text = "" + (long) game.getSaveFromFile(3).score;
+                            break;
+                        case 4:
+                            popGroupBox4.Controls[0].Text = "" + (long) game.getSaveFromFile(4).score;
+                            break;
+                    }
+                }
+            }
+          
+        }
+
+        private void savesPanel_VisibleChanged(object sender, EventArgs e)
+        {
+            initLoadState(game.currentSaveId);
+            initializeSaves();
         }
     }  
 }

@@ -2,8 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -12,6 +14,8 @@ using System.Media;
 using System.IO;
 using WMPLib;
 using AxWMPLib;
+using NSpeex;
+using NAudio;
 namespace CreditClicker
 {
 
@@ -26,24 +30,20 @@ namespace CreditClicker
         public int currentSaveId { get; set; } = 0;
         private List<Item> pItems = new List<Item>();
         private BackgroundWorker bw;
-        private SoundPlayer sp;
         private Shop shop;
         private Settings settings;
         public List<Save> savesList = new List<Save>();
-        private Color gameColor;
 
         public string title = "CreditClicker"; //Edit Title here
         public string currentVersion = "v2.0"; //Edit Version here
 
-        public void setGameColor(Color color) => this.gameColor = color;
         public string getTitle() => this.title;
 
         public string getCurrentVersion() => this.currentVersion;
 
-        public List<Item> getItems() => this.pItems;
+        public List<Item> Items => this.pItems;
 
         public int getMultiplier() => this.pMultiplier;
-
         public int getBonus() => this.pBonus;
 
         public double getPassiveBonus() => this.passiveBonus;
@@ -54,22 +54,25 @@ namespace CreditClicker
 
         public void setScore(double score) => this.pScore = score;
 
+        public AxWindowsMediaPlayer getMusicPlayer() => this.musicPlayer;
+        public AxWindowsMediaPlayer getEffectsPlayer() => this.gameSoundPlayer;
+
+        public AxWindowsMediaPlayer getButtonPlayer() => this.buttonSoundPlayer;
+
+        public NAudio.Wave.WaveFileReader waveReader = new NAudio.Wave.WaveFileReader(Application.StartupPath + @"/Sounds/clickb1.wav");
+
+        public NAudio.Wave.DirectSoundOut output = null;
+
+        public NAudio.Wave.WaveChannel32 waveChannel = null;
+
+
+
         public Game()
         {
             FormManager.registerForm(this);
             shop = new Shop(this);
             currentSaveId = 0;
             InitializeComponent();
-            FormManager.initAllColors();
-            settings = new Settings(this, shop);
-            getSaves();
-            syncTitleAndVersion();
-            initializeWorker();
-            playBackgroundMusic();
-            shop.buyButtonWorker = new BackgroundWorker();
-            shop.buyButtonWorker.DoWork += shop.buyButtonWorker_DoWork;
-            shop.buyButtonWorker.RunWorkerCompleted += shop.buyButtonWorker_Check_RunWorkerCompleted;
-            shop.buyButtonWorker.RunWorkerAsync();
         }
 
         public void initializeWorker()
@@ -78,6 +81,13 @@ namespace CreditClicker
             bw.DoWork += bw_DoWork;
             bw.RunWorkerCompleted += bw_Check_RunWorkerCompleted;
             bw.RunWorkerAsync();
+        }
+
+        public void initializeAudio()
+        {
+            waveChannel = new NAudio.Wave.WaveChannel32(waveReader);
+            output = new NAudio.Wave.DirectSoundOut();
+            buttonSoundPlayer.URL = Application.StartupPath + @"\Sounds\press.wav";
         }
 
         public void syncTitleAndVersion()
@@ -100,12 +110,12 @@ namespace CreditClicker
 
         private void bw_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (panel2.Visible)
+            if (this.Visible && panel2.Visible)
             {
-                Thread.Sleep(100);
                 double dScore = this.getScore() + this.getPassiveBonus() / 10;
                 this.setScore(dScore);
             }
+            Thread.Sleep(100);
         }
 
         private void startGameButton_Click(object sender, EventArgs e)
@@ -229,37 +239,43 @@ namespace CreditClicker
 
         public void playClickSound()
         {
-            System.Reflection.Assembly a = System.Reflection.Assembly.GetExecutingAssembly();
-            Stream[] streams = new Stream[7];
-            streams[0] = a.GetManifestResourceStream("CreditClicker.clickb1.wav");
-            streams[1] = a.GetManifestResourceStream("CreditClicker.clickb2.wav");
-            streams[2] = a.GetManifestResourceStream("CreditClicker.clickb3.wav");
-            streams[3] = a.GetManifestResourceStream("CreditClicker.clickb4.wav");
-            streams[4] = a.GetManifestResourceStream("CreditClicker.clickb5.wav");
-            streams[5] = a.GetManifestResourceStream("CreditClicker.clickb6.wav");
-            streams[6] = a.GetManifestResourceStream("CreditClicker.clickb7.wav");
+            string[] paths = new string[7];
+            paths[0] = Application.StartupPath + @"\Sounds\clickb1.wav";
+            paths[1] = Application.StartupPath + @"\Sounds\clickb2.wav";
+            paths[2] = Application.StartupPath + @"\Sounds\clickb3.wav";
+            paths[3] = Application.StartupPath + @"\Sounds\clickb4.wav";
+            paths[4] = Application.StartupPath + @"\Sounds\clickb5.wav";
+            paths[5] = Application.StartupPath + @"\Sounds\clickb6.wav";
+            paths[6] = Application.StartupPath + @"\Sounds\clickb7.wav";
             Random r = new Random();
-            sp = new SoundPlayer(streams[r.Next(0, 6)]);
-            sp.Play();
+
+            waveReader = new NAudio.Wave.WaveFileReader(paths[r.Next(0,6)]);
+            
+            waveChannel = new NAudio.Wave.WaveChannel32(waveReader);
+            waveChannel.Volume = float.Parse(ConfigurationManager.AppSettings["effectsvolume"]);
+            output.Init(waveChannel);
+            output.Play();
+            /*gameSoundPlayer.Ctlcontrols.stop();
+            gameSoundPlayer.URL = paths[r.Next(0, 6)];
+            gameSoundPlayer.settings.volume = Convert.ToInt32(ConfigurationManager.AppSettings["effectsvolume"]);
+            gameSoundPlayer.Ctlcontrols.play();*/
         }
 
         public void playButtonSound()
         {
-            System.Reflection.Assembly a = System.Reflection.Assembly.GetExecutingAssembly();
-            Stream s = a.GetManifestResourceStream("CreditClicker.press.wav");
-            sp = new SoundPlayer(s);
-            sp.Play();
+            buttonSoundPlayer.settings.volume = Convert.ToInt32(ConfigurationManager.AppSettings["buttonvolume"]);
+            buttonSoundPlayer.Ctlcontrols.play();
         }
 
         public void playBackgroundMusic()
         {
-            string path = Application.StartupPath + @"\Sounds\background1.wav";
-            axWindowsMediaPlayer1.settings.autoStart = false;
-            axWindowsMediaPlayer1.URL = path;
-            axWindowsMediaPlayer1.Ctlcontrols.play();
-            axWindowsMediaPlayer1.settings.setMode("loop", true);
-            axWindowsMediaPlayer1.settings.volume = 25;
+            musicPlayer.settings.autoStart = false;
+            musicPlayer.URL = Application.StartupPath + @"\Sounds\background1.wav";
+            musicPlayer.settings.volume = Convert.ToInt32(ConfigurationManager.AppSettings["musicvolume"]);
+            musicPlayer.Ctlcontrols.play();
+            musicPlayer.settings.setMode("loop", true);
         }
+
 
         public int getEmptySlot()
         {
@@ -279,7 +295,7 @@ namespace CreditClicker
         {
             if (!Directory.Exists(Application.LocalUserAppDataPath + @"\Saves\")) Directory.CreateDirectory(Application.LocalUserAppDataPath + @"\Saves\");
             string savePath = Application.LocalUserAppDataPath + @"\Saves\save" + saveId + ".txt";
-                Save save = new Save(saveId, this.getScore(), this.getMultiplier(), this.getBonus(), this.getPassiveBonus(), this.getItems());
+                Save save = new Save(saveId, this.getScore(), this.getMultiplier(), this.getBonus(), this.getPassiveBonus(), this.Items);
                 using (StreamWriter sw = new StreamWriter(savePath))
                 {
                     sw.WriteLine(save.score);
@@ -304,7 +320,7 @@ namespace CreditClicker
                 savePath = Application.LocalUserAppDataPath + @"\Saves\save" + saveId + ".txt";
                 if (File.Exists(savePath))
                 {
-                    string[] lines = settings.readFromFile(savePath);
+                    string[] lines = settings.readSaveFromFile(savePath);
                     if (lines != null)
                     {
                         Save save = new Save(saveId, 0, 0, 0, 0, new List<Item>());
@@ -343,7 +359,7 @@ namespace CreditClicker
             }
         }
 
-        public void getSaveFromFile(int saveId)
+        public void setSaveFromFile(int saveId)
         {
             foreach (Save save in savesList)
             {
@@ -358,6 +374,18 @@ namespace CreditClicker
                     settings.calcItemPrices(pItems);
                 }
             }
+        }
+
+        public Save getSaveFromFile(int saveId)
+        {
+            foreach (Save save in savesList)
+            {
+                if (save.id == saveId)
+                {
+                    return save;
+                }
+            }
+            return null;
         }
 
         public Save getSave(int saveId)
@@ -386,7 +414,19 @@ namespace CreditClicker
 
         private void Game_Load(object sender, EventArgs e)
         {
-            //FormManager.initializeCurrentColors(this);
+            initializeAudio();
+            FormManager.initAllColors();
+            settings = new Settings(this, shop);
+            getSaves();
+            syncTitleAndVersion();
+            initializeWorker();
+            playBackgroundMusic();
+            shop.buyButtonWorker = new BackgroundWorker();
+            shop.buyButtonWorker.DoWork += shop.buyButtonWorker_DoWork;
+            shop.buyButtonWorker.RunWorkerCompleted += shop.buyButtonWorker_Check_RunWorkerCompleted;
+            shop.buyButtonWorker.RunWorkerAsync();
+            settings.initAppSettings();
+            settings.loadTheme();
         }
 
         private void Game_Activated(object sender, EventArgs e)

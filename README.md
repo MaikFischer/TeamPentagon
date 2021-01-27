@@ -10,6 +10,9 @@
 
 # Update Log:
 
+## Update 27/01/2021 Released v2.1
+- Veröffentlichung von [Release v2.1](https://github.com/MaikFischer/TeamPentagon/releases/tag/2.1.0)
+
 ## Update 06/12/2020 Released v2.0
 - Veröffentlichung von [Release v2.0](https://github.com/MaikFischer/TeamPentagon/releases/tag/2.0)
 

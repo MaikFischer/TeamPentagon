@@ -11,7 +11,7 @@ namespace CreditClicker
 {
     public static class SavesManager
     {
-        private static List<Save> savesList = new List<Save>();
+        public static List<Save> savesList = new List<Save>();
 
         public static int currentSaveId { get; set; } = 1;
 
@@ -84,49 +84,6 @@ namespace CreditClicker
             }
         }
 
-        public static void getSaves()
-        {
-            for(int saveId = 1; saveId < 5;saveId++)
-            {
-                Save save = null;
-                if (File.Exists("C:/CreditClicker/Saves/save" + saveId + ".txt"))
-                {
-                    string[] lines = File.ReadAllLines("C:/CreditClicker/Saves/save" + saveId + ".txt");
-                    if (lines != null)
-                    {
-                        save.score = Double.Parse(lines[0]);
-                        save.bonus = Int32.Parse(lines[1]);
-                        save.multiplier = Int32.Parse(lines[2]);
-                        save.passiveBonus = Double.Parse(lines[3]);
-                        if (lines[4] != null)
-                        {
-                            for (int i = 4; i < lines.Length; i++)
-                            {
-                                switch (lines[i])
-                                {
-                                    case "CheatSheet":
-                                        save.items.Add(new Item("CheatSheet", 1, 0, 150));
-                                        break;
-                                    case "StudyGroup":
-                                        save.items.Add(new Item("StudyGroup", 3, 0, 250));
-                                        break;
-                                    case "ConsultationHour":
-                                        save.items.Add(new Item("ConsultationHour", 0, 2, 2500));
-                                        break;
-                                    case "OldExam":
-                                        save.items.Add(new Item("OldExam", 10, 0, 5000));
-                                        break;
-                                    case "Insider":
-                                        save.items.Add(new Item("Insider", 0, 4, 15000));
-                                        break;
-                                }
-                            }
-                        }
-                        savesList.Add(save);
-                    }
-                }
-            }
-        }
 
         static void ReadAllSettings()
         {

@@ -38,6 +38,14 @@
 
 - Als ein User moechte ich den Shop öffnen koennen, ohne das ich das Spiel unterbrechen muss.
 
-- Als ein User moechte ich mir, wenn ich das moechte, die Farbe selbst einstellen können.
+- Als ein User moechte ich mir die Oberflaeche selbst einstellen können.
 
 - Als ein User moechte ich mein Spiel speichern koennen.
+
+- Als ein User moechte ich, dass das Spiel wenig Rechenleistung benötigt.
+
+- Als ein User moechte ich das Spiel einfach installieren können.
+
+- Als ein User moechte ich auf einen Blick sehen, welche Items ich kaufen kann.
+
+- Als ein User moechte ich unterschiedliche Items, mit verschiedenen Boni, haben.

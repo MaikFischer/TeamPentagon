@@ -4,29 +4,29 @@
 
 ### GUI
 
-- Einzelne Fenster die durch User selber verschoben und geoeffnet/geschlossen werden koennen
+- Einzelne Fenster die durch User selber verschoben und geöffnet/geschlossen werden können.
 	Prio: Hoch
 - Farben selbst einstellbar
 	Prio: Mittel
-- Hintergründe selbst eingestellbar
+- Hintergründe selbst einstellbar
 	Prio: Niedrig
-- Bei Kaufmoeglichkeit anders dargestellt im Shopfenster (z.B. Grün/Rot)
+- Bei Kaufmöglichkeit anders dargestellt im Shopfenster (z.B. Grün/Rot)
 	Prio: Hoch
 - Icons für Items
 	Prio: Mittel
 
 ### InGame Features
 
-- Durch Klicken auf Charakter bekommt man Coins
+- Durch klicken auf Charakter bekommt man Coins
 	Prio: Hoch
 - Verbesserungen kaufbar
-	Prio: Hoch
+	Prio: Mittel
 - Sounds
-	Prio: Mittel
-- Speicherbare Spielstände
-	Prio: Mittel
-- Anzeige welche Bonis schon gekauft wurden
 	Prio: Niedrig
+- Speicherbare Spielstände
+	Prio: Hoch
+- Anzeige welche Bonis schon gekauft wurden
+	Prio: Mittel
 - Erhöhen der Preise, je öfter Boni gekauft wurde
 	Prio: Niedrig
 
@@ -36,16 +36,19 @@
 
 ## User Stories
 
-- Als ein User moechte ich den Shop öffnen koennen, ohne das ich das Spiel unterbrechen muss.
+# Als ein User moechte ich:
 
-- Als ein User moechte ich mir die Oberflaeche selbst einstellen können.
-
-- Als ein User moechte ich mein Spiel speichern koennen.
-
-- Als ein User moechte ich, dass das Spiel wenig Rechenleistung benötigt.
-
-- Als ein User moechte ich das Spiel einfach installieren können.
-
-- Als ein User moechte ich auf einen Blick sehen, welche Items ich kaufen kann.
-
-- Als ein User moechte ich unterschiedliche Items, mit verschiedenen Boni, haben.
+- ...den Shop öffnen können, ohne das ich das Spiel unterbrechen muss.
+	Aufwand: 2 Sterne
+- ...mir die Oberfläche selbst einstellen können.
+	Aufwand: 3 Sterne
+- ...mein Spiel speichern können.
+	Aufwand: 3 Sterne
+- ...dass das Spiel wenig Rechenleistung benötigt.
+	Aufwand: 1 Stern
+- ...das Spiel einfach installieren können.
+	Aufwand: 2 Sterne
+- ...direkt erkennen, ab wann ich mir ein Item leisten kann.
+	Aufwand: 2 Sterne
+- ...unterschiedliche Items mit verschiedenen Boni haben.
+	Aufwand: 2 Sterne
